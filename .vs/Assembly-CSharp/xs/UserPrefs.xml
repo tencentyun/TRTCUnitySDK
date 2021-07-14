@@ -1,0 +1,29 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Assembly-CSharp" expanded="True" selected="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="TRTCSDK" expanded="True">
+                  <Node name="Demo" expanded="True" />
+                  <Node name="SDK" expanded="True">
+                    <Node name="Implement" expanded="True" />
+                    <Node name="Include" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

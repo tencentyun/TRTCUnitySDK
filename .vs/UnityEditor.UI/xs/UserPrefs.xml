@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{4DAF0808-E0DF-79E8-5ECB-AD875EF471CE}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/BuildScript.cs">
+    <Files>
+      <File FileName="Assets/Editor/NewMonoBehaviour.cs" Line="51" Column="26" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="UnityEditor.UI" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Editor" expanded="True" />
+              <Node name="TRTCSDK" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.UnityEditor.UI PreferredExecutionTarget="87e54a13-b792-4d84-8a26-007b4caa60f8" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

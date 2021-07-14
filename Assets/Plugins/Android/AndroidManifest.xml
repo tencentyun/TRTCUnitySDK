@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.0"
+    android:installLocation="2"
+    android:compileSdkVersion="29"
+    android:compileSdkVersionCodename="10"
+    package="com.Tencent.TRTCUnityDemo"
+    platformBuildVersionCode="29"
+    platformBuildVersionName="10">
+     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch.distinct"
+        android:required="false" />
+
+    <application
+        android:extractNativeLibs="true">
+
+        <activity
+            android:name="com.unity3d.player.UnityPlayerActivity"
+            android:launchMode="2"
+            android:screenOrientation="10"
+            android:hardwareAccelerated="false">
+
+            <intent-filter>
+
+                <action
+                    android:name="android.intent.action.MAIN" />
+
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="unityplayer.UnityActivity"
+                android:value="true" />
+
+            <meta-data
+                android:name="android.notch_support"
+                android:value="true" />
+        </activity>
+
+        <meta-data
+            android:name="unity.splash-mode"
+            android:value="0" />
+
+        <meta-data
+            android:name="unity.splash-enable"
+            android:value="true" />
+
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <meta-data
+            android:name="unity.build-id"
+            android:value="1feddfe8-9256-4666-abd2-be931020a905" />
+    </application>
+</manifest>
