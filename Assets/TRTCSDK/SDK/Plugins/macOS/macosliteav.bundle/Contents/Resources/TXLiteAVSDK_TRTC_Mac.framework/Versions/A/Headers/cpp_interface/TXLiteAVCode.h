@@ -188,6 +188,7 @@ typedef enum TXLiteAVError
     ERR_ROOM_REQUEST_CLOSE_VIDEO_TIMEOUT            = -3313,    ///< 请求关闭视频超时
     ERR_ROOM_REQUEST_SET_RECEIVE_TIMEOUT            = -3314,    ///< 请求接收视频项超时
     ERR_ROOM_REQUEST_TOKEN_INVALID_PARAMETER        = -3315,    ///< 请求 token 无效参数，请检查 TRTCParams.userSig 是否填写正确
+    ERR_ROOM_REQUEST_EXIT_ROOM_WHEN_ENTERING_ROOM   = -3341,    ///< 进房尚未成功时，收到了退房请求
 
     ERR_ROOM_REQUEST_AES_TOKEN_RETURN_ERROR         = -3329,    ///< 请求 AES TOKEN 时，server 返回的内容是空的
     ERR_ACCIP_LIST_EMPTY                            = -3331,    ///< 请求接口机 IP 返回的列表为空的
@@ -406,6 +407,8 @@ typedef enum TXLiteAVEvent
     EVT_MIC_RELEASE_SUCC                            = 2029,     ///<  释放麦克风占用
     EVT_AUDIO_DEVICE_ROUTE_CHANGED                  = 2030,     ///<  音频设备的route发生改变，即当前的输入输出设备发生改变，比如耳机被拔出
     EVT_PLAY_GET_FLVSESSIONKEY                      = 2031,     ///<  TXLivePlayer 接收到http响应头中的 flvSessionKey 信息
+    EVT_AUDIO_SESSION_INTERRUPT                     = 2032,     ///<  Audio Session Interrupt事件
+
 
     EVT_ROOM_ENTER                                  = 1018,     ///<  进入房间成功
     EVT_ROOM_EXIT                                   = 1019,     ///<  退出房间

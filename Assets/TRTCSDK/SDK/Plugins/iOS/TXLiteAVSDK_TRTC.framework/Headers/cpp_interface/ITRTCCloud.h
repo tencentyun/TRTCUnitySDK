@@ -1,7 +1,7 @@
 /**
  * Module:   TRTCCloud @ TXLiteAVSDK
  * Function: 腾讯云 TRTC 主功能接口
- * Version: 8.9.10361
+ * Version: 8.9.10372
  */
 #ifndef __ITRTCCLOUD_H__
 #define __ITRTCCLOUD_H__

@@ -1,7 +1,7 @@
 /**
  * Module:   TRTCCloud @ TXLiteAVSDK
  * Function: 腾讯云 TRTC 主功能接口
- * Version: 8.9.10361
+ * Version: 8.9.10372
  */
 #import <Foundation/Foundation.h>
 #import <VideoToolbox/VideoToolbox.h>
