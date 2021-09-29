@@ -4,3 +4,6 @@ Obj/
 Library/PackageCache/
 Library/PackageCache/
 Library/ShaderCache/
+Library/Artifacts/
+Library/Il2cppBuildCache/
+Library/BuildPlayerData/
