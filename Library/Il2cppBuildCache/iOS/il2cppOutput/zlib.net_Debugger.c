@@ -139,8 +139,8 @@ Il2CppSequencePoint g_sequencePointszlib_net[1] = { { 0, 0, 0, 0, 0, 0, 0, kSequ
 #endif
 #if IL2CPP_MONO_DEBUGGER
 static const Il2CppCatchPoint g_catchPoints[] = {
-{ 13574, 3923, 234, 0, -1 },
-{ 13576, 3923, 8, 1, 0 },
+{ 13576, 3926, 234, 0, -1 },
+{ 13578, 3926, 8, 1, 0 },
 };
 #else
 static const Il2CppCatchPoint g_catchPoints[1] = { { 0, 0, 0, 0, } };

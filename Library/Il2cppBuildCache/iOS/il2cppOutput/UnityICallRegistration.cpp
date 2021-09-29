@@ -1806,6 +1806,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Texture2D_Internal_CreateImpl();
 		Register_UnityEngine_Texture2D_Internal_CreateImpl();
 
+		//System.Boolean UnityEngine.Texture2D::LoadRawTextureDataImpl(System.IntPtr,System.Int32)
+		void Register_UnityEngine_Texture2D_LoadRawTextureDataImpl();
+		Register_UnityEngine_Texture2D_LoadRawTextureDataImpl();
+
 		//System.Boolean UnityEngine.Texture2D::LoadRawTextureDataImplArray(System.Byte[])
 		void Register_UnityEngine_Texture2D_LoadRawTextureDataImplArray();
 		Register_UnityEngine_Texture2D_LoadRawTextureDataImplArray();

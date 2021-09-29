@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
+using UnityEngine;
 
 namespace trtc
 {
@@ -95,6 +97,61 @@ namespace trtc
             return ITXDeviceManagerNative.TRTCUnitySwitchCamera(mNativeObj, frontCamera);
 #endif
             return -19011;
+        }
+        private struct ITXDeviceInfoArrayInfo
+        {
+            public ITXDeviceInfo[] deviceInfoArray;
+        };
+
+        /// <summary>
+        /// 2.1 获取设备列表（仅适用于桌面端）
+        /// </summary>
+        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
+        /// <returns></returns>
+        public override ITXDeviceInfo[] GetDevicesList(TXMediaDeviceType type)
+        {
+#if UNITY_STANDALONE_WIN
+            StringBuilder rnData = new StringBuilder(1024);
+            ITXDeviceManagerNative.TRTCUnityGetDevicesList(mNativeObj, type, rnData, rnData.Capacity);
+            Debug.Log("============GetDevicesList==============");
+            Debug.Log(rnData.ToString());
+            ITXDeviceInfoArrayInfo remoteQualityArray = JsonUtility.FromJson<ITXDeviceInfoArrayInfo>(rnData.ToString());
+
+            return remoteQualityArray.deviceInfoArray;
+#else
+            return new ITXDeviceInfo[0];
+#endif
+        }
+
+        /// <summary>
+        /// 2.2 设置当前要使用的设备（仅适用于桌面端）
+        /// </summary>
+        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
+        /// <param name="deviceId">设备ID，您可以通过接口 {@link getDevicesList} 获得设备 ID。</param>
+        /// <returns></returns>
+        public override int SetCurrentDevice(TXMediaDeviceType type, String deviceId)
+        {
+#if UNITY_STANDALONE_WIN
+            int isOK = ITXDeviceManagerNative.TRTCUnitySetCurrentDevice(mNativeObj, type, deviceId);
+            return isOK;
+#else
+             return -999;
+#endif
+        }
+
+        public override ITXDeviceInfo GetCurrentDevice(TXMediaDeviceType type)
+        {
+#if UNITY_STANDALONE_WIN
+            StringBuilder rndata = new StringBuilder(1024);
+            int size = 0;
+            ITXDeviceManagerNative.TRTCUnityGetCurrentDevice(mNativeObj, type, rndata, rndata.Capacity);
+            Debug.Log("============GetCurrentDevice==============");
+            Debug.Log(rndata.ToString());
+            ITXDeviceInfo tXDeviceInfo = JsonUtility.FromJson<ITXDeviceInfo>(rndata.ToString());
+            return tXDeviceInfo;
+#else
+            return new ITXDeviceInfo();
+#endif
         }
     }
 }

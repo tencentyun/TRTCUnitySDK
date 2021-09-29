@@ -1277,6 +1277,30 @@ namespace trtc
     };
 
     /// <summary>
+    ///  设备类型（仅适用于桌面平台）
+    ///  该枚举值用于定义三种类型的音视频设备，即摄像头、麦克风和扬声器，以便让一套设备管理接口可以操控三种不同类型的设备。
+    /// </summary>
+    public enum TXMediaDeviceType
+    {
+        /// <summary>
+        /// undefined device type
+        /// </summary>
+        TXMediaDeviceTypeUnknown = -1,
+        /// <summary>
+        /// < microphone
+        /// </summary>
+        TXMediaDeviceTypeMic = 0,
+        /// <summary>
+        /// < speaker or earpiece
+        /// </summary>
+        TXMediaDeviceTypeSpeaker = 1,
+        /// <summary>
+        /// < camera
+        /// </summary>
+        TXMediaDeviceTypeCamera = 2,
+    };
+
+    /// <summary>
     /// 5.10 云端混流中每一路子画面的位置信息
     /// <para>
     /// TRTCMixUser 用于指定每一路（即每一个 userId）视频画面的具体摆放位置
@@ -1615,6 +1639,23 @@ namespace trtc
         public bool isMainScreen;
     };
 
+    /// <summary>
+    /// 音视频设备的相关信息（仅适用于桌面平台）
+    /// 该结构体用于描述一个音视频设备的关键信息，比如设备ID、设备名称等等，以便用户能够在用户界面上选择自己期望使用的音视频设备。
+    /// </summary>
+    [Serializable]
+    public class ITXDeviceInfo
+    {
+        //{"DeviceName":"Integrated Camera","DevicePID":"\\\\?\\usb#vid_5986&pid_2115&mi_00#6&35187073&0&0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\\global"}
+        /// <summary>
+        ///  device PID (UTF-8)
+        /// </summary>
+        public String DevicePID;
+        /// <summary>
+        /// device name (UTF-8)
+        /// </summary>
+        public String DeviceName;
+    }
     /// <summary>
     /// 屏幕采集属性
     /// </summary>

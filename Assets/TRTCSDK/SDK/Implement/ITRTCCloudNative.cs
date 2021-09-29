@@ -12,7 +12,8 @@ namespace trtc
 #elif UNITY_ANDROID && !UNITY_EDITOR
         public const string MyLibName = "native-lib";
 #elif UNITY_STANDALONE_WIN
-        public const string MyLibName = "liteav";
+    // public const string MyLibName = "liteav";
+    public const string MyLibName = "trtc-c-wrapper";
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
     public const string MyLibName = "macosliteav";
 #endif
@@ -181,7 +182,12 @@ namespace trtc
 
         #region Native
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
+
+        #if UNITY_ANDROID
+        public static extern IntPtr TRTCUnityGetTRTCInstance(IntPtr context);
+        #else
         public static extern IntPtr TRTCUnityGetTRTCInstance();
+        #endif
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr TRTCUnityGetDeviceManager(IntPtr instance);
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
@@ -229,7 +235,7 @@ namespace trtc
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TRTCUnityStopLocalPreview(IntPtr instance);
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool TRTCUnityGetVideoRenderData(IntPtr instance,string userId, IntPtr data, ref int width, ref int height,ref int length,bool isNeedCallBack);
+        public static extern IntPtr TRTCUnityGetVideoRenderData(IntPtr instance,string userId, ref int rotation, ref int width, ref int height,ref int length,bool isNeedDestroy);
         
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TRTCUnityMuteLocalVideo(IntPtr instance, bool mute);

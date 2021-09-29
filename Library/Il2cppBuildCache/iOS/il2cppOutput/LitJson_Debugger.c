@@ -176,7 +176,7 @@ Il2CppSequencePoint g_sequencePointsLitJson[1] = { { 0, 0, 0, 0, 0, 0, 0, kSeque
 #endif
 #if IL2CPP_MONO_DEBUGGER
 static const Il2CppCatchPoint g_catchPoints[] = {
-{ 11506, 2176, 216, 1, 0 },
+{ 11508, 2178, 216, 1, 0 },
 };
 #else
 static const Il2CppCatchPoint g_catchPoints[1] = { { 0, 0, 0, 0, } };

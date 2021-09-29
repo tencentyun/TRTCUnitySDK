@@ -284,13 +284,13 @@
  <HintPath>/Applications/Unity/Hub/Editor/2020.2.1f1c1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Assets/TRTCSDK/Demo/Tools/Plugins/LitJson.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/TRTCSDK/Demo/Tools/Plugins/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="zlib.net">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Assets/TRTCSDK/Demo/Tools/Plugins/zlib.net.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/TRTCSDK/Demo/Tools/Plugins/zlib.net.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2020.2.1f1c1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -644,103 +644,103 @@
  <HintPath>/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/netstandard.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TestRunner">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Animation.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.InternalAPIEngineBridge.001">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.PixelPerfect">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="PsdPlugin">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.IK.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Psdimporter.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Path.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.InternalAPIEditorBridge.001">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.DeviceSimulator.Tests.Common">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.DeviceSimulator.Tests.Common.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.DeviceSimulator.Tests.Common.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.IK.Runtime">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Animation.Triangle.Runtime">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Animation.Runtime">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.PixelPerfect.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.DeviceSimulator.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.DeviceSimulator.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.DeviceSimulator.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Mathematics.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Common.Runtime">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.SpriteShape.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Common.Editor">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.SpriteShape.Runtime">
- <HintPath>/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

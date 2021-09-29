@@ -114,6 +114,29 @@ namespace trtc
         /// <returns>0：操作成功 负数：失败</returns>
         public abstract int setAudioRoute(TXAudioRoute route);
 
+
+        /// <summary>
+        /// 2.1 获取设备列表（仅适用于桌面端）
+        /// </summary>
+        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
+        /// <returns></returns>
+        public abstract ITXDeviceInfo[] GetDevicesList(TXMediaDeviceType type);
+
+        /// <summary>
+        /// 2.2 设置当前要使用的设备（仅适用于桌面端）
+        /// </summary>
+        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
+        /// <param name="deviceId">设备ID，您可以通过接口 {@link getDevicesList} 获得设备 ID。</param>
+        /// <returns></returns>
+        public abstract int SetCurrentDevice(TXMediaDeviceType type, String deviceId);
+
+        /// <summary>
+        /// 2.3 获取当前正在使用的设备（仅适用于桌面端）
+        /// </summary>
+        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
+        /// <returns></returns>
+        public abstract ITXDeviceInfo GetCurrentDevice(TXMediaDeviceType type);
+
     }
 }
 

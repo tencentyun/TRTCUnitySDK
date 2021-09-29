@@ -348,15 +348,15 @@ namespace TRTCCUnityDemo
         // Update is called once per frame
         void Update()
         {
-            if(isVideoRenderDataClick)
-            {
-                int width = 0;
-                int height = 0;
-                int length =0 ;
-                string _userId = "110";
-                mTRTCCloud.GetVideoRenderData(_userId, mNativeTextureData,ref width,ref height,ref length,false);
-                lblBtnClickLog.text =  Environment.NewLine + string.Format("width = {0}, height={1}, length={2}，data={3}",width,height,length, mNativeTextureData.ToString());
-            }
+            // if(isVideoRenderDataClick)
+            // {
+            //     int width = 0;
+            //     int height = 0;
+            //     int length =0 ;
+            //     string _userId = "";
+            //     mTRTCCloud.GetVideoRenderData(_userId, mNativeTextureData,ref width,ref height,ref length,false);
+            //     lblBtnClickLog.text =  Environment.NewLine + string.Format("width = {0}, height={1}, length={2}，data={3}",width,height,length, mNativeTextureData.ToString());
+            // }
         }
 
         void OnDestroy()
@@ -377,11 +377,10 @@ namespace TRTCCUnityDemo
             int width = 0;
             int height = 0;
             int length =0 ;
-            string _userId = "110";
-            mTRTCCloud.setRemoteVideoRenderCallback(_userId, _streamType, _videoFormat,
-                    TRTCVideoBufferType.TRTCVideoBufferType_Buffer, this);
+            int mTextureRotation = 0;
+            string _userId = "";
             isVideoRenderDataClick=true;
-            mTRTCCloud.GetVideoRenderData("110", mNativeTextureData,ref width,ref height,ref length,false);
+            mTRTCCloud.GetVideoRenderData("",ref mTextureRotation, ref width,ref height,ref length,false);
             lblBtnClickLog.text +=  Environment.NewLine + string.Format("width = {0}, height={1}, length={2}，data={3}",width,height,length, mNativeTextureData.ToString());
         }
         public void enterRoomClick()

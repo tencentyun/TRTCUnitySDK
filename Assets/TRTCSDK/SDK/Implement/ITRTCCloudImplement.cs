@@ -131,9 +131,9 @@ namespace trtc
             }
         }
 
-        public override bool GetVideoRenderData(string userId, IntPtr data, ref int width, ref int height,ref int length,bool isNeedCallBack)
+        public override IntPtr GetVideoRenderData(string userId, ref int rotation, ref int width, ref int height,ref int length,bool isNeedCallBack)
         {
-            return ITRTCCloudNative.TRTCUnityGetVideoRenderData(mNativeObj,userId,data,ref width,ref height,ref length, isNeedCallBack);
+            return ITRTCCloudNative.TRTCUnityGetVideoRenderData(mNativeObj,userId,ref rotation, ref width,ref height,ref length, isNeedCallBack);
         }
         public override void stopLocalPreview()
         {
@@ -626,8 +626,7 @@ namespace trtc
         public override ITXDeviceManager getDeviceManager()
         {
             IntPtr mDeviceManagerNativeObj = IntPtr.Zero;
-            //windows 暂时不支持
-            #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN
             mDeviceManagerNativeObj = ITRTCCloudNative.TRTCUnityGetDeviceManager(mNativeObj);
             #endif
             ITXDeviceManager tXDeviceManager = new ITXDeviceManagerImplement(mDeviceManagerNativeObj);
@@ -637,8 +636,7 @@ namespace trtc
         public override ITXAudioEffectManager getAudioEffectManager()
         {
             IntPtr mAudioEffectManagerNativeObj = IntPtr.Zero;
-            //windows 暂时不支持
-            #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN
             mAudioEffectManagerNativeObj = ITRTCCloudNative.TRTCUnityGetAudioEffectManager(mNativeObj);
             #endif
             ITXAudioEffectManager tXAudioEffectManager = new ITXAudioEffectManagerImplement(mAudioEffectManagerNativeObj);
@@ -673,7 +671,15 @@ namespace trtc
 
         private ITRTCCloudImplement()
         {
+            #if UNITY_ANDROID
+            AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject androidJavaObject = androidJavaClass.GetStatic<AndroidJavaObject>("currentActivity");
+            IntPtr objPtr = androidJavaObject.GetRawObject();
+            mNativeObj = ITRTCCloudNative.TRTCUnityGetTRTCInstance(objPtr);
+            #else
             mNativeObj = ITRTCCloudNative.TRTCUnityGetTRTCInstance();
+            #endif
+
             ITRTCCloudNative.TRTCUnityAddCallback(mNativeObj, onErrorHandler, onWarningHandler, onEnterRoomHandler, onExitRoomHandler,
                 onSwitchRoleHandler, onRemoteUserEnterRoomHandler, onRemoteUserLeaveRoomHandler, onUserVideoAvailableHandler,
                 onUserSubStreamAvailableHandler, onUserAudioAvailableHandler, onFirstVideoFrameHandler, onFirstAudioFrameHandler,

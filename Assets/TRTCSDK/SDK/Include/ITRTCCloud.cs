@@ -290,7 +290,7 @@ namespace trtc
         /// <param name="frontCamera">true-前置摄像头，false-后置摄像头，该参数只针对android、ios平台生效，windows平台默认是前置摄像头</param>
         public abstract void startLocalPreview(bool frontCamera, System.Object rendObj);
         
-        public abstract bool GetVideoRenderData(string userId, IntPtr data, ref int width, ref int height,ref int length,bool isNeedCallback);
+        public abstract IntPtr GetVideoRenderData(string userId, ref int rotation, ref int width, ref int height,ref int length,bool isNeedDestroy);
         
         /// <summary>
         /// 3.2 停止本地视频采集及预览

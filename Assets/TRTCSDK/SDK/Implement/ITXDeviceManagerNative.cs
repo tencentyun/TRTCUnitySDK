@@ -25,7 +25,8 @@ namespace trtc
 #elif UNITY_ANDROID && !UNITY_EDITOR
         public const string MyLibName = "native-lib";
 #elif UNITY_STANDALONE_WIN
-        public const string MyLibName = "liteav";
+        // public const string MyLibName = "liteav";
+        public const string MyLibName = "trtc-c-wrapper";
 #else
         public const string MyLibName = "macosliteav";
 #endif
@@ -34,8 +35,7 @@ namespace trtc
         #region Delegate
         #endregion
 
-        #region Native
-        #if UNITY_IPHONE || UNITY_ANDROID
+#if UNITY_IPHONE || UNITY_ANDROID
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int TRTCUnityEnableCameraAutoFocus(IntPtr instance, bool enabled);
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
@@ -60,7 +60,15 @@ namespace trtc
         public static extern int TRTCUnitySetSystemVolumeType(IntPtr instance, TXSystemVolumeType type);
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int TRTCUnitySwitchCamera(IntPtr instance, bool frontCamera);
-        #endif
-        #endregion
+
+#endif
+#if UNITY_STANDALONE_WIN
+        [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void TRTCUnityGetDevicesList(IntPtr instance, TXMediaDeviceType type, StringBuilder returnData, int returnSize);
+        [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TRTCUnitySetCurrentDevice(IntPtr instance, TXMediaDeviceType type, String deviceId);
+        [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void TRTCUnityGetCurrentDevice(IntPtr instance, TXMediaDeviceType type, StringBuilder returnData, int returnSize);
+#endif
     }
 }

@@ -8,169 +8,107 @@ Using pre-set license
 -name
 AssetImportWorker0
 -projectPath
-/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK
+/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50093
-Successfully changed project path to: /Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK
-/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK
+61317
+Successfully changed project path to: /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK
+/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 49.21 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 64.00 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.1f1c1 (252d8215dd99)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path /Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Assets
+[Subsystems] Discovering subsystems at path /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets
 GfxDevice: creating device client; threaded=0
-2021-07-14 17:01:07.015 Unity[1870:18122] Color LCD preferred device: AMD Radeon Pro 5300M (high power)
-2021-07-14 17:01:07.015 Unity[1870:18122] Metal devices available: 2
-2021-07-14 17:01:07.015 Unity[1870:18122] 0: AMD Radeon Pro 5300M (high power)
-2021-07-14 17:01:07.015 Unity[1870:18122] 1: Intel(R) UHD Graphics 630 (low power)
-2021-07-14 17:01:07.015 Unity[1870:18122] Using device AMD Radeon Pro 5300M (high power)
+2021-09-29 16:39:07.956 Unity[63718:2226321] Color LCD preferred device: AMD Radeon Pro 5300M (high power)
+2021-09-29 16:39:07.956 Unity[63718:2226321] Metal devices available: 2
+2021-09-29 16:39:07.957 Unity[63718:2226321] 0: AMD Radeon Pro 5300M (high power)
+2021-09-29 16:39:07.957 Unity[63718:2226321] 1: Intel(R) UHD Graphics 630 (low power)
+2021-09-29 16:39:07.957 Unity[63718:2226321] Using device AMD Radeon Pro 5300M (high power)
 Initializing Metal device caps: AMD Radeon Pro 5300M
 Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56870
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56718
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000489 seconds.
+Registered in 0.000610 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 41.41 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 46.34 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.999 seconds
+- Completed reload, in  3.202 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001258 seconds.
+Registered in 0.001487 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 43.46 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 41.83 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.999 seconds
+- Completed reload, in  1.041 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launching external process: /Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/Tools/UnityShaderCompiler
 Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
-Refreshing native plugins compatible for Editor in 0.52 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.54 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1884 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1887 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 152.4 MB.
 System memory in use after: 152.5 MB.
 
-Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 2306.
-Total: 2.328800 ms (FindLiveObjects: 0.239466 ms CreateObjectMapping: 0.115150 ms MarkObjects: 1.899345 ms  DeleteObjects: 0.073114 ms)
+Unloading 45 unused Assets to reduce memory usage. Loaded Objects now: 2308.
+Total: 2.282314 ms (FindLiveObjects: 0.237070 ms CreateObjectMapping: 0.105119 ms MarkObjects: 1.843756 ms  DeleteObjects: 0.095004 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/TRTCSDK/SDK/Plugins/macOS/macosliteav.bundle
-  artifactKey: Guid(b9d5082b2061b4748b6f215dc3ee77ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TRTCSDK/SDK/Plugins/macOS/macosliteav.bundle using Guid(b9d5082b2061b4748b6f215dc3ee77ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b9e619d9fcbf3b705c6272ef83bf91a') in 0.533558 seconds
-  Import took 0.538141 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.939811 seconds.
-  path: Assets/TRTCSDK/SDK/Plugins/Android/libs
-  artifactKey: Guid(e2f09a99e21944e22bc2a85df32c9d60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TRTCSDK/SDK/Plugins/Android/libs using Guid(e2f09a99e21944e22bc2a85df32c9d60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08f2cfeb23ffc7badd6c01ee541fc635') in 0.001047 seconds
-  Import took 0.004312 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 662.214404 seconds.
-  path: Assets/TRTCSDK/SDK/Plugins/iOS/libTrtcIosCPackage.a
-  artifactKey: Guid(4838f70c6716b4809991ee83cbd7c3f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TRTCSDK/SDK/Plugins/iOS/libTrtcIosCPackage.a using Guid(4838f70c6716b4809991ee83cbd7c3f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19a1495d02920aa48798d38b5281408d') in 1.261477 seconds
-  Import took 1.271189 seconds .
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 16.82 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 29 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 124.5 MB.
-System memory in use after: 124.6 MB.
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2306.
-Total: 8.308273 ms (FindLiveObjects: 0.560661 ms CreateObjectMapping: 0.143351 ms MarkObjects: 7.579909 ms  DeleteObjects: 0.022834 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 284.301662 seconds.
-  path: Assets/TRTCSDK/SDK/Plugins/iOS/TXLiteAVSDK_TRTC.framework
-  artifactKey: Guid(7bf5a1236bcbc464c9e74d0727941a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TRTCSDK/SDK/Plugins/iOS/TXLiteAVSDK_TRTC.framework using Guid(7bf5a1236bcbc464c9e74d0727941a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56120cecefce9cc7282b387a4edead47') in 0.001176 seconds
-  Import took 0.005266 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.024522 seconds.
-  path: Assets/TRTCSDK/SDK/Plugins/iOS/TXLiteAVSDK_TRTC.framework
-  artifactKey: Guid(7bf5a1236bcbc464c9e74d0727941a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TRTCSDK/SDK/Plugins/iOS/TXLiteAVSDK_TRTC.framework using Guid(7bf5a1236bcbc464c9e74d0727941a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56120cecefce9cc7282b387a4edead47') in 0.000962 seconds
-  Import took 0.003928 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 151.933619 seconds.
-  path: Assets/TRTCSDK/SDK/Plugins/iOS/TXLiteAVSDK_TRTC.framework
-  artifactKey: Guid(7bf5a1236bcbc464c9e74d0727941a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TRTCSDK/SDK/Plugins/iOS/TXLiteAVSDK_TRTC.framework using Guid(7bf5a1236bcbc464c9e74d0727941a16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '227b3988d47dfe877d4ce18469780363') in 0.002297 seconds
-  Import took 0.005398 seconds .
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 12.74 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 125.0 MB.
-System memory in use after: 125.1 MB.
-
-Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2306.
-Total: 2.271746 ms (FindLiveObjects: 0.176961 ms CreateObjectMapping: 0.077114 ms MarkObjects: 1.990334 ms  DeleteObjects: 0.026252 ms)
+  path: Assets/TRTCSDK/SDK/Plugins/x86/liteav.dll
+  artifactKey: Guid(ac1a2b0842a07b84086730490547ea65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TRTCSDK/SDK/Plugins/x86/liteav.dll using Guid(ac1a2b0842a07b84086730490547ea65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dfc168f225c4eaf3f961137ed047e3d') in 1.265849 seconds
+  Import took 1.269787 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001912 seconds.
+Registered in 0.006279 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.72 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.100 seconds
+- Completed reload, in  1.370 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.58 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.66 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1876 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 162.3 MB.
-System memory in use after: 162.4 MB.
+Unloading 1879 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 157.4 MB.
+System memory in use after: 157.6 MB.
 
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2309.
-Total: 2.119453 ms (FindLiveObjects: 0.284815 ms CreateObjectMapping: 0.076807 ms MarkObjects: 1.723770 ms  DeleteObjects: 0.033163 ms)
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 2311.
+Total: 1.931529 ms (FindLiveObjects: 0.190135 ms CreateObjectMapping: 0.073647 ms MarkObjects: 1.642906 ms  DeleteObjects: 0.023851 ms)
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 17.04 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 6.69 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 33 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 126.1 MB.
-System memory in use after: 126.2 MB.
+Unloading 34 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.2 MB.
+System memory in use after: 121.3 MB.
 
-Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2309.
-Total: 1.648583 ms (FindLiveObjects: 0.175882 ms CreateObjectMapping: 0.082689 ms MarkObjects: 1.374796 ms  DeleteObjects: 0.014204 ms)
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 2311.
+Total: 2.256523 ms (FindLiveObjects: 0.206674 ms CreateObjectMapping: 0.078554 ms MarkObjects: 1.949987 ms  DeleteObjects: 0.019801 ms)
 
