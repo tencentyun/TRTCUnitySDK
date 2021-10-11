@@ -23,6 +23,10 @@
 ![](https://imgcache.qq.com/operation/dianshi/other/8.6-objc.e0df060a638c1056fc07d1cb51c303a9de5b542f.png)
 5. 错误提示`You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE)`
 ![](https://imgcache.qq.com/operation/dianshi/other/enable.d0cd40914b1d60e74bcc32b0c14ad5afbca4d1ee.png)
+### macos 相关问题
+1. 提示` "macosliteav.bundle" 已损怀，无法打开。您应该将它移到废纸篓 `
+![](https://imgcache.qq.com/operation/dianshi/other/macos.600034e6a5bd6750d6abe5eb63ff45099f7a51ac.png)
+解决办法[参考](http://www.pc6.com/edu/168719.html) 设置权限。
 
 ### Android 提示网络权限问题？
 请将项目中 `/Assets/Plugins/AndroidManifest.xml` 文件放到同级目录下。
