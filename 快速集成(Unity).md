@@ -48,6 +48,6 @@ if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
 ### 其他
 xxxx could not be found(are you missing a using directive or an assembly reference?)
 ![](https://imgcache.qq.com/operation/dianshi/other/u-error.fd4cfb3d6eccf300d95132416799f2cd66db52e2.png)
-出现该问题的原因是unity editor识别我们的c#文件失败了。解决办法，导入我们的提供[的unity package可解决](https://comm.qq.com/trtc/unity/TRTCUnitySDK.unitypackage)
+出现该问题的原因是unity editor识别我们的c#文件失败了。解决办法，导入我们的提供[的unity package可解决](https://comm.qq.com/sdk/trtc/unity/TRTCUnitySDK.unitypackage)
 如下图：
 ![](https://imgcache.qq.com/operation/dianshi/other/t.5b2cce3c6663e6f48a178fdab89a6e5e19011cf0.png)
