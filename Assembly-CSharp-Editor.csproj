@@ -283,11 +283,14 @@
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2020.2.1f1c1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="LitJson">
- <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/TRTCSDK/Demo/Tools/Plugins/LitJson.dll</HintPath>
+ <Reference Include="NugetForUnity">
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/NuGet/Editor/NugetForUnity.dll</HintPath>
+ </Reference>
+ <Reference Include="LitJSON">
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/Packages/LitJson.0.17.0/lib/netstandard2.0/LitJSON.dll</HintPath>
  </Reference>
  <Reference Include="zlib.net">
- <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/TRTCSDK/Demo/Tools/Plugins/zlib.net.dll</HintPath>
+ <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Assets/Packages/zlib.net-mutliplatform.1.0.5/lib/netstandard2.0/zlib.net.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>

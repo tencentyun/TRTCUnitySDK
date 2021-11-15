@@ -19,41 +19,41 @@
       "DebugActionIndex": 0
     },
     {
-      "Annotation": "Il2Cpp /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput",
-      "Action": "\"/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --enable-deep-profiler --dotnetprofile=\"unityaot\" --additional-cpp=\"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --enable-debugger --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
+      "Annotation": "Il2Cpp /Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput",
+      "Action": "\"/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"/Applications/Unity/Hub/Editor/2020.2.1f1c1/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
       "Inputs": [
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/LitJson.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/Mono.Security.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.Configuration.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.Core.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.Xml.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/Unity.2D.IK.Runtime.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.JSONSerializeModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/mscorlib.dll",
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Temp/StagingArea/Data/Managed/zlib.net.dll"
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/LitJson.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/Mono.Security.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.Configuration.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.Core.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.Xml.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/System.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/Unity.2D.IK.Runtime.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.JSONSerializeModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/UnityEngine.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/mscorlib.dll",
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Temp/StagingArea/Data/Managed/zlib.net.dll"
       ],
       "Outputs": [],
       "TargetDirectories": [
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput"
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput"
       ],
       "PassIndex": 0,
       "Deps": [],
@@ -64,13 +64,13 @@
       "DebugActionIndex": 1
     },
     {
-      "Annotation": "Copy Additional C++ File /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
-      "Action": "cp \"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" \"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File /Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
+      "Action": "cp \"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" \"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp\" ",
       "Inputs": [
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
       ],
       "Outputs": [
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,
@@ -84,13 +84,13 @@
       "DebugActionIndex": 2
     },
     {
-      "Annotation": "Copy Additional C++ File /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
-      "Action": "cp \"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" \"/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File /Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
+      "Action": "cp \"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" \"/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp\" ",
       "Inputs": [
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
       ],
       "Outputs": [
-        "/Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
+        "/Users/gavinwjwang/work/ugit/trtc-unity-plugin/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,

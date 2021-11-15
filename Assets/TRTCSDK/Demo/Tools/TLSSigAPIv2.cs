@@ -3,7 +3,8 @@ using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 using LitJson;
-using zlib;
+using ComponentAce.Compression.Libs.zlib;
+
 
 namespace tencentyun
 {

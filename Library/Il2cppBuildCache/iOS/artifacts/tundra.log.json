@@ -1,7 +1,1 @@
 {"msg":"init","dagFile":"artifacts/tundra.dag","targets":[]}
-{"msg":"newNode","annotation":"Il2Cpp /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput","index":1}
-{"msg":"noderesult","annotation":"Il2Cpp /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput","index":1,"exitcode":0}
-{"msg":"newNode","annotation":"Copy Additional C++ File /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp","index":2}
-{"msg":"newNode","annotation":"Copy Additional C++ File /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp","index":3}
-{"msg":"noderesult","annotation":"Copy Additional C++ File /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp","index":2,"exitcode":0}
-{"msg":"noderesult","annotation":"Copy Additional C++ File /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp","index":3,"exitcode":0}

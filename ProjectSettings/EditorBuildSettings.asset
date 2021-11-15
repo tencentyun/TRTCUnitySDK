@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TRTCSDK/Demo/RoomSceme.unity
     guid: 02acaf4319c7082409a82a48e0e585a5
+  - enabled: 1
+    path: Assets/TRTCSDK/Demo/VideoView.unity
+    guid: f7e5da21180cc455294b85dedd30498b
   m_configObjects: {}
