@@ -671,7 +671,7 @@ namespace trtc
 
         private ITRTCCloudImplement()
         {
-            #if UNITY_ANDROID
+            #if UNITY_ANDROID && !UNITY_EDITOR
             AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
             AndroidJavaObject androidJavaObject = androidJavaClass.GetStatic<AndroidJavaObject>("currentActivity");
             IntPtr objPtr = androidJavaObject.GetRawObject();

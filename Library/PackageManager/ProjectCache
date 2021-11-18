@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637620003330000000
+      ticks: 637728078510000000
     m_Hash: 981965912
   m_LockFileStatus:
     m_FilePath: /Users/gavinwjwang/work/GitHub/tencentyun/TRTCUnitySDK/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637725433390000000
+      ticks: 637728372990000000
     m_Hash: 4215089812
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

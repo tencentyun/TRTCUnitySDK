@@ -11,7 +11,7 @@ namespace trtc
 		public const string MyLibName = "__Internal";
 #elif UNITY_ANDROID && !UNITY_EDITOR
         public const string MyLibName = "native-lib";
-#elif UNITY_STANDALONE_WIN
+#elif UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
     // public const string MyLibName = "liteav";
     public const string MyLibName = "trtc-c-wrapper";
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
@@ -183,7 +183,7 @@ namespace trtc
         #region Native
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
 
-        #if UNITY_ANDROID
+        #if UNITY_ANDROID && !UNITY_EDITOR
         public static extern IntPtr TRTCUnityGetTRTCInstance(IntPtr context);
         #else
         public static extern IntPtr TRTCUnityGetTRTCInstance();
