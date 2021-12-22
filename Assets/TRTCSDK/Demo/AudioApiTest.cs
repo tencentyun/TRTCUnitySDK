@@ -310,7 +310,7 @@ namespace TRTCCUnityDemo
         private VideoRenderType _videoRenderType = VideoRenderType.None;
         private TRTCVideoPixelFormat _videoFormat = TRTCVideoPixelFormat.TRTCVideoPixelFormat_BGRA32;
         #endregion
-        // Start is called before the first frame update
+        
         void Start()
         {
             createBtns();
@@ -329,7 +329,8 @@ namespace TRTCCUnityDemo
             inputRoomID.text = "1901";
             InputUserId.text = "9999";
             Button enterRoomBtn = transform.Find("roomPanel/btnLogin").gameObject.GetComponent<Button>();
-            enterRoomBtn.onClick.AddListener(()=> {
+            enterRoomBtn.onClick.AddListener(() => 
+            {
                 DataManager.GetInstance().SetUserID(InputUserId.text);
                 DataManager.GetInstance().SetRoomID(inputRoomID.text);
                 SceneManager.LoadScene("RoomSceme", LoadSceneMode.Single);
@@ -346,18 +347,18 @@ namespace TRTCCUnityDemo
         IntPtr mNativeTextureData = Marshal.AllocHGlobal(4000 * 3000 * 4);
         bool isVideoRenderDataClick =false;
         // Update is called once per frame
-        void Update()
-        {
-            // if(isVideoRenderDataClick)
-            // {
-            //     int width = 0;
-            //     int height = 0;
-            //     int length =0 ;
-            //     string _userId = "";
-            //     mTRTCCloud.GetVideoRenderData(_userId, mNativeTextureData,ref width,ref height,ref length,false);
-            //     lblBtnClickLog.text =  Environment.NewLine + string.Format("width = {0}, height={1}, length={2}，data={3}",width,height,length, mNativeTextureData.ToString());
-            // }
-        }
+        // void Update()
+        // {
+        //     // if(isVideoRenderDataClick)
+        //     // {
+        //     //     int width = 0;
+        //     //     int height = 0;
+        //     //     int length =0 ;
+        //     //     string _userId = "";
+        //     //     mTRTCCloud.GetVideoRenderData(_userId, mNativeTextureData,ref width,ref height,ref length,false);
+        //     //     lblBtnClickLog.text =  Environment.NewLine + string.Format("width = {0}, height={1}, length={2}，data={3}",width,height,length, mNativeTextureData.ToString());
+        //     // }
+        // }
 
         void OnDestroy()
         {
@@ -874,17 +875,17 @@ namespace TRTCCUnityDemo
             mixUsersArray[0].streamType = TRTCVideoStreamType.TRTCVideoStreamTypeBig;
             mixUsersArray[0].rect.left = 0;
             mixUsersArray[0].rect.top = 0;
-            mixUsersArray[0].rect.right = 0;
-            mixUsersArray[0].rect.bottom = 0;
+            mixUsersArray[0].rect.right = 1280;
+            mixUsersArray[0].rect.bottom = 720;
             mixUsersArray[0].roomId = null; // 本地用户不用填写 roomID，远程需要
 
             mixUsersArray[1].userId = "110";
             mixUsersArray[1].zOrder = 3;
             mixUsersArray[1].streamType = TRTCVideoStreamType.TRTCVideoStreamTypeBig;
-            mixUsersArray[1].rect.left = 100; //仅供参考
-            mixUsersArray[1].rect.top = 100; //仅供参考
-            mixUsersArray[1].rect.right = 100; //仅供参考
-            mixUsersArray[1].rect.bottom = 100; //仅供参考
+            mixUsersArray[1].rect.left = 10; //仅供参考
+            mixUsersArray[1].rect.top = 10; //仅供参考
+            mixUsersArray[1].rect.right = 10+280; //仅供参考
+            mixUsersArray[1].rect.bottom = 10+220; //仅供参考
             mixUsersArray[1].roomId = "2031"; // 本地用户不用填写 roomID，远程需要
 
 

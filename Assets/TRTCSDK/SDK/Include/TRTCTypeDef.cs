@@ -1232,19 +1232,19 @@ namespace trtc
     public struct RECT
     {
         /// <summary>
-        /// 左边距
+        /// 矩形左上角x坐标轴
         /// </summary>
         public int left;
         /// <summary>
-        /// 上边距
+        ///  矩形左上角y坐标轴
         /// </summary>
         public int top;
         /// <summary>
-        /// 右边距
+        /// 矩形右下角x坐标轴
         /// </summary>
          public int right;
         /// <summary>
-        /// 下边距
+        /// 矩形右下角y坐标轴
         /// </summary>
         public int bottom;
     };
