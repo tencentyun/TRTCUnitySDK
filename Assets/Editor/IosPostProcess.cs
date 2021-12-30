@@ -14,6 +14,13 @@ using System.Linq;
 public static class IosPostProcess
 {
 
+    public static string projectName
+    {
+        get
+        {
+            return "TRTCUnityDemo";
+        }
+    }
     static void UpdatePermission(string plistPath)
     {
         #if UNITY_IPHONE || UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
@@ -23,7 +30,7 @@ public static class IosPostProcess
         UnityEditor.iOS.Xcode.PlistElementDict rootDict = plist.root;
         rootDict.SetString("NSCameraUsageDescription", "授权摄像头权限才能正常视频通话");
         rootDict.SetString("NSMicrophoneUsageDescription", "授权麦克风权限才能正常语音通话");
-        rootDict.SetString("NSPhotoLibraryUsageDescription", "App需要您的同意,才能访问相册");
+        // rootDict.SetString("NSPhotoLibraryUsageDescription", "App需要您的同意,才能访问相册");
         rootDict.SetBoolean("UIFileSharingEnabled", true);
 
         UnityEditor.iOS.Xcode.PlistElementArray CFBundleDocumentTypes = rootDict.CreateArray("CFBundleDocumentTypes"); // just for test
@@ -44,8 +51,10 @@ public static class IosPostProcess
     {
         if (buildTarget == BuildTarget.iOS)
         {
+            UnityEngine.Debug.Log("--ios--start buildPath:"+buildPath);
             #if UNITY_IPHONE
             var projPath = buildPath + "/Unity-Iphone.xcodeproj/project.pbxproj";
+            UnityEngine.Debug.Log("projPath:"+projPath);
             var proj = new PBXProject();
             proj.ReadFromFile(projPath);
 
@@ -70,20 +79,22 @@ public static class IosPostProcess
 
             proj.WriteToFile(projPath);
             UpdatePermission(buildPath + "/Info.plist");
-            UnityEngine.Debug.Log("finsih --ios--build");
+            UnityEngine.Debug.Log("--ios-- 构建完成，请用xcode 打开 【"+buildPath + "/Unity-Iphone.xcodeproj】发布即可");
             #endif
         }else if(buildTarget == BuildTarget.StandaloneOSX || 
         buildTarget == BuildTarget.StandaloneOSXIntel || buildTarget == BuildTarget.StandaloneOSXIntel64){
-             UnityEngine.Debug.Log("finsih --mac os--start");
-             string plistPath = buildPath + "/Contents/Info.plist"; // straight to a binary
-            if (buildPath.EndsWith(".xcodeproj"))
-            {
-                    // This must be a build that exports Xcode
-                    string dir = Path.GetDirectoryName(buildPath);
-                    plistPath = dir + "/" + PlayerSettings.productName + "/Info.plist";
-            }
+             UnityEngine.Debug.Log("--macos--start:"+buildPath);
+             string plistPath = buildPath+".app" + "/Contents/Info.plist"; // straight to a binary
             UpdatePermission(plistPath);
-            UnityEngine.Debug.Log("finsih --mac os--build");
+            UnityEngine.Debug.Log("--macos-- 构建完成，请打开 【"+buildPath+".app】运行即可");
+        }
+        else if (buildTarget == BuildTarget.Android)
+        {
+            UnityEngine.Debug.Log("--Android-- 构建完成，请打开 【"+buildPath+"】运行即可");
+        }
+        else
+        {
+            UnityEngine.Debug.Log("--windows-- 构建完成，请打开 【"+buildPath+"】运行即可");
         }
     }
 
