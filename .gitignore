@@ -1,9 +1,20 @@
 
 Temp/
 Obj/
-Library/PackageCache/
-Library/PackageCache/
-Library/ShaderCache/
-Library/Artifacts/
-Library/Il2cppBuildCache/
-Library/BuildPlayerData/
+Library/
+Logs/
+Builds/
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
