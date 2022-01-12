@@ -134,11 +134,6 @@ namespace TRTCCUnityDemo
             #endif
         }
 
-        void Update()
-        {
-
-        }
-
         void OnDestroy()
         {
             DataManager.GetInstance().DoRoleChange -= new DataManager.ChangeRoleHandler(OnRoleChanged);
@@ -384,7 +379,9 @@ namespace TRTCCUnityDemo
             if (value)
             {
                 string seiMsg = "test sei message";
-                mTRTCCloud.sendSEIMsg(System.Text.Encoding.Default.GetBytes(seiMsg), System.Text.Encoding.Default.GetByteCount(seiMsg), 3);
+                int msgSize = System.Text.Encoding.UTF8.GetByteCount(seiMsg);
+                LogManager.Log(String.Format("----> sendSEIMsg seiMsg= {0}, msgSize = {1}", seiMsg, msgSize));
+                mTRTCCloud.sendSEIMsg(System.Text.Encoding.UTF8.GetBytes(seiMsg), msgSize, 30);
             }
         }
 

@@ -443,8 +443,9 @@ namespace TRTCCUnityDemo
         public void sendSEIMsg()
         {
             string seiMsg = "test sei message";
-            bool result = mTRTCCloud.sendSEIMsg(System.Text.Encoding.Default.GetBytes(seiMsg), System.Text.Encoding.Default.GetByteCount(seiMsg), 3);
-            lblBtnClickLog.text += Environment.NewLine + "sendSEIMsg = "+result.ToString();
+            int seiSize = System.Text.Encoding.UTF8.GetByteCount(seiMsg);
+            bool result = mTRTCCloud.sendSEIMsg(System.Text.Encoding.UTF8.GetBytes(seiMsg), seiSize , 30);
+            lblBtnClickLog.text += Environment.NewLine + "sendSEIMsg = "+result.ToString()+"   ,seiSize="+seiSize.ToString();
         }
 
         public void sendCustomCmdMsgClick()
@@ -564,7 +565,6 @@ namespace TRTCCUnityDemo
         {
             mTRTCCloud.stopAudioRecording();
         }
-        
         public void setVoiceReverbTypeClick()
         {
             mTXAudioEffectManager.setVoiceReverbType(TXVoiceReverbType.TXVoiceReverbType_6);
