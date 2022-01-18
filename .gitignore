@@ -2,6 +2,8 @@
 Temp/
 Obj/
 Library/
+UserSettings/
+Packages/
 Logs/
 Builds/
 .vs/
@@ -18,3 +20,4 @@ Builds/
 *.mdb
 *.opendb
 *.VC.db
+*.log

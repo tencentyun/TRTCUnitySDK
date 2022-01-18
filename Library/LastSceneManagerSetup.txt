@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/TRTCSDK/Demo/HomeScene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
