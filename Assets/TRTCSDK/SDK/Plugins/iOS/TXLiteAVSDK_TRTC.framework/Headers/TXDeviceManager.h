@@ -86,6 +86,26 @@ typedef NS_ENUM(NSInteger, TXMediaDeviceType) {
 #endif
 
 /**
+ * 设备操作
+ *
+ * 该枚举值用于本地设备的状态变化通知{@link onDeviceChanged}。
+ */
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+typedef NS_ENUM(NSInteger, TXMediaDeviceState) {
+
+    ///设备已被插入
+    TXMediaDeviceStateAdd = 0,
+
+    ///设备已被移除
+    TXMediaDeviceStateRemove = 1,
+
+    ///设备已启用
+    TXMediaDeviceStateActive = 2,
+
+};
+#endif
+
+/**
  * 音视频设备的相关信息（仅适用于桌面平台）
  *
  * 该结构体用于描述一个音视频设备的关键信息，比如设备ID、设备名称等等，以便用户能够在用户界面上选择自己期望使用的音视频设备。
@@ -98,9 +118,28 @@ typedef NS_ENUM(NSInteger, TXMediaDeviceType) {
 @property(copy, nonatomic, nullable) NSString *deviceId;
 /// device name
 @property(copy, nonatomic, nullable) NSString *deviceName;
+/// device properties
+@property(copy, nonatomic, nullable) NSString *deviceProperties;
 @end
 #endif
 /// @}
+
+/**
+ * 本地设备的通断状态发生变化（仅适用于桌面系统）
+ *
+ * 当本地设备（包括摄像头、麦克风以及扬声器）被插入或者拔出时，SDK 便会抛出此事件回调。
+ *
+ * @param deviceId 设备 ID
+ * @param type 设备类型
+ * @param state 通断状态，0：设备已添加；1：设备已被移除；2：设备已启用。
+ */
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+@protocol TXDeviceObserver <NSObject>
+
+- (void)onDeviceChanged:(NSString *)deviceId type:(TXMediaDeviceType)mediaType state:(TXMediaDeviceState)mediaState;
+
+@end
+#endif
 
 @interface TXDeviceManager : NSObject
 
@@ -201,6 +240,13 @@ typedef NS_ENUM(NSInteger, TXMediaDeviceType) {
 
 /**
  * 2.1 获取设备列表（仅适用于桌面端）
+ *
+ * @param type  设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。
+ * @note
+ *   - 使用完毕后请调用 release 方法释放资源，这样可以让 SDK 维护 ITXDeviceCollection 对象的生命周期。
+ *   - 不要使用 delete 释放返回的 Collection 对象，delete ITXDeviceCollection* 指针会导致异常崩溃。
+ *   - type 只支持 TXMediaDeviceTypeMic、TXMediaDeviceTypeSpeaker、TXMediaDeviceTypeCamera。
+ *   - 此接口只支持 Mac 和 Windows 平台
  */
 #if !TARGET_OS_IPHONE && TARGET_OS_MAC
 - (NSArray<TXMediaDeviceInfo *> *_Nullable)getDevicesList:(TXMediaDeviceType)type;
@@ -287,6 +333,11 @@ typedef NS_ENUM(NSInteger, TXMediaDeviceType) {
  * 2.13 结束扬声器测试（仅适用于桌面端）
  */
 - (NSInteger)stopSpeakerDeviceTest;
+
+/**
+ * 2.14 设备热插拔回调（仅适用于 Mac 系统）
+ */
+- (void)setObserver:(nullable id<TXDeviceObserver>)observer;
 #endif
 
 /// @}

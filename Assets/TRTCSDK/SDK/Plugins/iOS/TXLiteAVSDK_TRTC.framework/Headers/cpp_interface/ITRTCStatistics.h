@@ -8,7 +8,7 @@
 
 #ifndef __TRTCSTATISTIC_H__
 #define __TRTCSTATISTIC_H__
-namespace trtc {
+namespace liteav {
 
 /////////////////////////////////////////////////////////////////////////////////
 //
@@ -61,11 +61,17 @@ struct TRTCRemoteStatistics {
     ///【字段含义】用户 ID
     const char* userId;
 
-    ///【字段含义】该路音视频流的总丢包率（％）
-    /// finalLoss 代表该路音视频流历经“主播 => 云端 => 观众”这样一条完整的传输链路后，最终在观众端统计到的丢包率。
-    /// finalLoss 越小越好，丢包率为0即表示该路音视频流的所有数据均已经完整地到达了观众端。
-    ///如果出现了 downLoss == 0 但 finalLoss != 0 的情况，说明该路音视频流在“云端=>观众”这一段链路上没有出现丢包，但是在“主播=>云端”这一段链路上出现了不可恢复的丢包。
-    uint32_t finalLoss;
+    ///【字段含义】音频流的总丢包率（％）
+    /// audioPacketLoss 代表音频流历经“主播 => 云端 => 观众”这样一条完整的传输链路后，最终在观众端统计到的丢包率。
+    /// audioPacketLoss 越小越好，丢包率为0即表示该路音频流的所有数据均已经完整地到达了观众端。
+    ///如果出现了 downLoss == 0 但 audioPacketLoss != 0 的情况，说明该路音频流在“云端=>观众”这一段链路上没有出现丢包，但是在“主播=>云端”这一段链路上出现了不可恢复的丢包。
+    uint32_t audioPacketLoss;
+
+    ///【字段含义】该路视频流的总丢包率（％）
+    /// videoPacketLoss 代表该路视频流历经“主播 => 云端 => 观众”这样一条完整的传输链路后，最终在观众端统计到的丢包率。
+    /// videoPacketLoss 越小越好，丢包率为0即表示该路视频流的所有数据均已经完整地到达了观众端。
+    ///如果出现了 downLoss == 0 但 videoPacketLoss != 0 的情况，说明该路视频流在“云端=>观众”这一段链路上没有出现丢包，但是在“主播=>云端”这一段链路上出现了不可恢复的丢包。
+    uint32_t videoPacketLoss;
 
     ///【字段含义】远端视频的宽度，单位 px
     uint32_t width;
@@ -109,12 +115,17 @@ struct TRTCRemoteStatistics {
     ///视频播放卡顿率（videoBlockRate） = 视频播放的累计卡顿时长（videoTotalBlockTime） / 视频播放的总时长
     uint32_t videoBlockRate;
 
+    ///【字段含义】该路音视频流的总丢包率（％）
+    ///已废弃，不推荐使用；建议使用 audioPacketLoss、videoPacketLoss 替代
+    uint32_t finalLoss;
+
     ///【字段含义】视频流类型（高清大画面|低清小画面|辅流画面）
     TRTCVideoStreamType streamType;
 
     TRTCRemoteStatistics()
         : userId(nullptr),
-          finalLoss(0),
+          audioPacketLoss(0),
+          videoPacketLoss(0),
           width(0),
           height(0),
           frameRate(0),
@@ -127,6 +138,7 @@ struct TRTCRemoteStatistics {
           audioBlockRate(0),
           videoTotalBlockTime(0),
           videoBlockRate(0),
+          finalLoss(0),
           streamType(TRTCVideoStreamTypeBig) {
     }
 };
@@ -194,9 +206,11 @@ struct TRTCStatistics {
 };
 /// @}
 
-}  // namespace trtc
+}  // namespace liteav
+
 #ifdef _WIN32
-using namespace trtc;
+using namespace liteav;
 #endif
-#endif / *__TRTCSTATISTIC_H__* /
-/// @}
+
+#endif /* __TRTCSTATISTIC_H__ */
+/// @

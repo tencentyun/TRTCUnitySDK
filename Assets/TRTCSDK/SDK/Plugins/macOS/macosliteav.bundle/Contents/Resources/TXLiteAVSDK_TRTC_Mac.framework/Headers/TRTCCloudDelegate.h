@@ -19,10 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /////////////////////////////////////////////////////////////////////////////////
 //
-//                    错误事件和警告事件
+//                    错误和警告事件
 //
 /////////////////////////////////////////////////////////////////////////////////
-/// @name 错误事件和警告事件
+/// @name 错误和警告事件
 /// @{
 
 /**
@@ -165,40 +165,40 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 3.3 某远端用户发布/取消了主路视频画面
  *
- * “主路画面”一般被用于承载摄像头画面。当您收到 onUserVideoAvailable(userId, true) 通知时，表示该路画面已经有可播放的视频帧到达。
+ * “主路画面”一般被用于承载摄像头画面。当您收到 onUserVideoAvailable(userId, YES) 通知时，表示该路画面已经有可播放的视频帧到达。
  * 此时，您需要调用 {@link startRemoteView} 接口订阅该用户的远程画面，订阅成功后，您会继续收到该用户的首帧画面渲染回调 onFirstVideoFrame(userid)。
  *
- * 当您收到 onUserVideoAvailable(userId, false) 通知时，表示该路远程画面已经被关闭，关闭的原因可能是该用户调用了 {@link muteLocalVideo} 或 {@link stopLocalPreview}。
+ * 当您收到 onUserVideoAvailable(userId, NO) 通知时，表示该路远程画面已经被关闭，关闭的原因可能是该用户调用了 {@link muteLocalVideo} 或 {@link stopLocalPreview}。
  *
  * @param userId 远端用户的用户标识
- * @param available 该用户是否发布（或取消发布）了主路视频画面，true: 发布；false：取消发布。
+ * @param available 该用户是否发布（或取消发布）了主路视频画面，YES: 发布；NO：取消发布。
  */
 - (void)onUserVideoAvailable:(NSString *)userId available:(BOOL)available;
 
 /**
  * 3.4 某远端用户发布/取消了辅路视频画面
  *
- * “辅路画面”一般被用于承载屏幕分享的画面。当您收到 onUserSubStreamAvailable(userId, true) 通知时，表示该路画面已经有可播放的视频帧到达。
+ * “辅路画面”一般被用于承载屏幕分享的画面。当您收到 onUserSubStreamAvailable(userId, YES) 通知时，表示该路画面已经有可播放的视频帧到达。
  * 此时，您需要调用 {@link startRemoteSubStreamView} 接口订阅该用户的远程画面，订阅成功后，您会继续收到该用户的首帧画面渲染回调 onFirstVideoFrame(userid)。
  *
  * @note 显示辅路画面使用的函数是 {@link startRemoteSubStreamView} 而非 {@link startRemoteView}。
  *
  * @param userId 远端用户的用户标识
- * @param available 该用户是否发布（或取消发布）了辅路视频画面，true: 发布；false：取消发布。
+ * @param available 该用户是否发布（或取消发布）了辅路视频画面，YES: 发布；NO：取消发布。
  */
 - (void)onUserSubStreamAvailable:(NSString *)userId available:(BOOL)available;
 
 /**
  * 3.5 某远端用户发布/取消了自己的音频
  *
- * 当您收到 onUserAudioAvailable(userId, true) 通知时，表示该用户发布了自己的声音，此时 SDK 的表现为：
+ * 当您收到 onUserAudioAvailable(userId, YES) 通知时，表示该用户发布了自己的声音，此时 SDK 的表现为：
  * - 在自动订阅模式下，您无需做任何操作，SDK 会自动播放该用户的声音。
- * - 在手动订阅模式下，您可以通过 {@link muteRemoteAudio}(userid, false) 来播放该用户的声音。
+ * - 在手动订阅模式下，您可以通过 {@link muteRemoteAudio}(userid, NO) 来播放该用户的声音。
  *
  * @note SDK 默认使用自动订阅模式，您可以通过 {@link setDefaultStreamRecvMode} 设置为手动订阅，但需要在您进入房间之前调用才生效。
  *
  * @param userId 远端用户的用户标识
- * @param available 该用户是否发布（或取消发布）了自己的音频，true: 发布；false：取消发布。
+ * @param available 该用户是否发布（或取消发布）了自己的音频，YES: 发布；NO：取消发布。
  */
 - (void)onUserAudioAvailable:(NSString *)userId available:(BOOL)available;
 
@@ -296,6 +296,15 @@ NS_ASSUME_NONNULL_BEGIN
  * @param statistics 统计数据，包括自己本地的统计信息和远端用户的统计信息，详情请参考 {@link TRTCStatistics}。
  */
 - (void)onStatistics:(TRTCStatistics *)statistics;
+
+/**
+ * 4.3 网速测试的结果回调
+ *
+ * 该统计回调由 {@link startSpeedTest:} 触发。
+ *
+ * @param result 网速测试数据数据，包括丢包、往返延迟、上下行的带宽速率，详情请参考 {@link TRTCSpeedTestResult}。
+ */
+- (void)onSpeedTestResult:(TRTCSpeedTestResult *)result;
 
 /// @}
 /////////////////////////////////////////////////////////////////////////////////
@@ -414,7 +423,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @note 您需要调用 {@link enableAudioVolumeEvaluation} 接口并设定（interval>0）开启次事件回调，设定（interval == 0）关闭此事件回调。
  *
  * @param volume 系统采集音量，取值范围 0 - 100，用户可以在系统的声音设置面板上进行拖拽调整。
- * @param muted 麦克风是否被用户禁用了：true 被禁用，false 被启用。
+ * @param muted 麦克风是否被用户禁用了：YES 被禁用，NO 被启用。
  */
 #if !TARGET_OS_IPHONE && TARGET_OS_MAC
 - (void)onAudioDeviceCaptureVolumeChanged:(NSInteger)volume muted:(BOOL)muted;
@@ -431,7 +440,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @note 您需要调用 {@link enableAudioVolumeEvaluation} 接口并设定（interval>0）开启次事件回调，设定（interval == 0）关闭此事件回调。
  *
  * @param volume 系统播放音量，取值范围 0 - 100，用户可以在系统的声音设置面板上进行拖拽调整。
- * @param muted 系统是否被用户静音了：true 被静音，false 已恢复。
+ * @param muted 系统是否被用户静音了：YES 被静音，NO 已恢复。
  */
 #if !TARGET_OS_IPHONE && TARGET_OS_MAC
 - (void)onAudioDevicePlayoutVolumeChanged:(NSInteger)volume muted:(BOOL)muted;
@@ -624,9 +633,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param errCode 错误码 0：初始化录制成功；-1：初始化录制失败；-2: 文件后缀名有误。
  * @param storagePath 录制文件存储路径
  */
-#if TARGET_OS_IPHONE
 - (void)onLocalRecordBegin:(NSInteger)errCode storagePath:(NSString *)storagePath;
-#endif
 
 /**
  * 10.2 本地录制任务正在进行中的进展事件回调
@@ -638,9 +645,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param duration 已经录制的累计时长，单位毫秒
  * @param storagePath 录制文件存储路径
  */
-#if TARGET_OS_IPHONE
 - (void)onLocalRecording:(NSInteger)duration storagePath:(NSString *)storagePath;
-#endif
 
 /**
  * 10.3 本地录制任务已经结束的事件回调
@@ -649,9 +654,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param errCode 错误码 0：录制成功；-1：录制失败；-2：切换分辨率或横竖屏导致录制结束。
  * @param storagePath 录制文件存储路径
  */
-#if TARGET_OS_IPHONE
 - (void)onLocalRecordComplete:(NSInteger)errCode storagePath:(NSString *)storagePath;
-#endif
 
 /// @}
 /////////////////////////////////////////////////////////////////////////////////
@@ -720,7 +723,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param srcFrame 用于承载 TRTC 采集到的摄像头画面
  * @param dstFrame 用于接收第三方美颜处理过的视频画面
- * @note 目前仅支持 OpenGL 纹理方案
+ * @note 目前仅支持 OpenGL 纹理方案（ PC 仅支持 TRTCVideoBufferType_Buffer 格式）。
  *
  * 情况一：美颜组件自身会产生新的纹理
  * 如果您使用的美颜组件会在处理图像的过程中产生一帧全新的纹理（用于承载处理后的图像），那请您在回调函数中将 dstFrame.textureId 设置为新纹理的 ID：

@@ -33,11 +33,6 @@ namespace TRTCCUnityDemo
 
         }
 
-        void Update()
-        {
-
-        }
-
         public void AddUser(string userId, TRTCVideoStreamType streamType)
         {
             ITRTCCloudImplement.RenderKey key = new ITRTCCloudImplement.RenderKey(userId, streamType);

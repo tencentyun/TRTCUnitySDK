@@ -36,6 +36,13 @@ typedef NS_ENUM(NSInteger, TX_Enum_Type_LogLevel) {
  */
 - (void)onUpdateNetworkTime:(int)errCode message:(NSString *)errMsg;
 
+/**
+ @brief  setLicenceURL 接口回调, result = 0 成功，负数失败。
+ @discussion
+ 需在调用 setLicenceURL 前设置 delegate
+ */
+- (void)onLicenceLoaded:(int)result Reason:(NSString *)reason;
+
 @end
 
 @interface TXLiveBase : NSObject
@@ -104,6 +111,13 @@ typedef NS_ENUM(NSInteger, TX_Enum_Type_LogLevel) {
  * @return Licence 信息
  */
 + (NSString *)getLicenceInfo;
+
+/**
+ * @brief 设置外部扩展Dev ID
+ * @brief 采用键、值对的方式来进行数据传输
+ * @return 不合法的 ‘extKey’ 会返回 NO
+ */
++ (BOOL)setExtDevID:(NSString *)extKey value:(NSString *)extValue;
 
 /**
  * @brief 设置 HEVC 外部解码器工厂实例

@@ -45,7 +45,6 @@ namespace TRTCCUnityDemo
         private Thread mAudioCustomThread;
         private Thread mVideoCustomThread;
 
-        // Start is called before the first frame update
         void Start()
         {
             mTRTCCloud = ITRTCCloud.getTRTCShareInstance();

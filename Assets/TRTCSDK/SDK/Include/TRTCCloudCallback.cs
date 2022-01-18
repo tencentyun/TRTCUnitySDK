@@ -369,7 +369,7 @@ namespace trtc
         /// <param name="seq">消息序号</param>
         /// <param name="message">消息数据</param>
         /// <param name="messageSize">消息数据大小</param>
-        void onRecvCustomCmdMsg(String userId, int cmdID, int seq, Byte[] message, int messageSize);
+        void onRecvCustomCmdMsg(String userId, int cmdID, int seq, byte[] message, int messageSize);
 
 
         /// <summary>
@@ -522,5 +522,71 @@ namespace trtc
         /// <param name="level">日志等级 参见 TRTCLogLevel</param>
         /// <param name="module">暂无具体意义，目前为固定值 TXLiteAVSDK</param>
         void onLog(string log, TRTCLogLevel level, string module);
+    }
+
+    /// <summary>
+    /// 音频数据的自定义处理回调
+    /// </summary>
+    public interface ITRTCAudioFrameCallback
+    {
+        /// <summary>
+        /// 本地采集并经过音频模块前处理后的音频数据回调
+        /// <para>当您设置完音频数据自定义回调之后，SDK 内部会把刚采集到并经过前处理(ANS、AEC、AGC）之后的数据，以 PCM 格式的形式通过本接口回调给您。</para>
+        /// <para>此接口回调出的音频时间帧长固定为0.02s，格式为 PCM 格式。</para>
+        /// <para>由时间帧长转化为字节帧长的公式为【采样率 × 时间帧长 × 声道数 × 采样点位宽】。</para>
+        /// <para>以 TRTC 默认的音频录制格式48000采样率、单声道、16采样点位宽为例，字节帧长为【48000 × 0.02s × 1 × 16bit = 15360bit = 1920字节】。</para>
+        /// </summary>
+        /// <param name="frame"> PCM 格式的音频数据帧 </param>
+        /// <remarks>
+        /// <para>请不要在此回调函数中做任何耗时操作，由于 SDK 每隔 20ms 就要处理一帧音频数据，如果您的处理时间超过 20ms，就会导致声音异常。</para>
+        /// <para>此接口回调出的音频数据是可读写的，也就是说您可以在回调函数中同步修改音频数据，但请保证处理耗时。</para>
+        /// <para>此接口回调出的音频数据已经经过了前处理(ANS、AEC、AGC），但** 不包含**背景音、音效、混响等前处理效果，延迟较低。</para>
+        /// </remarks>
+        void onCapturedRawAudioFrame(TRTCAudioFrame frame);
+
+        /// <summary>
+        /// 本地采集并经过音频模块前处理、音效处理和混 BGM 后的音频数据回调
+        /// <para>当您设置完音频数据自定义回调之后，SDK 内部会把刚采集到并经过前处理、音效处理和混 BGM 之后的数据，在最终进行网络编码之前，以 PCM 格式的形式通过本接口回调给您。</para>
+        /// <para>此接口回调出的音频时间帧长固定为0.02s，格式为 PCM 格式。</para>
+        /// <para>由时间帧长转化为字节帧长的公式为【采样率 × 时间帧长 × 声道数 × 采样点位宽】。</para>
+        /// <para>以 TRTC 默认的音频录制格式48000采样率、单声道、16采样点位宽为例，字节帧长为【48000 × 0.02s × 1 × 16bit = 15360bit = 1920字节】。</para>
+        /// </summary>
+        /// <param name="frame"></param>
+        /// <remarks>
+        /// <para>您可以通过设置接口中的 TRTCAudioFrame.extraData 字段，达到传输信令的目的。 由于音频帧头部的数据块不能太大，建议您写入 extraData 时，尽量将信令控制在几个字节的大小，如果超过 100 个字节，写入的数据不会被发送。 房间内其他用户可以通过 TRTCAudioFrameDelegate 中的 onRemoteUserAudioFrame 中的 TRTCAudioFrame.extraData 字段回调接收数据。</para>
+        /// <para>请不要在此回调函数中做任何耗时操作，由于 SDK 每隔 20ms 就要处理一帧音频数据，如果您的处理时间超过 20ms，就会导致声音异常。</para>
+        /// <para>此接口回调出的音频数据是可读写的，也就是说您可以在回调函数中同步修改音频数据，但请保证处理耗时。</para>
+        /// <para>此接口回调出的数据已经经过了前处理(ANS、AEC、AGC）、音效和混 BGM 处理，声音的延迟相比于 onCapturedRawAudioFrame 要高一些。</para>
+        /// </remarks>
+        void onLocalProcessedAudioFrame(TRTCAudioFrame frame);
+
+        /// <summary>
+        /// 将各路待播放音频混合之后并在最终提交系统播放之前的数据回调
+        /// <para>当您设置完音频数据自定义回调之后，SDK 内部会把各路待播放的音频混合之后的音频数据，在提交系统播放之前，以 PCM 格式的形式通过本接口回调给您。</para>
+        /// <para>此接口回调出的音频时间帧长固定为0.02s，格式为 PCM 格式。</para>
+        /// <para>由时间帧长转化为字节帧长的公式为【采样率 × 时间帧长 × 声道数 × 采样点位宽】。</para>
+        /// <para>以 TRTC 默认的音频录制格式48000采样率、单声道、16采样点位宽为例，字节帧长为【48000 × 0.02s × 1 × 16bit = 15360bit = 1920字节】。</para>
+        /// </summary>
+        /// <param name="frame"> PCM 格式的音频数据帧 </param>
+        /// <remarks>
+        /// <para>请不要在此回调函数中做任何耗时操作，由于 SDK 每隔 20ms 就要处理一帧音频数据，如果您的处理时间超过 20ms，就会导致声音异常。</para>
+        /// <para>此接口回调出的音频数据是可读写的，也就是说您可以在回调函数中同步修改音频数据，但请保证处理耗时。</para>
+        /// <para>此接口回调出的是对各路待播放音频数据的混合，但其中并不包含耳返的音频数据。</para>
+        /// </remarks>
+        void onMixedPlayAudioFrame(TRTCAudioFrame frame);
+
+        /// <summary>
+        /// 混音前的每一路远程用户的音频数据
+        /// <para>当您设置完音频数据自定义回调之后，SDK 内部会把远端的每一路原始数据，在最终混音之前，以 PCM 格式的形式通过本接口回调给您。</para>
+        /// <para>此接口回调出的音频时间帧长固定为0.02s，格式为 PCM 格式。</para>
+        /// <para>由时间帧长转化为字节帧长的公式为【采样率 × 时间帧长 × 声道数 × 采样点位宽】. </para>
+        /// <para>以 TRTC 默认的音频录制格式48000采样率、单声道、16采样点位宽为例，字节帧长为【48000 × 0.02s × 1 × 16bit = 15360bit = 1920字节】。</para>
+        /// </summary>
+        /// <param name="frame">PCM 格式的音频数据帧</param>
+        /// <param name="userId">用户标识</param>
+        /// <remarks>
+        /// 此接口回调出的音频数据是只读的，不支持修改
+        /// </remarks>
+        void onPlayAudioFrame(TRTCAudioFrame frame,string userId);
     }
 }

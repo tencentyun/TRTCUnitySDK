@@ -33,3 +33,10 @@
 #import <TXLiteAVSDK_TRTC_Mac/TXVodPlayConfig.h>
 #import <TXLiteAVSDK_TRTC_Mac/TXVodPlayListener.h>
 #import <TXLiteAVSDK_TRTC_Mac/TXVodPlayer.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLiveCode.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLiveDef.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLivePlayer.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLivePlayerObserver.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLivePremier.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLivePusher.h>
+#import <TXLiteAVSDK_TRTC_Mac/V2TXLivePusherObserver.h>

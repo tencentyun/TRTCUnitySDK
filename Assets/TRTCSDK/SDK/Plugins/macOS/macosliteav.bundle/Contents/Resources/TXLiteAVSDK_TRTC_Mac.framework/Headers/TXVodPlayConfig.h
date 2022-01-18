@@ -39,6 +39,12 @@ typedef NS_ENUM(NSInteger, TX_Enum_PlayerType) {
 /// stopPlay 的时候是否保留最后一帧画面，默认值为 NO
 @property(nonatomic, assign) BOOL keepLastFrameWhenStop;
 
+/// 首缓需要加载的数据时长，单位ms,   默认值为100ms
+@property(nonatomic, assign) int firstStartPlayBufferTime;
+
+/// 缓冲时（缓冲数据不够引起的二次缓冲，或者seek引起的拖动缓冲）最少要缓存多长的数据才能结束缓冲，单位ms，默认值为250ms
+@property(nonatomic, assign) int nextStartPlayBufferTime;
+
 /**
  * 注意：缓存目录应该是单独的目录，SDK可能会清掉其中的文件
  */
@@ -71,6 +77,13 @@ typedef NS_ENUM(NSInteger, TX_Enum_PlayerType) {
  *  此设置会影响playableDuration，设置越大，提前缓存的越多
  */
 @property int maxBufferSize;
+
+@property NSString *overlayKey;           /// HLS EXT-X-KEY 加密key
+
+@property NSString *overlayIv;            /// HLS EXT-X-KEY 加密Iv
+
+@property NSDictionary *extInfoMap;       // 设置一些不必周知的特殊配置
+
 @end
 
 /// @}

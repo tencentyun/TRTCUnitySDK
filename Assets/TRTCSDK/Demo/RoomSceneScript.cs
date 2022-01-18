@@ -378,10 +378,26 @@ namespace TRTCCUnityDemo
         {
             if (value)
             {
-                string seiMsg = "test sei message";
-                int msgSize = System.Text.Encoding.UTF8.GetByteCount(seiMsg);
-                LogManager.Log(String.Format("----> sendSEIMsg seiMsg= {0}, msgSize = {1}", seiMsg, msgSize));
-                mTRTCCloud.sendSEIMsg(System.Text.Encoding.UTF8.GetBytes(seiMsg), msgSize, 30);
+                // byte[] seiMsg = new byte[] {2, 0, 0, 0, 0, 0,1,1, 0, 0,1,1};
+                byte[] seiMsg = new byte[] {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                
+                // byte[] seiMsg = m_byteFacialData.ToArray();
+
+                string strInfo = "";
+                for (int i = 0; i < seiMsg.Length; i++)
+                {
+                    strInfo += seiMsg[i].ToString() + ", ";
+                }
+                LogManager.Log("seiMsg.Length: " + seiMsg.Length);
+                LogManager.Log("seiMsg strInfo: " + strInfo);
+
+                var result = mTRTCCloud.sendSEIMsg(seiMsg, seiMsg.Length, 1);
+                
+
+                // string seiMsg = "test sei messagetest sei messagetest sei messagetest sei messagetest sei messagetest sei message";
+                // int msgSize = System.Text.Encoding.UTF8.GetByteCount(seiMsg);
+                // LogManager.Log(String.Format("----> sendSEIMsg seiMsg= {0}, msgSize = {1}", seiMsg, msgSize));
+                // mTRTCCloud.sendSEIMsg(System.Text.Encoding.UTF8.GetBytes(seiMsg), msgSize, 30);
             }
         }
 
@@ -690,8 +706,17 @@ namespace TRTCCUnityDemo
         }
         public void onRecvSEIMsg(String userId, Byte[] message, UInt32 msgSize)
         {
-            string seiMessage = System.Text.Encoding.UTF8.GetString(message, 0, (int)msgSize);
-            LogManager.Log(String.Format("onRecvSEIMsg {0}, {1}, {2}", userId, seiMessage, msgSize));
+            LogManager.Log("onRecvSEIMsg: " + userId + ", " + msgSize + ", " + msgSize);
+            //LogManager.Log("onRecvSEIMsg: " + userId + ", " + msgSize + ", " + m_byteReceivedFacialData.Length);
+            string strInfo = "";
+            for (int i = 0; i < msgSize; i++)
+            {
+                strInfo += message[i].ToString() + ", ";
+            }
+            LogManager.Log("strInfo: " + strInfo);
+
+            // string seiMessage = System.Text.Encoding.UTF8.GetString(message, 0, (int)msgSize);
+            // LogManager.Log(String.Format("onRecvSEIMsg {0}, {1}, {2}", userId, seiMessage, msgSize));
         }
 
         public void onStartPublishing(int err, string errMsg)

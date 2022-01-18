@@ -28,3 +28,8 @@
 #import <TXLiteAVSDK_TRTC/TXLiveSDKEventDef.h>
 #import <TXLiteAVSDK_TRTC/TXLiveSDKTypeDef.h>
 #import <TXLiteAVSDK_TRTC/TXVideoCustomProcessDelegate.h>
+#import <TXLiteAVSDK_TRTC/V2TXLiveCode.h>
+#import <TXLiteAVSDK_TRTC/V2TXLiveDef.h>
+#import <TXLiteAVSDK_TRTC/V2TXLivePlayer.h>
+#import <TXLiteAVSDK_TRTC/V2TXLivePlayerObserver.h>
+#import <TXLiteAVSDK_TRTC/V2TXLivePremier.h>

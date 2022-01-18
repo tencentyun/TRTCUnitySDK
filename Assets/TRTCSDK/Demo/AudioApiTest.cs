@@ -5,13 +5,16 @@ using trtc;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Threading;
 using LitJson;
 using System.Runtime.InteropServices;
 
 namespace TRTCCUnityDemo
 {
-    public class AudioApiTest : MonoBehaviour, ITRTCCloudCallback, ITXMusicPlayObserver, ITRTCVideoRenderCallback
+    public class AudioApiTest : MonoBehaviour, ITRTCCloudCallback, ITXMusicPlayObserver, ITRTCVideoRenderCallback, ITRTCAudioFrameCallback
     {
+        // 主线程上下文
+	    SynchronizationContext mainSyncContext;
         #region ITRTCCloudCallback
         public void onRecvCustomCmdMsg(string userId, int cmdID, int seq, byte[] message, int messageSize)
         {
@@ -288,6 +291,41 @@ namespace TRTCCUnityDemo
         }
         #endregion
 
+        #region ITRTCAudioFrameCallback
+        public void onCapturedRawAudioFrame(TRTCAudioFrame frame)
+        {
+            //mainSyncContext.Post((object state)=>{
+            //    lblCallbakLog.text += Environment.NewLine + String.Format("onCapturedRawAudioFrame channel={0}, audioFormat={1}, sampleRate={2}, timestamp={3}",
+            //    frame.channel, frame.audioFormat, frame.sampleRate,frame.timestamp);
+            //},"");
+        }
+
+        public void onLocalProcessedAudioFrame(TRTCAudioFrame frame)
+        {
+            // macos暂时不会有该回调，在macos要用的话，可先使用onCapturedRawAudioFrame。
+            mainSyncContext.Post((object state)=>{
+                lblCallbakLog.text += Environment.NewLine + String.Format("onLocalProcessedAudioFrame channel={0}, audioFormat={1}, sampleRate={2}, timestamp={3}",
+                frame.channel, frame.audioFormat, frame.sampleRate, frame.timestamp);
+            },"");
+        }
+
+        public void onMixedPlayAudioFrame(TRTCAudioFrame frame)
+        {
+            //mainSyncContext.Post((object state)=>{
+            //    lblCallbakLog.text += Environment.NewLine + String.Format("onMixedPlayAudioFrame channel={0}, audioFormat={1}, sampleRate={2}, timestamp={3}",
+            //    frame.channel, frame.audioFormat, frame.sampleRate, frame.timestamp);
+            //},"");
+        }
+
+        public void onPlayAudioFrame(TRTCAudioFrame frame, string userId)
+        {
+            //mainSyncContext.Post((object state)=>{
+            //    lblCallbakLog.text += Environment.NewLine + String.Format("onPlayAudioFrame channel={0}, audioFormat={1}, sampleRate={2}, timestamp={3}, userId={4}",
+            //    frame.channel, frame.audioFormat, frame.sampleRate, frame.timestamp,userId);
+            //},"");
+        }
+        #endregion
+
         #region UI
         [SerializeField] private InputField inputRoomID;
         [SerializeField] private InputField InputUserId;
@@ -313,6 +351,8 @@ namespace TRTCCUnityDemo
         
         void Start()
         {
+            // 获取主线程上下文
+		    mainSyncContext = SynchronizationContext.Current;
             createBtns();
             initTrtc();
         }
@@ -565,6 +605,13 @@ namespace TRTCCUnityDemo
         {
             mTRTCCloud.stopAudioRecording();
         }
+
+        public void setAudioFrameCallbackClick()
+        {
+            lblBtnClickLog.text += Environment.NewLine + "setAudioFrameCallbackClick";
+            mTRTCCloud.setAudioFrameCallback(this);
+        }
+
         public void setVoiceReverbTypeClick()
         {
             mTXAudioEffectManager.setVoiceReverbType(TXVoiceReverbType.TXVoiceReverbType_6);

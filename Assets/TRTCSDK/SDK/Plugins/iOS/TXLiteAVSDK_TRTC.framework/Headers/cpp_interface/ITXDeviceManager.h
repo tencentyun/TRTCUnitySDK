@@ -14,7 +14,7 @@
 #include <TargetConditionals.h>
 #endif
 
-namespace trtc {
+namespace liteav {
 
 class ITRTCVideoRenderCallback;
 
@@ -85,6 +85,69 @@ enum TXMediaDeviceType {
 };
 
 /**
+ * 设备操作
+ *
+ * 该枚举值用于本地设备的状态变化通知{@link onDeviceChanged}。
+ */
+enum TXMediaDeviceState {
+
+    ///设备已被插入
+    TXMediaDeviceStateAdd = 0,
+
+    ///设备已被移除
+    TXMediaDeviceStateRemove = 1,
+
+    ///设备已启用
+    TXMediaDeviceStateActive = 2,
+
+};
+
+/**
+ * 摄像头采集偏好
+ *
+ * 该枚举类型用于摄像头采集参数设置。
+ */
+#ifdef _WIN32
+enum TXCameraCaptureMode {
+
+    ///自动调整采集参数。
+    /// SDK 根据实际的采集设备性能及网络情况，选择合适的摄像头输出参数，在设备性能及视频预览质量之间，维持平衡。
+    TXCameraResolutionStrategyAuto = 0,
+
+    ///优先保证设备性能。
+    /// SDK 根据用户设置编码器的分辨率和帧率，选择最接近的摄像头输出参数，从而保证设备性能。
+    TXCameraResolutionStrategyPerformance = 1,
+
+    ///优先保证视频预览质量。
+    /// SDK选择较高的摄像头输出参数，从而提高预览视频的质量。在这种情况下，会消耗更多的 CPU 及内存做视频前处理。
+    TXCameraResolutionStrategyHighQuality = 2,
+
+    ///允许用户设置本地摄像头采集的视频宽高。
+    TXCameraCaptureManual = 3,
+
+};
+
+/**
+ * 摄像头采集参数
+ *
+ * 该设置能决定本地预览图像画质。
+ */
+struct TXCameraCaptureParam {
+    ///【字段含义】摄像头采集偏好
+    TXCameraCaptureMode mode;
+
+    ///【字段含义】采集图像长度
+    int width;
+
+    ///【字段含义】采集图像宽度
+    int height;
+
+    TXCameraCaptureParam() : mode(TXCameraResolutionStrategyAuto), width(640), height(360) {
+    }
+};
+#endif
+
+/**
  * 音视频设备的相关信息（仅适用于桌面平台）
  *
  * 该结构体用于描述一个音视频设备的关键信息，比如设备ID、设备名称等等，以便用户能够在用户界面上选择自己期望使用的音视频设备。
@@ -114,16 +177,65 @@ class ITXDeviceCollection {
     }
 
    public:
-    /// Size of this list.
+    /**
+     * 设备数量
+     *
+     * @return 设备数量
+     */
     virtual uint32_t getCount() = 0;
-    /// device name (UTF-8)
+
+    /**
+     * 设备名字 (UTF-8)
+     *
+     * @param index 设备索引，值为 [0,getCount)
+     * @return 设备名字 (UTF-8)
+     */
     virtual const char* getDeviceName(uint32_t index) = 0;
-    /// device PID (UTF-8)
+
+    /**
+     * 设备唯一标识 (UTF-8)
+     *
+     * @param index 设备索引，值为 [0,getCount)
+     */
     virtual const char* getDevicePID(uint32_t index) = 0;
-    /// release function, don't use delete!!!
+
+    /**
+     * 设备信息（json格式）
+     *
+     * @note
+     *  - 示例：{"SupportedResolution":[{"width":640,"height":480},{"width":320,"height":240}]}
+     * @param index 设备索引，值为 [0,getCount)
+     * @return 返回 json 格式的设备信息
+     */
+    virtual const char* getDeviceProperties(uint32_t index) = 0;
+
+    /**
+     * 释放设备列表，请不要使用 delete 释放资源 !!!
+     */
     virtual void release() = 0;
 };
 /// @}
+
+#if (__APPLE__ && TARGET_OS_MAC && !TARGET_OS_IPHONE) || _WIN32
+class ITXDeviceObserver {
+   public:
+    virtual ~ITXDeviceObserver() {
+    }
+
+    /**
+     * 本地设备的通断状态发生变化（仅适用于桌面系统）
+     *
+     * 当本地设备（包括摄像头、麦克风以及扬声器）被插入或者拔出时，SDK 便会抛出此事件回调。
+     *
+     * @param deviceId 设备 ID
+     * @param type 设备类型
+     * @param state 通断状态，0：设备已添加；1：设备已被移除；2：设备已启用。
+     */
+    virtual void onDeviceChanged(const char* deviceId, TXMediaDeviceType type, TXMediaDeviceState state) {
+    }
+
+};  // End of class ITXDeviceObserver
+#endif
 
 class ITXDeviceManager {
    protected:
@@ -352,13 +464,30 @@ class ITXDeviceManager {
     virtual bool getApplicationMuteState() = 0;
 #endif
 
-    /// @}
-};  // End of class ITXDeviceManager
-}  // namespace trtc
-
+/**
+ * 2.19 设置摄像头采集偏好
+ */
 #ifdef _WIN32
-using namespace trtc;
+    virtual void setCameraCapturerParam(const TXCameraCaptureParam& params) = 0;
 #endif
 
-#endif / *__ITXDEVICEMANAGER_H__* /
+/**
+ * 2.20 设置 onDeviceChanged 事件回调
+ */
+#if (__APPLE__ && TARGET_OS_MAC && !TARGET_OS_IPHONE) || _WIN32
+    virtual void setDeviceObserver(ITXDeviceObserver* observer) = 0;
+#endif
+
+    /// @}
+};  // End of class ITXDeviceManager
+}  // namespace liteav
+
+// 9.0 开始 C++ 接口将声明在 liteav 命名空间下，为兼容之前的使用方式，将 trtc 作为 liteav 的别名
+namespace trtc = liteav;
+
+#ifdef _WIN32
+using namespace liteav;
+#endif
+
+#endif /* __ITXDEVICEMANAGER_H__ */
 /// @}

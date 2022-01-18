@@ -18,11 +18,14 @@
 ![](https://tccweb-1258344699.cos.ap-nanjing.myqcloud.com/sdk/trtc/unity/ios.png)
 2. 连接 iPhone 真机，单击【Build And Run】，需要选择一个新的目录存放编译出来的 iOS 工程，等待编译完成，会有新窗口弹出 Xcode 工程。
 3. 单击 Link Binary with Libraries 项展开，单击底下的“+”号图标去添加依赖库 `libc++.tbd` 、`Accelerate.framework` 和 `libresolv.tbd`、`AVFoundation.framework`。
-![](https://imgcache.qq.com/operation/dianshi/other/objc.2244a0e66e271a1b1f75d73c48fb47097d7bd967.png)
+![](https://imgcache.qq.com/operation/dianshi/other/link.743c57b230fa1be24a2226b6cd1c99378eca81ca.png)
 4. 单击 Other Linker Flags 项展开，添加 `-ObjC`
 ![](https://imgcache.qq.com/operation/dianshi/other/8.6-objc.e0df060a638c1056fc07d1cb51c303a9de5b542f.png)
 5. 错误提示`You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE)`
 ![](https://imgcache.qq.com/operation/dianshi/other/enable.d0cd40914b1d60e74bcc32b0c14ad5afbca4d1ee.png)
+6. 错误提示` The Legacy Build System will be removed in a future release. You can configure the selected build system and this deprecation message in File > Project Settings.`
+打开 File —> Project Setting 面板，修改Build 类型。
+![](https://imgcache.qq.com/operation/dianshi/other/newBuild.af51c956404867ac237269e78da8ee8e2c556bd1.png)
 ### macos 相关问题
 1. 提示` "macosliteav.bundle" 已损怀，无法打开。您应该将它移到废纸篓 `
 ![](https://imgcache.qq.com/operation/dianshi/other/macos.600034e6a5bd6750d6abe5eb63ff45099f7a51ac.png)

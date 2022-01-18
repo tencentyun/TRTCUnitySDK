@@ -54,7 +54,6 @@ namespace TRTCCUnityDemo
         public Scrollbar verticalBar;
         public Button clearBtn;
 
-        // Start is called before the first frame update
         void Start()
         {
             clearBtn.onClick.AddListener(this.OnClearLogClick);

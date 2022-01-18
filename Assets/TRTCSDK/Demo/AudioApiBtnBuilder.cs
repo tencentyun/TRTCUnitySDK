@@ -74,7 +74,7 @@ namespace TRTCCUnityDemo
                 new ApiFuncObj("enableAudioVolumeEvaluation-0","enableAudioVolumeEvaluationClick0","关闭音量大小提示"),
                 new ApiFuncObj("startAudioRecording","startAudioRecordingClick","开始录音"),
                 new ApiFuncObj("stopAudioRecording","stopAudioRecordingClick","停止录音"),
-                
+                new ApiFuncObj("setAudioFrameCallback","setAudioFrameCallbackClick","音频数据回调"),
             });
             this.apiList.Add("音乐特效和人声特效",new ApiFuncObj[]
             {
@@ -143,7 +143,7 @@ namespace TRTCCUnityDemo
                 // new ApiFuncObj("setLogCompressEnabled-true","setLogCompressEnabledTrueClick","启用 Log 的本地压缩"),
                 // new ApiFuncObj("setLogDirPath","setLogDirPathClick","修改日志保存路径"),
                 new ApiFuncObj("sendSEIMsg","sendSEIMsg","将小数据量的自定义数据嵌入视频帧中"),
-                // new ApiFuncObj("sendCustomCmdMsg","sendCustomCmdMsgClick","发送自定义消息给房间内所有用户"),
+                new ApiFuncObj("sendCustomCmdMsg","sendCustomCmdMsgClick","发送自定义消息给房间内所有用户"),
                 new ApiFuncObj("getSDKVersion","getSDKVersionClick","SDK版本号"),
                 new ApiFuncObj("clearLog","clearLogClick","清理日志"),
                 new ApiFuncObj("GetVideoRenderData","GetVideoRenderDataClick","GetVideoRenderData"),

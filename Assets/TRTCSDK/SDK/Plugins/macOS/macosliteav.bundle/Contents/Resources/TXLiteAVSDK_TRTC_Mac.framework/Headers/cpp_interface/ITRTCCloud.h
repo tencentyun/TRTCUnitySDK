@@ -1,7 +1,7 @@
 /**
  * Module:   TRTCCloud @ TXLiteAVSDK
  * Function: 腾讯云 TRTC 主功能接口
- * Version: 8.9.10345
+ * Version: 9.5.11004
  */
 #ifndef __ITRTCCLOUD_H__
 #define __ITRTCCLOUD_H__
@@ -17,7 +17,7 @@
 /// @defgroup TRTCCloud_cplusplus TRTCCloud
 /// 腾讯云 TRTC 主功能接口
 /// @{
-namespace trtc {
+namespace liteav {
 class ITRTCCloud;
 }
 
@@ -38,14 +38,14 @@ extern "C" {
 /// @name Exported C function
 /// @{
 #ifdef __ANDROID__
-TRTC_API trtc::ITRTCCloud* getTRTCShareInstance(void* context);
+TRTC_API liteav::ITRTCCloud* getTRTCShareInstance(void* context);
 #else
-TRTC_API trtc::ITRTCCloud* getTRTCShareInstance();
+TRTC_API liteav::ITRTCCloud* getTRTCShareInstance();
 #endif
 TRTC_API void destroyTRTCShareInstance();
 /// @}
 }
-namespace trtc {
+namespace liteav {
 
 class ITRTCCloud
 #ifdef _WIN32
@@ -58,10 +58,10 @@ class ITRTCCloud
    public:
 /////////////////////////////////////////////////////////////////////////////////
 //
-//                    TRTCCloud 基础接口函数
+//                    创建实例和事件回调
 //
 /////////////////////////////////////////////////////////////////////////////////
-/// @name TRTCCloud 基础接口函数
+/// @name 创建实例和事件回调
 /// @{
 
 /**
@@ -75,9 +75,9 @@ class ITRTCCloud
  * 3. 在 Android 平台上，请调用 getTRTCShareInstance(void *context) 接口。
  */
 #ifdef __ANDROID__
-    TRTC_API static trtc::ITRTCCloud* getTRTCShareInstance(void* context);
+    TRTC_API static liteav::ITRTCCloud* getTRTCShareInstance(void* context);
 #else
-    TRTC_API static trtc::ITRTCCloud* getTRTCShareInstance();
+    TRTC_API static liteav::ITRTCCloud* getTRTCShareInstance();
 #endif
 
     /**
@@ -188,8 +188,8 @@ class ITRTCCloud
      * 也就是说，您可以使用该接口让身处两个不同房间中的主播进行跨房间的音视频流分享，从而让每个房间中的观众都能观看到这两个主播的音视频。该功能可以用来实现主播之间的 PK 功能。
      * 跨房通话的请求结果会通过 {@link TRTCCloudDelegate} 中的 onConnectOtherRoom() 回调通知给您。
      * 例如：当房间“101”中的主播 A 通过 connectOtherRoom() 跟房间“102”中的主播 B 建立跨房通话后，
-     * - 房间“101”中的用户都会收到主播 B 的 onRemoteUserEnterRoom(B) 和 onUserVideoAvailable(B,YES) 这两个事件回调，即房间“101”中的用户都可以订阅主播 B 的音视频。
-     * - 房间“102”中的用户都会收到主播 A 的 onRemoteUserEnterRoom(A) 和 onUserVideoAvailable(A,YES) 这两个事件回调，即房间“102”中的用户都可以订阅主播 A 的音视频。
+     * - 房间“101”中的用户都会收到主播 B 的 onRemoteUserEnterRoom(B) 和 onUserVideoAvailable(B,true) 这两个事件回调，即房间“101”中的用户都可以订阅主播 B 的音视频。
+     * - 房间“102”中的用户都会收到主播 A 的 onRemoteUserEnterRoom(A) 和 onUserVideoAvailable(A,true) 这两个事件回调，即房间“102”中的用户都可以订阅主播 A 的音视频。
      *
      * <pre>
      *                 房间 101                     房间 102
@@ -250,8 +250,8 @@ class ITRTCCloud
      *
      * 在绝大多数场景下，用户进入房间后都会订阅房间中所有主播的音视频流，因此 TRTC 默认采用了自动订阅模式，以求得最佳的“秒开体验”。
      * 如果您的应用场景中每个房间同时会有很多路音视频流在发布，而每个用户只想选择性地订阅其中的 1-2 路，则推荐使用“手动订阅”模式以节省流量费用。
-     * @param autoRecvAudio YES：自动订阅音频；NO：需手动调用 muteRemoteAudio(false) 订阅音频。默认值：YES。
-     * @param autoRecvVideo YES：自动订阅视频；NO：需手动调用 startRemoteView 订阅视频。默认值：YES。
+     * @param autoRecvAudio true：自动订阅音频；false：需手动调用 muteRemoteAudio(false) 订阅音频。默认值：true。
+     * @param autoRecvVideo true：自动订阅视频；false：需手动调用 startRemoteView 订阅视频。默认值：true。
      * @note
      * 1. 需要在进入房间（enterRoom）前调用该接口，设置才能生效。
      * 2. 在自动订阅模式下，如果用户在进入房间后没有调用  {@startRemoteView} 订阅视频流，SDK 会自动停止订阅视频流，以便达到节省流量的目的。
@@ -373,6 +373,7 @@ class ITRTCCloud
      * </pre>
      * @param config 如果 config 不为空，则开启云端混流，如果 config 为空则停止云端混流。详情请参考 {@link TRTCTranscodingConfig} 。
      * @note 关于云端混流的注意事项：
+     *   - 混流转码为收费功能，调用接口将产生云端混流转码费用，详见 https://cloud.tencent.com/document/product/647/49446 。
      *   - 调用该接口的用户，如果没设定 config 参数中的 streamId 字段，TRTC 会将房间中的多路画面混合到当前用户所对应的音视频流上，即 A + B => A。
      *   - 调用该接口的用户，如果设定了 config 参数中的 streamId 字段，TRTC 会将房间中的多路画面混合到您指定的 streamId 上，即 A + B => streamId。
      *   - 请注意，若您还在房间中且不再需要混流，请务必再次调用本接口并将 config 设置为空以进行取消，不及时取消混流可能会引起不必要的计费损失。
@@ -395,7 +396,7 @@ class ITRTCCloud
  * 在 enterRoom 之前调用此函数，SDK 只会开启摄像头，并一直等到您调用 enterRoom 之后才开始推流。
  * 在 enterRoom 之后调用此函数，SDK 会开启摄像头并自动开始视频推流。
  * 当开始渲染首帧摄像头画面时，您会收到 {@link TRTCCloudDelegate} 中的 onCameraDidReady 回调通知。
- * @param frontCamera YES：前置摄像头；NO：后置摄像头。
+ * @param frontCamera true：前置摄像头；false：后置摄像头。
  * @param view 承载视频画面的控件
  * @note 如果希望开播前预览摄像头画面并通过 BeautyManager 调节美颜参数，您可以：
  *  - 方案一：在调用 enterRoom 之前调用 startLocalPreview
@@ -558,7 +559,7 @@ class ITRTCCloud
      * 当用户将手机或 Pad 上下颠倒时，由于摄像头的采集方向没有变，所以房间中其他用户所看到的画面会变成上下颠倒的，
      * 在这种情况下，您可以通过调用该接口将 SDK 编码出的画面方向旋转180度，如此一来，房间中其他用户所看到的画面可保持正常的方向。
      * 如果您希望实现上述这种友好的交互体验，我们更推荐您直接调用 {@link setGSensorMode} 实现更加智能的方向适配，无需您手动调用本接口。
-     * @param rotation 目前支持0和180两个旋转角度，默认值：TRTCVideoRotation0，即不旋转。
+     * @param rotation 目前支持0和180两个旋转角度，默认值：TRTCVideoRotation_0，即不旋转。
      */
     virtual void setVideoEncoderRotation(TRTCVideoRotation rotation) = 0;
 
@@ -749,6 +750,14 @@ class ITRTCCloud
     virtual void stopLocalRecording() = 0;
 #endif
 
+    /**
+     * 5.18 设置远端音频流智能并发播放策略
+     *
+     * 设置远端音频流智能并发播放策略，适用于上麦人数比较多的场景。
+     * @param params 音频并发参数，请参考 {@link TRTCAudioParallelParams}
+     */
+    virtual void setRemoteAudioParallelParams(const TRTCAudioParallelParams& params) = 0;
+
     /// @}
     /////////////////////////////////////////////////////////////////////////////////
     //
@@ -832,12 +841,14 @@ class ITRTCCloud
  * 该接口会从电脑的声卡中采集音频数据，并将其混入到 SDK 当前的音频数据流中，从而使房间中的其他用户也能听到主播的电脑所播放出的声音。
  * 在线教育场景中，老师可以使用此功能让 SDK 采集教学影片中的声音，并广播给同房间中的学生。
  * 音乐直播场景中，主播可以使用此功能让 SDK 采集音乐播放器中的音乐，从而为自己的直播间增加背景音乐。
- * @param path 指定该参数为空，代表采集整个系统的声音；
- *             在 Windows 平台下，您也可以指定 path 为某个应用程序的可执行文件（如 QQMuisc.exe）所在的文件路径，此时 SDK 只会采集该应用程序的声音。
- * @note 只有在 Windows 平台下才支持设置 path 参数为某个应用程序的可执行文件路径，且该功能仅支持 32 位的 TRTC SDK。
+ * @param deviceName
+ * - 您可以指定该参数为空置（nullptr），代表让 SDK 采集整个系统的声音。
+ * @note
+ * 在 Windows 平台下，您也可以将参数 deviceName 设置为某个应用程序的可执行文件（如 QQMuisc.exe）的绝对路径，此时 SDK 只会采集该应用程序的声音（仅支持 32 位版本的 SDK）。
+ * 您也可以指定该参数为某个扬声器设备的名称来采集特定扬声器声音（通过接口 {@link TXDeviceManager} 中的 getDevicesList 接口，可以获取类型为 {@link TXMediaDeviceTypeSpeaker} 的扬声器设备）。
  */
 #if TARGET_PLATFORM_DESKTOP
-    virtual void startSystemAudioLoopback(const char* path = nullptr) = 0;
+    virtual void startSystemAudioLoopback(const char* deviceName = nullptr) = 0;
 #endif
 
 /**
@@ -848,11 +859,11 @@ class ITRTCCloud
 #endif
 
 /**
- * 8.4 设置系统声音的采集音量（仅适用于桌面系统）
+ * 8.4 设置系统声音的采集音量
  *
  * @param volume 设置的音量大小，范围是：[0 ~ 150]，默认值为100。
  */
-#if TARGET_PLATFORM_DESKTOP
+#if TARGET_PLATFORM_DESKTOP || TARGET_OS_IPHONE
     virtual void setSystemAudioLoopbackVolume(uint32_t volume) = 0;
 #endif
 
@@ -942,7 +953,7 @@ class ITRTCCloud
 #endif
 
 /**
- * 9.7 设置屏幕分享（即辅路）的视频编码参数（该接口仅支持桌面系统）
+ * 9.7 设置屏幕分享（即辅路）的视频编码参数（桌面系统和移动系统均已支持）
  *
  * 该接口可以设定远端用户所看到的屏幕分享（即辅路）的画面质量，同时也能决定云端录制出的视频文件中屏幕分享的画面质量。
  * 请注意如下两个接口的差异：
@@ -1133,7 +1144,15 @@ class ITRTCCloud
     virtual int mixExternalAudioFrame(TRTCAudioFrame* frame) = 0;
 
     /**
-     * 10.7 生成自定义采集时的时间戳
+     * 10.7 设置推流时混入外部音频的推流音量和播放音量
+     *
+     * @param publishVolume 设置的推流音量大小，范围0 - 100, -1表示不改变
+     * @param playoutVolume 设置的播放音量大小，范围0 - 100, -1表示不改变
+     */
+    virtual void setMixExternalAudioVolume(int publishVolume, int playoutVolume) = 0;
+
+    /**
+     * 10.8 生成自定义采集时的时间戳
      *
      * 本接口仅适用于自定义采集模式，用于解决音视频帧的采集时间（capture time）和投送时间（send time）不一致所导致的音画不同步问题。
      * 当您通过 {@link sendCustomVideoData} 或 {@link sendCustomAudioData} 等接口进行自定义视频或音频采集时，请按照如下操作使用该接口：
@@ -1145,21 +1164,19 @@ class ITRTCCloud
      */
     virtual uint64_t generateCustomPTS() = 0;
 
-/**
- * 10.8 设置第三方美颜的视频数据回调
- *
- * 设置该回调之后，SDK 会把采集到的视频帧通过您设置的 callback 回调出来，用于第三方美颜组件进行二次处理，之后 SDK 会将处理后的视频帧进行编码和发送。
- * @param pixelFormat 指定回调的像素格式，出于数据处理效率的考虑，目前仅支持 OpenGL 纹理格式数据。
- * @param bufferType  指定视频数据结构类型，出于数据处理效率的考虑，目前仅支持 OpenGL 纹理格式数据。
- * @param callback    自定义渲染回调，详见 {@link ITRTCVideoFrameCallback}
- * @return 0：成功；<0：错误
- */
-#ifndef _WIN32
+    /**
+     * 10.9 设置第三方美颜的视频数据回调
+     *
+     * 设置该回调之后，SDK 会把采集到的视频帧通过您设置的 callback 回调出来，用于第三方美颜组件进行二次处理，之后 SDK 会将处理后的视频帧进行编码和发送。
+     * @param pixelFormat 指定回调的像素格式，出于数据处理效率的考虑，目前仅支持 OpenGL 纹理格式数据。
+     * @param bufferType  指定视频数据结构类型，出于数据处理效率的考虑，目前仅支持 OpenGL 纹理格式数据。
+     * @param callback    自定义渲染回调，详见 {@link ITRTCVideoFrameCallback}
+     * @return 0：成功；<0：错误
+     */
     virtual int setLocalVideoProcessCallback(TRTCVideoPixelFormat pixelFormat, TRTCVideoBufferType bufferType, ITRTCVideoFrameCallback* callback) = 0;
-#endif
 
     /**
-     * 10.9 设置本地视频自定义渲染回调
+     * 10.10 设置本地视频自定义渲染回调
      *
      * 设置该回调之后，SDK 内部会跳过原来的渲染流程，并把采集到的数据回调出来，您需要自己完成画面渲染。
      * - 您可以通过调用 setLocalVideoRenderCallback(TRTCVideoPixelFormat_Unknown, TRTCVideoBufferType_Unknown, nullptr) 停止回调。
@@ -1174,7 +1191,7 @@ class ITRTCCloud
     virtual int setLocalVideoRenderCallback(TRTCVideoPixelFormat pixelFormat, TRTCVideoBufferType bufferType, ITRTCVideoRenderCallback* callback) = 0;
 
     /**
-     * 10.10 设置远端视频自定义渲染回调
+     * 10.11 设置远端视频自定义渲染回调
      *
      * 设置该回调之后，SDK 内部会跳过原来的渲染流程，并把采集到的数据回调出来，您需要自己完成画面渲染。
      * - 您可以通过调用 setLocalVideoRenderCallback(TRTCVideoPixelFormat_Unknown, TRTCVideoBufferType_Unknown, nullptr) 停止回调。
@@ -1191,7 +1208,7 @@ class ITRTCCloud
     virtual int setRemoteVideoRenderCallback(const char* userId, TRTCVideoPixelFormat pixelFormat, TRTCVideoBufferType bufferType, ITRTCVideoRenderCallback* callback) = 0;
 
     /**
-     * 10.11 设置音频数据自定义回调
+     * 10.12 设置音频数据自定义回调
      *
      * 设置该回调之后，SDK 内部会把音频数据（PCM 格式）回调出来，包括：
      * - {@link onCapturedRawAudioFrame}：本地麦克风采集到的原始音频数据回调
@@ -1204,7 +1221,59 @@ class ITRTCCloud
     virtual int setAudioFrameCallback(ITRTCAudioFrameCallback* callback) = 0;
 
     /**
-     * 10.15 开启音频自定义播放
+     * 10.13 设置本地麦克风采集出的原始音频帧回调格式
+     *
+     * 本接口用于设置 {@link onCapturedRawAudioFrame} 回调出来的 AudioFrame 的格式:
+     * - sampleRate：采样率，支持：16000、32000、44100、48000。
+     * - channel：声道数（如果是立体声，数据是交叉的），单声道：1； 双声道：2。
+     * - samplesPerCall：采样点数，定义回调数据帧长。帧长必须为 10ms 的整数倍。
+     *
+     * 如果希望用毫秒数计算回调帧长，则将毫秒数转换成采样点数的公式为：采样点数 = 毫秒数 * 采样率 / 1000；
+     * 举例：48000 采样率希望回调 20ms 帧长的数据，则采样点数应该填: 960 = 20 * 48000 / 1000；
+     * 注意，最终回调的帧长度是以字节为单位，采样点数转换成字节数的计算公式为：字节数 = 采样点数 * channel * 2（位宽）
+     * 举例：48000 采样率，双声道，20ms 帧长，采样点数为 960，字节数为 3840 = 960 * 2 * 2
+     * @param format 音频数据回调格式。
+     * @return 0：成功；<0：错误
+     */
+    virtual int setCapturedRawAudioFrameCallbackFormat(TRTCAudioFrameCallbackFormat* format) = 0;
+
+    /**
+     * 10.14 设置经过前处理后的本地音频帧回调格式
+     *
+     * 本接口用于设置 {@link onLocalProcessedAudioFrame} 回调出来的 AudioFrame 的格式:
+     * - sampleRate：采样率，支持：16000、32000、44100、48000。
+     * - channel：声道数（如果是立体声，数据是交叉的），单声道：1； 双声道：2。
+     * - samplesPerCall：采样点数，定义回调数据帧长。帧长必须为 10ms 的整数倍。
+     *
+     * 如果希望用毫秒数计算回调帧长，则将毫秒数转换成采样点数的公式为：采样点数 = 毫秒数 * 采样率 / 1000；
+     * 举例：48000 采样率希望回调20ms帧长的数据，则采样点数应该填: 960 = 20 * 48000 / 1000；
+     * 注意，最终回调的帧长度是以字节为单位，采样点数转换成字节数的计算公式为：字节数 = 采样点数 * channel * 2（位宽）
+     * 举例：48000 采样率，双声道，20ms 帧长，采样点数为 960，字节数为 3840 = 960 * 2 * 2
+     *
+     * @param format 音频数据回调格式。
+     * @return 0：成功；<0：错误
+     */
+    virtual int setLocalProcessedAudioFrameCallbackFormat(TRTCAudioFrameCallbackFormat* format) = 0;
+
+    /**
+     * 10.15 设置最终要由系统播放出的音频帧回调格式
+     *
+     * 本接口用于设置 {@link onMixedPlayAudioFrame} 回调出来的 AudioFrame 的格式:
+     * - sampleRate：采样率，支持：16000、32000、44100、48000。
+     * - channel：声道数（如果是立体声，数据是交叉的），单声道：1； 双声道：2。
+     * - samplesPerCall：采样点数，定义回调数据帧长。帧长必须为 10ms 的整数倍。
+     *
+     * 如果希望用毫秒数计算回调帧长，则将毫秒数转换成采样点数的公式为：采样点数 = 毫秒数 * 采样率 / 1000；
+     * 举例：48000 采样率希望回调20ms帧长的数据，则采样点数应该填: 960 = 20 * 48000 / 1000；
+     * 注意，最终回调的帧长度是以字节为单位，采样点数转换成字节数的计算公式为：字节数 = 采样点数 * channel * 2（位宽）
+     * 举例：48000 采样率，双声道，20ms 帧长，采样点数为 960，字节数为 3840 = 960 * 2 * 2
+     * @param format 音频数据回调格式。
+     * @return 0：成功；<0：错误
+     */
+    virtual int setMixedPlayAudioFrameCallbackFormat(TRTCAudioFrameCallbackFormat* format) = 0;
+
+    /**
+     * 10.16 开启音频自定义播放
      *
      * 如果您需要外接一些特定的音频设备，或者希望自己掌控音频的播放逻辑，您可以通过该接口启用音频自定义播放。
      * 启用音频自定义播放后，SDK 将不再调用系统的音频接口播放数据，您需要通过 {@link getCustomAudioRenderingFrame} 获取 SDK 要播放的音频帧并自行播放。
@@ -1214,7 +1283,7 @@ class ITRTCCloud
     virtual void enableCustomAudioRendering(bool enable) = 0;
 
     /**
-     * 10.16 获取可播放的音频数据
+     * 10.17 获取可播放的音频数据
      *
      * 调用该接口之前，您需要先通过 {@link enableCustomAudioRendering} 开启音频自定义播放。
      * 参数 {@link TRTCAudioFrame} 推荐下列填写方式（其他字段不需要填写）：
@@ -1257,7 +1326,7 @@ class ITRTCCloud
      * 1. 发送消息到房间内所有用户（暂时不支持 Web/小程序端），每秒最多能发送30条消息。
      * 2. 每个包最大为 1KB，超过则很有可能会被中间路由器或者服务器丢弃。
      * 3. 每个客户端每秒最多能发送总计 8KB 数据。
-     * 4. 请将 reliable 和 ordered 同时设置为 true 或同时设置为 flase，暂不支持交叉设置。
+     * 4. 请将 reliable 和 ordered 同时设置为 true 或同时设置为 false，暂不支持交叉设置。
      * 5. 强烈建议您将不同类型的消息设定为不同的 cmdID，这样可以在要求有序的情况下减小消息时延。
      */
     virtual bool sendCustomCmdMsg(uint32_t cmdId, const uint8_t* data, uint32_t dataSize, bool reliable, bool ordered) = 0;
@@ -1273,7 +1342,7 @@ class ITRTCCloud
      * 房间中的其他用户可以通过 {@link TRTCCloudDelegate} 中的 onRecvSEIMsg 回调接收消息。
      * @param data 待发送的数据，最大支持 1KB（1000字节）的数据大小
      * @param repeatCount 发送数据次数
-     * @return YES：消息已通过限制，等待后续视频帧发送；NO：消息被限制发送
+     * @return true：消息已通过限制，等待后续视频帧发送；false：消息被限制发送
      * @note 本接口有以下限制：
      * 1. 数据在接口调用完后不会被即时发送出去，而是从下一帧视频帧开始带在视频帧中发送。
      * 2. 发送消息到房间内所有用户，每秒最多能发送 30 条消息（与 sendCustomCmdMsg 共享限制）。
@@ -1294,19 +1363,16 @@ class ITRTCCloud
     /// @{
 
     /**
-     * 12.1 开始进行网络测速（进入房间前使用）
+     * 12.1 开始进行网速测试（进入房间前使用）
      *
-     * TRTC 由于涉及的是对传输时延要求很苛刻的实时音视频传输服务，因此对网络的稳定性要求会比较高。
-     * 很多用户在网络环境达不到 TRTC 的最低使用门槛时，直接进入房间可能会导致非常不好的用户体验。
-     * 推荐的做法是在用户进入房间前进行网络测速，当用户网络较差时通过 UI 交互提醒用户切换到更加稳定的网络（比如 WiFi 切换到 4G ）后再进入房间。
+     * @param params 测速选项
+     * @return 接口调用结果，< 0：失败
      * @note
-     * 1. 测速本身会消耗一定的流量，所以也会产生少量额外的流量费用。
-     * 2. 请在进入房间前进行测速，在房间中测速会影响正常的音视频传输效果，而且由于干扰过多，测速结果也不准确。
-     * @param sdkAppId 应用标识，请参考 {@link TRTCParams} 中的相关说明。
-     * @param userId 用户标识，请参考 {@link TRTCParams} 中的相关说明。
-     * @param userSig 用户签名，请参考 {@link TRTCParams} 中的相关说明。
+     * 1. 测速过程将产生少量的基础服务费用，详见 [计费概述 > 基础服务](https://cloud.tencent.com/document/product/647/17157#.E5.9F.BA.E7.A1.80.E6.9C.8D.E5.8A.A1) 文档说明。
+     * 2. 请在进入房间前进行网速测试，在房间中网速测试会影响正常的音视频传输效果，而且由于干扰过多，网速测试结果也不准确。
+     * 3. 同一时间只允许一项网速测试任务运行。
      */
-    virtual void startSpeedTest(uint32_t sdkAppId, const char* userId, const char* userSig) = 0;
+    virtual int startSpeedTest(const TRTCSpeedTestParams& params) = 0;
 
     /**
      * 12.2 停止网络测速
@@ -1376,10 +1442,14 @@ class ITRTCCloud
      */
     virtual void showDebugView(int showType) = 0;
 
-    /**
-     * 13.9 调用实验性接口
-     */
+/**
+ * 13.9 调用实验性接口
+ */
+#ifdef _WIN32
+    virtual const char* callExperimentalAPI(const char* jsonStr) = 0;
+#else
     virtual void callExperimentalAPI(const char* jsonStr) = 0;
+#endif
 
 /// @}
 /////////////////////////////////////////////////////////////////////////////////
@@ -1426,6 +1496,17 @@ class ITRTCCloud
     virtual void muteRemoteVideoStream(const char* userId, bool mute) = 0;
 #endif
 
+/**
+ *  开始进行网络测速（进入房间前使用）
+ *
+ * @deprecated v9.2 版本开始不推荐使用，建议使用 startSpeedTest(params) 接口替代之。
+ */
+#ifdef __APPLE__
+    virtual void startSpeedTest(uint32_t sdkAppId, const char* userId, const char* userSig) __attribute__((deprecated("use startSpeedTest:params instead"))) = 0;
+#elif !defined(_WIN32)
+    virtual void startSpeedTest(uint32_t sdkAppId, const char* userId, const char* userSig) = 0;
+#endif
+
 #ifdef _WIN32
     using IDeprecatedTRTCCloud::enableCustomVideoCapture;
     using IDeprecatedTRTCCloud::muteLocalVideo;
@@ -1435,11 +1516,12 @@ class ITRTCCloud
     using IDeprecatedTRTCCloud::startLocalAudio;
     using IDeprecatedTRTCCloud::startRemoteView;
     using IDeprecatedTRTCCloud::startScreenCapture;
+    using IDeprecatedTRTCCloud::startSpeedTest;
     using IDeprecatedTRTCCloud::stopRemoteView;
 #endif
     /// @}
 };
-}  // namespace trtc
+}  // namespace liteav
 /// @}
 
 #endif /* __ITRTCCLOUD_H__ */

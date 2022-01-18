@@ -24,7 +24,6 @@ public static class IosPostProcess
     static void UpdatePermission(string plistPath)
     {
         #if UNITY_IPHONE || UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
-        // #if UNITY_IPHONE
         UnityEditor.iOS.Xcode.PlistDocument plist = new UnityEditor.iOS.Xcode.PlistDocument();
         plist.ReadFromString(System.IO.File.ReadAllText(plistPath));
         UnityEditor.iOS.Xcode.PlistElementDict rootDict = plist.root;

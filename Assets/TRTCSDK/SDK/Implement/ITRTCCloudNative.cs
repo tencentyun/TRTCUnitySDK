@@ -94,6 +94,20 @@ namespace trtc
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void onRenderVideoFrameHandler(string user_id, int stream_type,
             int video_format, int buffer_type, IntPtr data, int texture_id, UInt32 length, UInt32 width, UInt32 height, UInt64 timestamp, int rotation);
+
+        // 音频回调相关
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void onCapturedRawAudioFrameHandler(int audioFormat,IntPtr data,UInt32 length,UInt32 sampleRate,UInt32 channel,UInt64 timestamp);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void onLocalProcessedAudioFrameHandler(int audioFormat,IntPtr data,UInt32 length,UInt32 sampleRate,UInt32 channel,UInt64 timestamp);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void onPlayAudioFrameHandler(int audioFormat,IntPtr data,UInt32 length,UInt32 sampleRate,UInt32 channel,UInt64 timestamp,string userId);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void onMixedPlayAudioFrameHandler(int audioFormat,IntPtr data,UInt32 length,UInt32 sampleRate,UInt32 channel,UInt64 timestamp);
+
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void onLogHandler(string log, int level, string module);
 
@@ -116,7 +130,7 @@ namespace trtc
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void onAudioDevicePlayoutVolumeChangedHandler(int volume, bool muted);
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void onRecvCustomCmdMsgHandler(String userId, int cmdID, int seq, byte[] message, int messageSize);
+        public delegate void onRecvCustomCmdMsgHandler(String userId, int cmdID, int seq, IntPtr message, int messageSize);
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void onMissCustomCmdMsgHandler(String userId, int cmdID, int errCode, int missed);
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -138,7 +152,6 @@ namespace trtc
             onStopPublishCDNStreamHandler on_stop_publishing_cdn_handler,
             onSetMixTranscodingConfig on_set_mix_transcoding_config_handler
         );
-
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TRTCUnityAddCallback(IntPtr instance,
             onErrorHandler on_error_handler,
@@ -174,6 +187,13 @@ namespace trtc
             onScreenCapturePausedHandler on_screen_capture_paused_handler,
             onScreenCaptureResumedHandler on_screen_capture_resumed_handler,
             onScreenCaptureStopedHandler screen_capture_stoped_handler
+        );
+        [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TRTCUnitySetAudioFrameCallback(IntPtr instance,
+            onCapturedRawAudioFrameHandler on_captured_raw_audio_frameHandler,
+            onLocalProcessedAudioFrameHandler on_local_processed_audio_frame_handler,
+            onPlayAudioFrameHandler on_play_audio_frame_handler,
+            onMixedPlayAudioFrameHandler on_mixed_play_audio_frame_handler
         );
 
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]

@@ -46,7 +46,8 @@ enum EventID
     PUSH_WARNING_SHAKE_FAIL                     = WARNING_RTMP_SHAKE_FAIL,              ///< RTMP服务器握手失败
     PUSH_WARNING_SERVER_DISCONNECT              = WARNING_RTMP_SERVER_BREAK_CONNECT,    ///< RTMP服务器主动断开，请检查推流地址的合法性或防盗链有效期
     PUSH_WARNING_READ_WRITE_FAIL                = WARNING_RTMP_READ_WRITE_FAIL,         ///< RTMP 读/写失败，将会断开连接。
-
+    PUSH_WARNING_HEVC_ENCODE_NOT_SUPPORT        = ERR_HEVC_ENCODE_NOT_SUPPORT,          ///< 265编码判断不支持
+    
     /*内部事件*/INNER_EVT_SET_BITRATE_4_SCREEN_CAPTURE = 100001,                         ///< 动态设置录屏编码码率
     /*内部事件*/INNER_EVT_BGM_PLAY_FINISH              = 100002,                         ///< BGM播放完毕
     

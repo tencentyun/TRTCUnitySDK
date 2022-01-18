@@ -31,11 +31,11 @@
 #define TRTC_API
 #endif
 
-#define TARGET_PLATFORM_DESKTOP (__APPLE__ && TARGET_OS_MAC && !TARGET_OS_IPHONE) || _WIN32
-#define TARGET_PLATFORM_PHONE __ANDROID__ || (__APPLE__ && TARGET_OS_IOS)
-#define TARGET_PLATFORM_MAC __APPLE__ &&TARGET_OS_MAC && !TARGET_OS_IPHONE
+#define TARGET_PLATFORM_DESKTOP ((__APPLE__ && TARGET_OS_MAC && !TARGET_OS_IPHONE) || _WIN32)
+#define TARGET_PLATFORM_PHONE (__ANDROID__ || (__APPLE__ && TARGET_OS_IOS))
+#define TARGET_PLATFORM_MAC (__APPLE__ && TARGET_OS_MAC && !TARGET_OS_IPHONE)
 
-namespace trtc {
+namespace liteav {
 
 /// @{
 
@@ -81,7 +81,7 @@ struct SIZE {
  * //...
  * Java_com_example_test_MainActivity_nativeStartRemoteView(JNIEnv *env, jobject thiz, jstring user_id, jint stream_type, jobject view) {
  *     const char *user_id_chars = env->GetStringUTFChars(user_id, nullptr);
- *     trtc_cloud->startRemoteView(user_id_chars, (trtc::TRTCVideoStreamType)stream_type, view);
+ *     trtc_cloud->startRemoteView(user_id_chars, (liteav::TRTCVideoStreamType)stream_type, view);
  *     env->ReleaseStringUTFChars(user_id, user_id_chars);
  * }
  * </pre>
@@ -191,7 +191,6 @@ enum TRTCVideoResolutionMode {
  *  - 高清大画面：一般用来传输摄像头的视频数据。
  *  - 低清小画面：小画面和大画面的内容相互，但是分辨率和码率都比大画面低，因此清晰度也更低。
  *  - 辅流画面：一般用于屏幕分享，同一时间在同一个房间中只允许一个用户发布辅流视频，其他用户必须要等该用户关闭之后才能发布自己的辅流。
- *
  * @note 不支持单独开启低清小画面，小画面必须依附于大画面而存在，SDK 会自动设定低清小画面的分辨率和码率。
  */
 enum TRTCVideoStreamType {
@@ -549,6 +548,7 @@ enum TRTCAudioFrameFormat {
 
 /**
  * 4.1 Log 级别
+ *
  * 不同的日志等级定义了不同的详实程度和日志数量，推荐一般情况下将日志等级设置为：TRTCLogLevelInfo。
  */
 enum TRTCLogLevel {
@@ -697,7 +697,7 @@ typedef TXMediaDeviceType TRTCDeviceType;
 #define TRTCDeviceTypeCamera TXMediaDeviceTypeCamera
 
 /**
- * 4.8 水印图片的源类型(Cpp)
+ * 4.8 水印图片的源类型
  */
 enum TRTCWaterMarkSrcType {
 
@@ -713,25 +713,17 @@ enum TRTCWaterMarkSrcType {
 };
 
 /**
- * 4.8 设备操作
+ * 4.9 设备操作
  *
  * 该枚举值用于本地设备的状态变化通知{@link onDeviceChange}。
  */
-enum TRTCDeviceState {
-
-    ///设备已被插入
-    TRTCDeviceStateAdd = 0,
-
-    ///设备已被移除
-    TRTCDeviceStateRemove = 1,
-
-    ///设备已启用
-    TRTCDeviceStateActive = 2,
-
-};
+typedef TXMediaDeviceState TRTCDeviceState;
+#define TRTCDeviceStateAdd TXMediaDeviceStateAdd
+#define TRTCDeviceStateRemove TXMediaDeviceStateRemove
+#define TRTCDeviceStateActive TXMediaDeviceStateActive
 
 /**
- * 4.10 音频录制内容类型
+ * 4.11 音频录制内容类型
  *
  * 该枚举类型用于音频录制接口{@link startAudioRecording}，用于指定录制音频的内容。
  */
@@ -907,7 +899,7 @@ struct TRTCNetworkQosParam {
  */
 struct TRTCRenderParams {
     ///【字段含义】图像的顺时针旋转角度
-    ///【推荐取值】支持90、180以及270旋转角度，默认值：{@link TRTCVideoRotation0}
+    ///【推荐取值】支持90、180以及270旋转角度，默认值：{@link TRTCVideoRotation_0}
     TRTCVideoRotation rotation;
 
     ///【字段含义】画面填充模式
@@ -955,33 +947,69 @@ struct TRTCVolumeInfo {
 };
 
 /**
- * 5.7 网络测速结果
+ * 5.7 测速参数
  *
- * 您可以在用户进入房间前通过 {@link startSpeedTest} 接口进行测速（注意：请不要在通话中调用），
- * 测速结果会每2 - 3秒钟返回一次，每次返回一个 IP 地址的测试结果。
+ * 您可以在用户进入房间前通过 {@link startSpeedTest} 接口测试网速（注意：请不要在通话中调用）。
+ */
+struct TRTCSpeedTestParams {
+    ///应用标识，请参考 {@link TRTCParams} 中的相关说明。
+    int sdkAppId;
+
+    ///用户标识，请参考 {@link TRTCParams} 中的相关说明。
+    const char *userId;
+
+    ///用户签名，请参考 {@link TRTCParams} 中的相关说明。
+    const char *userSig;
+
+    ///预期的上行带宽（kbps，取值范围： 10 ～ 5000，为 0 时不测试）。
+    int expectedUpBandwidth;
+
+    ///预期的下行带宽（kbps，取值范围： 10 ～ 5000，为 0 时不测试）。
+    int expectedDownBandwidth;
+
+    TRTCSpeedTestParams() : sdkAppId(0), userId(nullptr), userSig(nullptr), expectedUpBandwidth(0), expectedDownBandwidth(0) {
+    }
+};
+
+/**
+ * 5.8 网络测速结果
+ *
+ * 您可以在用户进入房间前通过 {@link startSpeedTest:} 接口进行测速（注意：请不要在通话中调用）。
  */
 struct TRTCSpeedTestResult {
-    ///服务器 IP 地址
+    ///测试是否成功。
+    bool success;
+
+    ///带宽测试错误信息。
+    const char *errMsg;
+
+    ///服务器 IP 地址。
     const char *ip;
 
-    ///内部通过评估算法测算出的网络质量，网络质量越好得分越高。
+    ///内部通过评估算法测算出的网络质量，更多信息请参见 {@link TRTCQuality}。
     TRTCQuality quality;
 
-    ///上行丢包率，取值范围是 [0 - 1.0]，例如 0.3 表示每向服务器发送10个数据包可能会在中途丢失3个。
+    ///上行丢包率，取值范围是 [0 - 1.0]，例如 0.3 表示每向服务器发送 10 个数据包可能会在中途丢失 3 个。
     float upLostRate;
 
-    ///下行丢包率，取值范围是 [0 - 1.0]，例如 0.2 表示每从服务器收取10个数据包可能会在中途丢失2个。
+    ///下行丢包率，取值范围是 [0 - 1.0]，例如 0.2 表示每从服务器收取 10 个数据包可能会在中途丢失 2 个。
     float downLostRate;
 
     ///延迟（毫秒），指当前设备到 TRTC 服务器的一次网络往返时间，该值越小越好，正常数值范围是10ms - 100ms。
     int rtt;
 
-    TRTCSpeedTestResult() : ip(nullptr), quality(TRTCQuality_Unknown), upLostRate(0.0f), downLostRate(0.0f), rtt(0) {
+    ///上行带宽（kbps，-1：无效值）。
+    int availableUpBandwidth;
+
+    ///下行带宽（kbps，-1：无效值）。
+    int availableDownBandwidth;
+
+    TRTCSpeedTestResult() : success(false), errMsg(nullptr), ip(nullptr), quality(TRTCQuality_Unknown), upLostRate(0.0f), downLostRate(0.0f), rtt(0), availableUpBandwidth(0), availableDownBandwidth(0) {
     }
 };
 
 /**
- * 5.8 视频帧信息
+ * 5.10 视频帧信息
  *
  * TRTCVideoFrame 用来描述一帧视频画面的裸数据，也就是编码前或者解码后的视频画面数据。
  */
@@ -1019,7 +1047,7 @@ struct TRTCVideoFrame {
 };
 
 /**
- * 5.9 音频帧数据
+ * 5.11 音频帧数据
  */
 struct TRTCAudioFrame {
     ///【字段含义】音频帧的格式
@@ -1045,7 +1073,7 @@ struct TRTCAudioFrame {
 };
 
 /**
- * 5.10 云端混流中各路画面的描述信息
+ * 5.12 云端混流中各路画面的描述信息
  *
  * TRTCMixUser 用于指定云端混流中每一路视频画面的位置、大小、图层以及流类型等信息。
  */
@@ -1066,7 +1094,7 @@ struct TRTCMixUser {
     TRTCVideoStreamType streamType;
 
     ///【字段含义】指定该路流是不是只混合声音
-    ///【推荐取值】默认值：NO
+    ///【推荐取值】默认值：false
     ///【特别说明】已废弃，推荐使用8.5版本开始新引入的字段：inputType。
     bool pureAudio;
 
@@ -1085,7 +1113,7 @@ struct TRTCMixUser {
 };
 
 /**
- * 5.11 云端混流的排版布局和转码参数
+ * 5.13 云端混流的排版布局和转码参数
  *
  * 用于指定混流时各路画面的排版位置信息和云端转码的编码参数。
  */
@@ -1145,6 +1173,13 @@ struct TRTCTranscodingConfig {
     ///【推荐取值】默认值：1，代表单声道。可设定的数值只有两个数字：1-单声道，2-双声道。
     uint32_t audioChannels;
 
+    ///【字段含义】指定云端转码的输出流音频编码类型
+    ///【推荐取值】默认值：0，代表LC-AAC。可设定的数值只有三个数字：0 - LC-AAC，1 - HE-AAC，2 - HE-AACv2。
+    ///【特别说明】HE-AAC 和 HE-AACv2 支持的输出流音频采样率范围为[48000, 44100, 32000, 24000, 16000]
+    ///【特别说明】当音频编码设置为 HE-AACv2 时，只支持输出流音频声道数为双声道。
+    ///【特别说明】HE-AAC 和 HE-AACv2 取值仅在输出流为您额外设置的 streamId 上时才生效。
+    uint32_t audioCodec;
+
     ///【字段含义】指定云端混流中每一路视频画面的位置、大小、图层以及流类型等信息
     ///【推荐取值】该字段是一个 TRTCMixUser 类型的数组，数组中的每一个元素都用来代表每一路画面的信息。
     TRTCMixUser *mixUsersArray;
@@ -1170,6 +1205,7 @@ struct TRTCTranscodingConfig {
           audioSampleRate(48000),
           audioBitrate(64),
           audioChannels(1),
+          audioCodec(0),
           mixUsersArray(nullptr),
           mixUsersArraySize(0),
           backgroundColor(0),
@@ -1179,7 +1215,7 @@ struct TRTCTranscodingConfig {
 };
 
 /**
- * 5.12 向非腾讯云 CDN 上发布音视频流时需设置的转推参数
+ * 5.14 向非腾讯云 CDN 上发布音视频流时需设置的转推参数
  *
  * TRTC 的后台服务支持通过标准 RTMP 协议，将其中的音视频流发布到第三方直播 CDN 服务商。
  * 如果您使用腾讯云直播 CDN 服务，可无需关注此参数，直接使用 {@link startPublish} 接口即可。
@@ -1198,12 +1234,16 @@ struct TRTCPublishCDNParam {
     ///【特别说明】推流 URL 必须为 RTMP 格式，必须符合您的目标直播服务商的规范要求，否则目标服务商会拒绝来自 TRTC 后台服务的推流请求。
     const char *url;
 
-    TRTCPublishCDNParam() : url(nullptr), appId(0), bizId(0) {
+    ///【字段含义】需要转推的 streamId
+    ///【推荐取值】默认值：空值。如果不填写，则默认转推调用者的旁路流。
+    const char *streamId;
+
+    TRTCPublishCDNParam() : url(nullptr), streamId(nullptr), appId(0), bizId(0) {
     }
 };
 
 /**
- * 5.13 本地音频文件的录制参数
+ * 5.15 本地音频文件的录制参数
  *
  * 该参数用于在音频录制接口 {@link startAudioRecording} 中指定录制参数。
  */
@@ -1223,7 +1263,7 @@ struct TRTCAudioRecordingParams {
 };
 
 /**
- * 5.14 本地媒体文件的录制参数
+ * 5.16 本地媒体文件的录制参数
  *
  * 该参数用于在本地媒体文件的录制接口 {@link startLocalRecording} 中指定录制相关参数。
  * 接口 startLocalRecording 是接口 startAudioRecording 的能力加强版本，前者可以录制视频文件，后者只能录制音频文件。
@@ -1235,7 +1275,7 @@ struct TRTCLocalRecordingParams {
     ///           请您指定一个有读写权限的合法路径，否则录制文件无法生成。
     const char *filePath = "";
 
-    ///【字段含义】媒体录制类型，默认值：TRTCLocalRecordType_Both，即同时录制音频和视频。
+    ///【字段含义】媒体录制类型，默认值：TRTCRecordTypeBoth，即同时录制音频和视频。
     TRTCLocalRecordType recordType = TRTCLocalRecordType_Both;
 
     ///【字段含义】interval 录制信息更新频率，单位毫秒，有效范围：1000-10000。默认值为-1，表示不回调。
@@ -1243,7 +1283,7 @@ struct TRTCLocalRecordingParams {
 };
 
 /**
- * 5.15 音效参数（已废弃）
+ * 5.17 音效参数（已废弃）
  *
  * TRTC 中的“音效”特指一些短暂的音频文件，通常仅有几秒钟的播放时间，比如“鼓掌声”、“欢笑声”等。
  * 该参数用于在早期版本的音效播放接口 {@link TRTCCloud#playAudioEffect} 中指定音效文件（即短音频文件）的路径和播放次数等。
@@ -1263,7 +1303,7 @@ struct TRTCAudioEffectParam {
     int loopCount;
 
     ///【字段含义】音效是否上行
-    ///【推荐取值】YES：音效在本地播放的同时，会上行至云端，因此远端用户也能听到该音效；NO：音效不会上行至云端，因此只能在本地听到该音效。默认值：NO
+    ///【推荐取值】true：音效在本地播放的同时，会上行至云端，因此远端用户也能听到该音效；false：音效不会上行至云端，因此只能在本地听到该音效。默认值：false
     bool publish;
 
     ///【字段含义】音效音量
@@ -1277,7 +1317,7 @@ struct TRTCAudioEffectParam {
 };
 
 /**
- * 5.16 房间切换参数
+ * 5.18 房间切换参数
  *
  * 该参数用于切换房间接口{@link switchRoom}，可以让用户从一个房间快速切换到另一个房间。
  */
@@ -1306,7 +1346,29 @@ struct TRTCSwitchRoomConfig {
 };
 
 /**
- * 5.18 屏幕分享的目标信息（仅适用于桌面系统）
+ * 5.19 音频自定义回调的格式参数
+ *
+ * 该参数用于在音频自定义回调相关的接口中，设置 SDK 回调出来的音频数据的相关格式（包括采样率、声道数等）。
+ */
+struct TRTCAudioFrameCallbackFormat {
+    ///【字段含义】采样率
+    ///【推荐取值】默认值：48000Hz。支持 16000, 32000, 44100, 48000。
+    int sampleRate;
+
+    ///【字段含义】声道数
+    ///【推荐取值】默认值：1，代表单声道。可设定的数值只有两个数字：1-单声道，2-双声道。
+    int channel;
+
+    ///【字段含义】采样点数
+    ///【推荐取值】取值必须是 sampleRate/100 的整数倍。
+    int samplesPerCall;
+
+    TRTCAudioFrameCallbackFormat() : sampleRate(0), channel(0), samplesPerCall(0) {
+    }
+};
+
+/**
+ * 5.21 屏幕分享的目标信息（仅适用于桌面系统）
  *
  * 在用户进行屏幕分享时，可以选择抓取整个桌面，也可以仅抓取某个程序的窗口。
  * TRTCScreenCaptureSourceInfo 用于描述待分享目标的信息，包括 ID、名称、缩略图等，该结构体中的字段信息均是只读的。
@@ -1346,7 +1408,7 @@ struct TRTCScreenCaptureSourceInfo {
 };
 
 /**
- * 5.19 可分享的屏幕和窗口的列表
+ * 5.22 可分享的屏幕和窗口的列表
  *
  * 此结构体的作用相当于 std::vector<TRTCScreenCaptureSourceInfo>，用于解决不同版本的 STL 容器的二进制兼容问题。
  */
@@ -1371,7 +1433,7 @@ class ITRTCScreenCaptureSourceList {
 };
 
 /**
- * 5.20 屏幕分享的进阶控制参数
+ * 5.23 屏幕分享的进阶控制参数
  *
  * 该参数用于屏幕分享相关的接口{@link selectScreenCaptureTarget}，用于在指定分享目标时设定一系列进阶控制参数。
  * 比如：是否采集鼠标、是否要采集子窗口、是否要在被分享目标周围绘制一个边框等。
@@ -1402,12 +1464,37 @@ struct TRTCScreenCaptureProperty {
 typedef ITXDeviceCollection ITRTCDeviceCollection;
 typedef ITXDeviceInfo ITRTCDeviceInfo;
 
+/**
+ * 5.24 远端音频流智能并发播放策略的参数
+ *
+ * 该参数用于设置远端音频流智能并发播放策略。
+ */
+struct TRTCAudioParallelParams {
+    ///【字段含义】最大并发播放数。默认值：0
+    ///如果 maxCount > 0，且实际人数 > maxCount，会实时智能选出 maxCount 路数据进行播放，这会极大的降低性能消耗。
+    ///如果 maxCount = 0，SDK 不限制并发播放数，在上麦人数比较多的房间可能会引发性能问题。
+    uint32_t maxCount;
+
+    ///【字段含义】指定用户必定能并发播放。
+    ///【特殊说明】指定必定并发播放的用户 ID 列表。这些用户不参与智能选择。
+    /// includeUsers 的数量必须小于 maxCount，否则本次并发播放设置失效。
+    /// includeUsers 仅在 maxCount > 0 时有效。当 includeUsers 生效时，参与智能并发选择的最大播放数 = maxCount - 有效 includeUsers 的数量。
+    char **includeUsers;
+    uint32_t includeUsersCount;
+
+    TRTCAudioParallelParams() : maxCount(0), includeUsers(nullptr), includeUsersCount(0) {
+    }
+};
+
 /// @}
-}  // namespace trtc
+}  // namespace liteav
+
+// 9.0 开始 C++ 接口将声明在 liteav 命名空间下，为兼容之前的使用方式，将 trtc 作为 liteav 的别名
+namespace trtc = liteav;
 
 #ifdef _WIN32
-using namespace trtc;
+using namespace liteav;
 #endif
 
-#endif / *__TRTCCLOUDDEF_H__ * /
+#endif /* __TRTCCLOUDDEF_H__ */
 /// @}

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class VideoViewScript : MonoBehaviour
 {
-    TRTCVideoData tRTCVideoData;
-    // Start is called before the first frame update
+    private TRTCVideoData tRTCVideoData;
+    
     void Start()
     {
         tRTCVideoData = GameObject.Find("RawImage").GetComponent<TRTCVideoData>();
@@ -17,7 +17,8 @@ public class VideoViewScript : MonoBehaviour
         btnStart.onClick.AddListener(this.OnStartClick);
 
         Button btnStop = transform.Find("btnStop").gameObject.GetComponent<Button>();
-        btnStop.onClick.AddListener(()=> {
+        btnStop.onClick.AddListener(() => 
+        {
             tRTCVideoData.SetEnable(false);
         });
     }

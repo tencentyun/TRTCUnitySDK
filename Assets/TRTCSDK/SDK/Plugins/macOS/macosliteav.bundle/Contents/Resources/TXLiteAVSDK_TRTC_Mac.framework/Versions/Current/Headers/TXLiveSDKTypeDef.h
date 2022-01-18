@@ -315,7 +315,7 @@ typedef NS_ENUM(NSInteger, TXCaptureVideoInputSource) {
 #define NET_STATUS_AV_PLAY_INTERVAL      @"AV_PLAY_INTERVAL"       ///> TXLivePlayer：音画同步错位时间（播放），单位 ms，此数值越小，音画同步越好。
 #define NET_STATUS_AV_RECV_INTERVAL      @"AV_RECV_INTERVAL"       ///> TXLivePlayer：音画同步错位时间（网络），单位 ms，此数值越小，音画同步越好。
 #define NET_STATUS_AUDIO_CACHE_THRESHOLD @"AUDIO_CACHE_THRESHOLD"  ///> TXLivePlayer：音频缓冲时长阈值，缓冲超过该阈值后，播放器会开始调控延时。
-
+#define NET_STATUS_AUDIO_BLOCK_TIME      @"AUDIO_BLOCK_TIME"       ///> 拉流专用：音频卡顿时长，单位ms
 #define NET_STATUS_AUDIO_INFO            @"AUDIO_INFO"             ///> 音频信息：包括采样率信息和声道数信息
 #define NET_STATUS_NET_JITTER            @"NET_JITTER"             ///> 网络抖动：数值越大表示抖动越大，网络越不稳定
 #define NET_STATUS_QUALITY_LEVEL         @"NET_QUALITY_LEVEL"      ///> 网络质量：0：未定义 1：最好 2：好 3：一般 4：差 5：很差 6：不可用

@@ -544,6 +544,19 @@ namespace trtc
         /// <param name="interval">设置 onUserVoiceVolume 回调的触发间隔，单位为ms，最小间隔为100ms，如果小于等于0则会关闭回调，建议设置为300ms</param>
         public abstract void enableAudioVolumeEvaluation(uint interval);
 
+        /// <summary>
+        /// 设置音频数据自定义回调
+        /// 设置该回调之后，SDK 内部会把音频数据（PCM 格式）回调出来，包括：
+        /// </summary>
+        /// <param name="callback">
+        /// onCapturedRawAudioFrame：本地麦克风采集到的原始音频数据回调
+        ///  onLocalProcessedAudioFrame：本地采集并经过音频模块前处理后的音频数据回调
+        ///  onRemoteUserAudioFrame：混音前的每一路远程用户的音频数据
+        ///  onMixedPlayAudioFrame：将各路音频混合之后并最终要由系统播放出的音频数据回调
+        /// </param>
+        /// <returns></returns>
+        /// <remarks>设置回调为空即代表停止自定义音频回调，反之，设置回调不为空则代表启动自定义音频回调。</remarks>
+        public abstract int setAudioFrameCallback(ITRTCAudioFrameCallback callback);
 
         /// @}
 

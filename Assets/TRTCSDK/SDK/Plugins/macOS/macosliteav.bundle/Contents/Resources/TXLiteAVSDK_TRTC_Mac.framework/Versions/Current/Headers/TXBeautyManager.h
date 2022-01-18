@@ -96,187 +96,208 @@ typedef NS_ENUM(NSInteger, TXBeautyStyle) {
  * 此接口所开启的绿幕功能不具备智能去除背景的能力，需要被拍摄者的背后有一块绿色的幕布来辅助产生特效。
  *
  * @param path MP4格式的视频文件路径; 设置空值表示关闭特效。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
-- (void)setGreenScreenFile:(nullable NSString *)path;
+- (int)setGreenScreenFile:(nullable NSString *)path;
 
 /**
  * 设置大眼级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param eyeScaleLevel 大眼级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setEyeScaleLevel:(float)eyeScaleLevel;
+- (int)setEyeScaleLevel:(float)eyeScaleLevel;
 #endif
 
 /**
  * 设置瘦脸级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param faceSlimLevel 瘦脸级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setFaceSlimLevel:(float)faceSlimLevel;
+- (int)setFaceSlimLevel:(float)faceSlimLevel;
 #endif
 
 /**
  * 设置 V 脸级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param faceVLevel V脸级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setFaceVLevel:(float)faceVLevel;
+- (int)setFaceVLevel:(float)faceVLevel;
 #endif
 
 /**
  * 设置下巴拉伸或收缩，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param chinLevel 下巴拉伸或收缩级别，取值范围-9 - 9；0 表示关闭，小于0表示收缩，大于0表示拉伸。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setChinLevel:(float)chinLevel;
+- (int)setChinLevel:(float)chinLevel;
 #endif
 
 /**
  * 设置短脸级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param faceShortLevel 短脸级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setFaceShortLevel:(float)faceShortLevel;
+- (int)setFaceShortLevel:(float)faceShortLevel;
 #endif
 
 /**
  * 设置窄脸级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param level 窄脸级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setFaceNarrowLevel:(float)faceNarrowLevel;
+- (int)setFaceNarrowLevel:(float)faceNarrowLevel;
 #endif
 
 /**
  * 设置瘦鼻级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param noseSlimLevel 瘦鼻级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setNoseSlimLevel:(float)noseSlimLevel;
+- (int)setNoseSlimLevel:(float)noseSlimLevel;
 #endif
 
 /**
  * 设置亮眼级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param eyeLightenLevel 亮眼级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setEyeLightenLevel:(float)eyeLightenLevel;
+- (int)setEyeLightenLevel:(float)eyeLightenLevel;
 #endif
 
 /**
  * 设置牙齿美白级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param toothWhitenLevel 白牙级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setToothWhitenLevel:(float)toothWhitenLevel;
+- (int)setToothWhitenLevel:(float)toothWhitenLevel;
 #endif
 
 /**
  * 设置祛皱级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param wrinkleRemoveLevel 祛皱级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setWrinkleRemoveLevel:(float)wrinkleRemoveLevel;
+- (int)setWrinkleRemoveLevel:(float)wrinkleRemoveLevel;
 #endif
 
 /**
  * 设置祛眼袋级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param pounchRemoveLevel 祛眼袋级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setPounchRemoveLevel:(float)pounchRemoveLevel;
+- (int)setPounchRemoveLevel:(float)pounchRemoveLevel;
 #endif
 
 /**
  * 设置法令纹去除级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param smileLinesRemoveLevel 法令纹级别，取值范围0 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setSmileLinesRemoveLevel:(float)smileLinesRemoveLevel;
+- (int)setSmileLinesRemoveLevel:(float)smileLinesRemoveLevel;
 #endif
 
 /**
  * 设置发际线调整级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param foreheadLevel 发际线级别，取值范围-9 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setForeheadLevel:(float)foreheadLevel;
+- (int)setForeheadLevel:(float)foreheadLevel;
 #endif
 
 /**
  * 设置眼距，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param eyeDistanceLevel 眼距级别，取值范围-9 - 9；0表示关闭，小于0表示拉伸，大于0表示收缩。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setEyeDistanceLevel:(float)eyeDistanceLevel;
+- (int)setEyeDistanceLevel:(float)eyeDistanceLevel;
 #endif
 
 /**
  * 设置眼角调整级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param eyeAngleLevel 眼角调整级别，取值范围-9 - 9；0表示关闭，9表示效果最明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setEyeAngleLevel:(float)eyeAngleLevel;
+- (int)setEyeAngleLevel:(float)eyeAngleLevel;
 #endif
 
 /**
  * 设置嘴型调整级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param mouthShapeLevel 嘴型级别，取值范围-9 - 9；0表示关闭，小于0表示拉伸，大于0表示收缩。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setMouthShapeLevel:(float)mouthShapeLevel;
+- (int)setMouthShapeLevel:(float)mouthShapeLevel;
 #endif
 
 /**
  * 设置鼻翼调整级别，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param noseWingLevel 鼻翼调整级别，取值范围-9 - 9；0表示关闭，小于0表示拉伸，大于0表示收缩。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setNoseWingLevel:(float)noseWingLevel;
+- (int)setNoseWingLevel:(float)noseWingLevel;
 #endif
 
 /**
  * 设置鼻子位置，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param nosePositionLevel 鼻子位置级别，取值范围-9 - 9；0表示关闭，小于0表示抬高，大于0表示降低。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setNosePositionLevel:(float)nosePositionLevel;
+- (int)setNosePositionLevel:(float)nosePositionLevel;
 #endif
 
 /**
  * 设置嘴唇厚度，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param lipsThicknessLevel 嘴唇厚度级别，取值范围-9 - 9；0表示关闭，小于0表示拉伸，大于0表示收缩。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setLipsThicknessLevel:(float)lipsThicknessLevel;
+- (int)setLipsThicknessLevel:(float)lipsThicknessLevel;
 #endif
 
 /**
  * 设置脸型，该接口仅在 [企业版 SDK](https://cloud.tencent.com/document/product/647/32689#Enterprise) 中生效
  *
  * @param   faceBeautyLevel 美型级别，取值范围0 - 9；0表示关闭，1 - 9值越大，效果越明显。
+ * @return 0：成功；-5：当前 License 对应 feature 不支持。
  */
 #if TARGET_OS_IPHONE
-- (void)setFaceBeautyLevel:(float)faceBeautyLevel;
+- (int)setFaceBeautyLevel:(float)faceBeautyLevel;
 #endif
 
 /**

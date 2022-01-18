@@ -198,6 +198,14 @@ typedef NS_ENUM(NSInteger, TX_Enum_PlayType) {
  */
 - (void)snapshot:(void (^)(TXImage *))snapshotCompletionBlock;
 
+/**
+ * 3.4 获取当前渲染帧 pts
+ *
+ * @return 0：当前未处于正在播放状态（例如：未起播）
+ *         >0：当前渲染视频帧的 pts，处于正在播放状态 (单位: 毫秒)
+ */
+- (uint64_t)getCurrentRenderPts;
+
 /// @}
 
 /////////////////////////////////////////////////////////////////////////////////

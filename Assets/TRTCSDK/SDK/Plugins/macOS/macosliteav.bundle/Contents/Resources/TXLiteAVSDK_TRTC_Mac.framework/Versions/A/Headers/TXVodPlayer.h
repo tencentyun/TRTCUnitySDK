@@ -253,5 +253,12 @@
  */
 @property (nonatomic, assign) BOOL loop;
 
+/**
+ * 9.1 获取加固加密播放密钥
+ * @param key 加密播放密钥
+ * @return 加密后字符串
+ */
++ (NSString *)getEncryptedPlayKey:(NSString *)key;
+
 @end
 /// @}

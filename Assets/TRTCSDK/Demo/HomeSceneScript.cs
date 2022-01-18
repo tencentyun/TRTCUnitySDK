@@ -47,11 +47,6 @@ namespace TRTCCUnityDemo
             transform.Find("lblTextVersion").GetComponent<Text>().text = "version:"+version;
         }
 
-        void Update()
-        {
-
-        }
-
         void OnDestroy()
         {
 

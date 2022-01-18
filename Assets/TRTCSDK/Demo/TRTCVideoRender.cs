@@ -231,6 +231,7 @@ namespace trtc
                     // trtcCloud.setRemoteVideoRenderCallback(_userId, _streamType, _videoFormat,
                     //     TRTCVideoBufferType.TRTCVideoBufferType_Buffer, null);
                 }
+                
                 _userId = null;
                 _streamType = TRTCVideoStreamType.TRTCVideoStreamTypeBig;
             }

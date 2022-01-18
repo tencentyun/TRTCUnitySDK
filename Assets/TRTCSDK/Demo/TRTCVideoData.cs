@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 namespace trtc
 {
-  
-
+    // 参考
+    // https://stackoverflow.com/questions/52686472/update-texture2d-pixels-from-c
     public class TRTCVideoData : MonoBehaviour
     {
         private int mTextureRotation = 0;
@@ -92,7 +92,7 @@ namespace trtc
                 setRawImageTexture(mNativeTexture);
             }
 
-            if (!ReferenceEquals(mNativeTexture, null) && mTextureLength>0)
+            if (!ReferenceEquals(mNativeTexture, null) && mTextureLength > 0)
             {
                // Debug.LogFormat("mNativeTexture.LoadRawTextureData(mNativeTextureData, mTextureLength ={0}, width ={1} mTextureRotation={2}", mTextureLength, mTextureWidth, mTextureRotation);
                 mNativeTexture.LoadRawTextureData(dataIntPtr, mTextureLength);
