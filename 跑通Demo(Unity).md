@@ -5,9 +5,8 @@
 - 自定义视频渲染。
 - 设备管理、音乐特效和人声特效。
 
->?
->- 具体 API 功能参数说明，请参见 [Unity API 概览](https://cloud.tencent.com/document/product/647/55158)。
-- 更多项目接入问题，请接入 QQ 群（764231117）咨询。
+
+> 具体 API 功能参数说明，请参见 [Unity API 概览](https://cloud.tencent.com/document/product/647/55158)。更多项目接入问题，请接入 QQ 群（764231117）咨询。
 
 ## 运行环境要求
 - Unity 建议版本： 2020.2.1f1c1。
@@ -24,7 +23,6 @@
 2. 单击【新建应用】输入应用名称，例如 `TestTRTC`；若您已创建应用可单击【选择已有应用】。
 3. 根据实际业务需求添加或编辑标签，单击【创建】。
 ![](https://main.qcloudimg.com/raw/f04d288ed091c98a5e8056eb86fb49e8.png)
->?
 >- 应用名称只能包含数字、中英文字符和下划线，长度不能超过15个字符。
 >- 标签用于标识和组织您在腾讯云的各种资源。例如：企业可能有多个业务部门，每个部门有1个或多个 TRTC 应用，这时，企业可以通过给 TRTC 应用添加标签来标记部门信息。标签并非必选项，您可根据实际业务需求添加或编辑。
 
@@ -41,38 +39,35 @@
 
 [](id:step3)
 ### 步骤3：编译运行
-<dx-tabs>
-::: Android\s平台
+
+#### Android平台
 1. 配置 Unity Editor，单击【File】>【Build Setting】，切换至 Android。
 ![](https://main.qcloudimg.com/raw/4464eb891829e3505a59c8ec00cc2414.png)
 2. 连接 Android 真机，单击【 Build And Run】，Demo 就能跑起来。
 3. 接口测试，需要先点击调用 enterRoom ，然后自行测试其他相关，数据展示窗口显示点击调用成功，另外一个窗口显示回调信息。
-:::
-::: iOS\s平台
+
+#### iOS平台
 1. 配置 Unity Editor，单击【File】>【Build Setting】，切换至 iOS。
 ![](https://main.qcloudimg.com/raw/3a0ef43000fe53e8e7ff58b6cc243785.png)
 2. 连接 iPhone 真机，单击【Build And Run】，需要选择一个新的目录存放编译出来的 iOS 工程，等待编译完成，会有新窗口弹出 Xcode 工程。
-:::
-::: Windows\s平台
+
+#### Windows平台
 1. 配置 Unity Editor，单击【File】>【Build Setting】，切换至 `PC, Mac & Linux Standalone`，Target Platform 选择 Windows。
 ![](https://main.qcloudimg.com/raw/580764f661c06cf71c4952727c409c5e.png)
 2. 单击【 Build And Run】，Demo 就能跑起来。
-:::
-::: macOS\s平台
+
+#### macOS平台
 1. 配置 Unity Editor，单击【File】>【Build Setting】，切换至 `PC, Mac & Linux Standalone`，Target Platform 选择 macOS。
 ![](https://main.qcloudimg.com/raw/6f3f9c21aa9eeadd7a4e3be377b2a6b3.png)
 2. 单击【 Build And Run】，Demo 就能跑起来。
 3. 使用 Unity Editor 模拟器运行，先要安装 `Device Simulator Package`。
 4. 单击【Window】>【General】>【Device Simulator】
 ![](https://main.qcloudimg.com/raw/79f707b89553528956a888f48b4d4d6d.png)
-:::
-</dx-tabs>
-
 
 [](id:demo)
 ## Demo示例
 Demo 里面包含了已上线的大部分 API，可以测试和作为调用参考，API 文档参见 [SDK API（Unity）](https://cloud.tencent.com/document/product/647/55158)。
->? UI 可能会有部分调整更新，请以最新版为准。
+> UI 可能会有部分调整更新，请以最新版为准。
 
 ![](https://main.qcloudimg.com/raw/2ce3ab51c6fdc843c1e8b086b55840c0.png)
 
