@@ -212,8 +212,8 @@ namespace TRTCCUnityDemo
             captureAudioToggle.SetIsOnWithoutNotify(captureAudio);
             muteLocalVideoToggle.interactable = !isAudience;
             muteLocalVideoToggle.SetIsOnWithoutNotify(muteLocalVideo);
-            muteLocalAudioToggle.interactable = !isAudience;
-            muteLocalAudioToggle.SetIsOnWithoutNotify(muteLocalAudio);
+            // muteLocalAudioToggle.interactable = !isAudience;
+            // muteLocalAudioToggle.SetIsOnWithoutNotify(muteLocalAudio);
         }
 
         void OnToggleMic(bool value)
@@ -401,16 +401,16 @@ namespace TRTCCUnityDemo
 
         void OnTogglePublishing(bool value)
         {
-            Toggle toggleStartPublishing = transform.Find("PanelTest/Viewport/Content/ToggleStartPublishing").gameObject.GetComponent<Toggle>();
-            if (value)
-            {
-                mTRTCCloud.startPublishing("test", TRTCVideoStreamType.TRTCVideoStreamTypeBig);
-            }
-            else
-            {
-                mTRTCCloud.stopPublishing();
+            // Toggle toggleStartPublishing = transform.Find("PanelTest/Viewport/Content/ToggleStartPublishing").gameObject.GetComponent<Toggle>();
+            // if (value)
+            // {
+            //     mTRTCCloud.startPublishing("test", TRTCVideoStreamType.TRTCVideoStreamTypeBig);
+            // }
+            // else
+            // {
+            //     mTRTCCloud.stopPublishing();
 
-            }
+            // }
         }
 
         void OnToggleScreenCapture(bool value)
