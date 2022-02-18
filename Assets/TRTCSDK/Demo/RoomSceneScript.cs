@@ -580,10 +580,10 @@ namespace TRTCCUnityDemo
         public void onUserVideoAvailable(String userId, bool available)
         {
             LogManager.Log(String.Format("onUserVideoAvailable {0}, {1}", userId, available));
-            userTableView.AddUser(userId, TRTCVideoStreamType.TRTCVideoStreamTypeBig);
             // Important: startRemoteView is needed for receiving video stream.
             if (available)
             {
+                userTableView.AddUser(userId, TRTCVideoStreamType.TRTCVideoStreamTypeBig);
                 mTRTCCloud.startRemoteView(userId, TRTCVideoStreamType.TRTCVideoStreamTypeBig, null);
             }
             else
@@ -613,7 +613,10 @@ namespace TRTCCUnityDemo
         public void onUserAudioAvailable(String userId, bool available)
         {
             LogManager.Log(String.Format("onUserAudioAvailable {0}, {1}", userId, available));
-            userTableView.AddUser(userId, TRTCVideoStreamType.TRTCVideoStreamTypeBig);
+            if (available)
+            {
+                userTableView.AddUser(userId, TRTCVideoStreamType.TRTCVideoStreamTypeBig);
+            }
             userTableView.UpdateAudioAvailable(userId, TRTCVideoStreamType.TRTCVideoStreamTypeBig, available);
         }
 
