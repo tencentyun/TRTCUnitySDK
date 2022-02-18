@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace trtc
 {
-    // 参考
     // https://stackoverflow.com/questions/52686472/update-texture2d-pixels-from-c
     public class TRTCVideoData : MonoBehaviour
     {

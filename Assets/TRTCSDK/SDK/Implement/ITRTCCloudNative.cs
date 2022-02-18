@@ -421,7 +421,7 @@ namespace trtc
         [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TRTCUnityStopSpeedTest(IntPtr instance);
 
-        //弃用接口函数
+        // Discard interface function
         // [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]
         // public static extern  void startCameraDeviceTest(IntPtr rendHwnd);
         // [DllImport(MyLibName, CallingConvention = CallingConvention.Cdecl)]

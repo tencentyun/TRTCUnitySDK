@@ -409,7 +409,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5BA2\u6237\u7AEF\u63A7"
+  m_Text: Client
 --- !u!1 &1254140361135434476
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u89C2\u4F17"
+  m_Text: audience
 --- !u!1 &1326252234736883211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u573A\u666F\u8BBE\u7F6E"
+  m_Text: ' Scene Settings'
 --- !u!1 &1974958778006486435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2072,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u89C6\u9891\u901A\u8BDD"
+  m_Text: Rtc
 --- !u!1 &2949697389669459678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u89D2\u8272\uFF1A"
+  m_Text: 'Role:'
 --- !u!1 &2964818019817382508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2356,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u753B\u9762\u65B9\u5411"
+  m_Text: direction
 --- !u!1 &3105293758966800248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2795,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u753B\u8D28\u504F\u597D\uFF1A"
+  m_Text: 'quality:'
 --- !u!1 &3433883176257323262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,7 +2954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5E27\u7387"
+  m_Text: fps
 --- !u!1 &3516056046348537629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u573A\u666F\uFF1A"
+  m_Text: 'Scne: '
 --- !u!1 &4197420022002156213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3632,7 +3632,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5728\u7EBF\u76F4\u64AD"
+  m_Text: Live
 --- !u!1 &4475235102370492724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,7 +4032,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E91\u63A7\u6D41\u63A7"
+  m_Text: server
 --- !u!1 &4825439300159791757
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,7 +4111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5207\u6362\u573A\u666F\u8BF7\u5148\u9000\u623F\u540E\u8FDB\u623F"
+  m_Text: 
 --- !u!1 &4855091696289593869
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,7 +4730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8FD4\u56DE"
+  m_Text: Back
 --- !u!1 &5517634760172022419
 GameObject:
   m_ObjectHideFlags: 0
@@ -5470,7 +5470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u89C6\u9891\u8BBE\u7F6E"
+  m_Text: Video
 --- !u!1 &6102348718846921210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5958,7 +5958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4376559654323114510
@@ -6002,7 +6002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6D41\u63A7\u65B9\u6848\uFF1A"
+  m_Text: 'ControlMode:'
 --- !u!1 &6353642447138357600
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,7 +6633,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F18\u5148\u6E05\u6670"
+  m_Text: Priority clarity
 --- !u!1 &6741445885462505838
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,7 +6863,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5E38\u89C4\u8BBE\u7F6E"
+  m_Text: Common
 --- !u!1 &6876425728395512314
 GameObject:
   m_ObjectHideFlags: 0
@@ -7901,7 +7901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5206\u8FA8\u7387"
+  m_Text: resolution
 --- !u!1 &7862189464103570268
 GameObject:
   m_ObjectHideFlags: 0
@@ -8555,7 +8555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F18\u5148\u6D41\u7545"
+  m_Text: Priority fluency
 --- !u!1 &8719404984580978518
 GameObject:
   m_ObjectHideFlags: 0
@@ -8634,7 +8634,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7801\u7387"
+  m_Text: rate
 --- !u!1 &9012894571586333602
 GameObject:
   m_ObjectHideFlags: 0
@@ -9007,4 +9007,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E3B\u64AD"
+  m_Text: anchor

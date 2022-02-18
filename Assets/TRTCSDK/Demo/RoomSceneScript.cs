@@ -37,8 +37,8 @@ namespace TRTCCUnityDemo
             Toggle toggleSendSEIMsg = transform.Find("PanelTest/Viewport/Content/ToggleSendSEIMsg").gameObject.GetComponent<Toggle>();
             toggleSendSEIMsg.onValueChanged.AddListener(this.OnToggleSendSEIMsg);
 
-            Toggle toggleStartPublishing = transform.Find("PanelTest/Viewport/Content/ToggleStartPublishing").gameObject.GetComponent<Toggle>();
-            toggleStartPublishing.onValueChanged.AddListener(this.OnTogglePublishing);
+            // Toggle toggleStartPublishing = transform.Find("PanelTest/Viewport/Content/ToggleStartPublishing").gameObject.GetComponent<Toggle>();
+            // toggleStartPublishing.onValueChanged.AddListener(this.OnTogglePublishing);
 
             // Toggle toggleCustomCapture = transform.Find("PanelOperate/Viewport/Content/ToggleCustomCapture").gameObject.GetComponent<Toggle>();
             // toggleCustomCapture.onValueChanged.AddListener(this.OnToggleCustomCapture);
@@ -46,8 +46,8 @@ namespace TRTCCUnityDemo
             Toggle beautySet = transform.Find("PanelOperate/Viewport/Content/Beauty").gameObject.GetComponent<Toggle>();
             beautySet.onValueChanged.AddListener(this.OnToggleBeauty);
 
-            Toggle videoMirror = transform.Find("PanelOperate/Viewport/Content/VideoMirror").gameObject.GetComponent<Toggle>();
-            videoMirror.onValueChanged.AddListener(this.OnToggleVideoMirror);
+            // Toggle videoMirror = transform.Find("PanelOperate/Viewport/Content/VideoMirror").gameObject.GetComponent<Toggle>();
+            // videoMirror.onValueChanged.AddListener(this.OnToggleVideoMirror);
 
             Toggle screenCapture = transform.Find("PanelOperate/Viewport/Content/ToggleScreenCapture").gameObject.GetComponent<Toggle>();
             screenCapture.onValueChanged.AddListener(this.OnToggleScreenCapture);
@@ -58,8 +58,8 @@ namespace TRTCCUnityDemo
             captureAudioToggle = transform.Find("PanelOperate/Viewport/Content/ToggleMic").gameObject.GetComponent<Toggle>();
             captureAudioToggle.onValueChanged.AddListener(this.OnToggleMic);
 
-            muteLocalAudioToggle = transform.Find("PanelOperate/Viewport/Content/ToggleMuteLocalAudio").gameObject.GetComponent<Toggle>();
-            muteLocalAudioToggle.onValueChanged.AddListener(this.OnToggleMuteLocalAudio);
+            // muteLocalAudioToggle = transform.Find("PanelOperate/Viewport/Content/ToggleMuteLocalAudio").gameObject.GetComponent<Toggle>();
+            // muteLocalAudioToggle.onValueChanged.AddListener(this.OnToggleMuteLocalAudio);
 
             Toggle toggleMuteRemoteAudio = transform.Find("PanelOperate/Viewport/Content/ToggleMuteRemoteAudio").gameObject.GetComponent<Toggle>();
             toggleMuteRemoteAudio.onValueChanged.AddListener(this.OnToggleMuteRemoteAudio);
@@ -100,8 +100,7 @@ namespace TRTCCUnityDemo
             trtcParams.strRoomId = trtcParams.roomId.ToString();
             trtcParams.userId = DataManager.GetInstance().GetUserID();
             trtcParams.userSig = GenerateTestUserSig.GetInstance().GenTestUserSig(DataManager.GetInstance().GetUserID());
-            // 如果您有进房权限保护的需求，则参考文档{https://cloud.tencent.com/document/product/647/32240}完成该功能。
-            // 在有权限进房的用户中的下面字段中添加在服务器获取到的privateMapKey。
+            
             trtcParams.privateMapKey = "";
             trtcParams.businessInfo = "";
             trtcParams.role = DataManager.GetInstance().roleType;
@@ -316,12 +315,11 @@ namespace TRTCCUnityDemo
             transcodingConfig.audioBitrate = 64;
             transcodingConfig.audioSampleRate = 48000;
             transcodingConfig.audioChannels = 2;
-            //查看
-            //http://liteavapp.qcloud.com/live/streamIdtest.flv
+            
             transcodingConfig.streamId = "streamIdtest";
             TRTCMixUser[] mixUsersArray = new TRTCMixUser[2];
             mixUsersArray[0].userId = DataManager.GetInstance().GetUserID();
-            mixUsersArray[0].zOrder = 4; // zOrder 为0代表主播画面位于最底层
+            mixUsersArray[0].zOrder = 4; // zOrder 0 means that the anchor screen is at the bottom
             mixUsersArray[0].streamType = 0;
             mixUsersArray[0].rect.left = 0;
             mixUsersArray[0].rect.top = 0;
@@ -331,11 +329,11 @@ namespace TRTCCUnityDemo
             mixUsersArray[1].userId = "110";
             mixUsersArray[1].zOrder = 5;
             mixUsersArray[1].streamType = 0;
-            mixUsersArray[1].rect.left = 100; //仅供参考
-            mixUsersArray[1].rect.top = 100; //仅供参考
-            mixUsersArray[1].rect.right = 100; //仅供参考
-            mixUsersArray[1].rect.bottom = 100; //仅供参考
-            mixUsersArray[1].roomId = DataManager.GetInstance().GetRoomID(); // 本地用户不用填写 roomID，远程需要
+            mixUsersArray[1].rect.left = 100; //For reference only
+            mixUsersArray[1].rect.top = 100; //For reference only
+            mixUsersArray[1].rect.right = 100; //For reference only
+            mixUsersArray[1].rect.bottom = 100; //For reference only
+            mixUsersArray[1].roomId = DataManager.GetInstance().GetRoomID(); // Local users do not need to fill in roomid, remote users need to
 
             transcodingConfig.mixUsersArray = mixUsersArray;
             transcodingConfig.mixUsersArraySize = 2;
@@ -480,7 +478,7 @@ namespace TRTCCUnityDemo
 
         void OnQosParamChanged()
         {
-            TRTCNetworkQosParam qosParams = DataManager.GetInstance().qosParams;      // 网络流控相关参数设置
+            TRTCNetworkQosParam qosParams = DataManager.GetInstance().qosParams;
             mTRTCCloud.setNetworkQosParam(ref qosParams);
         }
 

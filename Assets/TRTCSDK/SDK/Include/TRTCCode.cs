@@ -2,167 +2,167 @@
 
     /////////////////////////////////////////////////////////////////////////////////
     //
-    //                     （一）错误码（严重）
+    //                     (1) Error Codes (Critical)
     //
     /////////////////////////////////////////////////////////////////////////////////
     /// <summary>
-    /// 错误码（严重）
+    /// Error codes (critical)
     /// </summary>
     public enum TXLiteAVError
     {
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //       基础错误码
+        //       Basic error codes
         //
         /////////////////////////////////////////////////////////////////////////////////
         ///<summary>
-        ///无错误
+        ///No error
         ///</summary>
         ERR_NULL = 0,
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //       进房（enterRoom）相关错误码
-        //       NOTE: 通过回调函数 TRTCCloudDelegate##onEnterRoom() 和 TRTCCloudDelegate##OnError() 通知
+        //       Error codes for room entry (`enterRoom`)
+        //       Note: The errors are notified through the `TRTCCloudDelegate##onEnterRoom()` and `TRTCCloudDelegate##OnError()` callbacks.
         //
         /////////////////////////////////////////////////////////////////////////////////
         ///<summary>
-        ///进入房间失败
+        ///Failed to enter the room.
         ///</summary>
         ERR_ROOM_ENTER_FAIL = -3301,
         ///<summary>
-        ///进房参数为空，请检查 enterRoom:appScene: 接口调用是否传入有效的 param
+        ///Empty room entry parameters. Please check whether valid parameters were passed in to the `enterRoom:appScene:` API.
         ///</summary>
         ERR_ENTER_ROOM_PARAM_NULL = -3316, 
         ///<summary>
-        ///进房参数 sdkAppId 错误
+        ///Invalid `sdkAppId`.
         ///</summary>
         ERR_SDK_APPID_INVALID = -3317,
         ///<summary>
-        ///进房参数 roomId 错误
+        ///Invalid `roomId`.
         ///</summary>
         ERR_ROOM_ID_INVALID = -3318,
         ///<summary>
-        ///进房参数 userID 不正确
+        ///Invalid `userID`.
         ///</summary>
         ERR_USER_ID_INVALID = -3319,
         ///<summary>
-        ///进房参数 userSig 不正确
+        ///Invalid `userSig`.
         ///</summary>
         ERR_USER_SIG_INVALID = -3320, 
         ///<summary>
-        ///请求进房超时，请检查网络
+        ///The room entry request timed out. Please check your network.
         ///</summary>
         ERR_ROOM_REQUEST_ENTER_ROOM_TIMEOUT = -3308,
         ///<summary>
-        ///服务不可用。请检查：套餐包剩余分钟数是否大于0，腾讯云账号是否欠费
+        ///The service is unavailable. Check if you have used up your package or whether your Tencent Cloud account has overdue payment.
         ///</summary>
         ERR_SERVER_INFO_SERVICE_SUSPENDED = -100013,
 
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //       退房（exitRoom）相关错误码
-        //       NOTE: 通过回调函数 TRTCCloudDelegate##OnError() 通知
+        //       Error codes for room exit (`exitRoom`)
+        //       Note: The errors are notified through the `TRTCCloudDelegate##OnError()` callback.
         //
         /////////////////////////////////////////////////////////////////////////////////
         ///<summary>
-        ///请求退房超时
+        /// The room exit request timed out.
         ///</summary>
         ERR_ROOM_REQUEST_QUIT_ROOM_TIMEOUT = -3325,
 
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //       设备（摄像头、麦克风、扬声器）相关错误码
-        //       NOTE: 通过回调函数 TRTCCloudDelegate##OnError() 通知
-        //             区段：-6000 ~ -6999
+        //        Error codes for devices (camera, mic, and speaker)
+        //       Note: The errors are notified through the `TRTCCloudDelegate##OnError()` callback.
+        //             Range: -6000 to -6999
         //
         /////////////////////////////////////////////////////////////////////////////////
         /// <summary>
-        /// 打开摄像头失败，例如在 Windows 或 Mac 设备，摄像头的配置程序（驱动程序）异常，禁用后重新启用设备，或者重启机器，或者更新配置程序
+        /// Failed to turn the camera on. This occurs when, for example, there is a problem with the camera configuration program (driver) on Windows or macOS. Turn the camera off and on again, restart the device, or update the configuration program.
         /// </summary>
         ERR_CAMERA_START_FAIL = -1301,
         /// <summary>
-        /// 摄像头设备未授权，通常在移动设备出现，可能是权限被用户拒绝了
+        /// No access to the camera. This usually occurs on mobile devices and may be because the user denied the access.
         /// </summary>
         ERR_CAMERA_NOT_AUTHORIZED = -1314,
         /// <summary>
-        /// 摄像头参数设置出错（参数不支持或其它）
+        /// Incorrect camera parameter settings (unsupported values or others).
         /// </summary>
         ERR_CAMERA_SET_PARAM_FAIL = -1315,
         /// <summary>
-        /// 摄像头正在被占用中，可尝试打开其他摄像头
+        /// The camera is being used. Try another camera.
         /// </summary>
         ERR_CAMERA_OCCUPY = -1316,
         /// <summary>
-        /// 打开麦克风失败，例如在 Windows 或 Mac 设备，麦克风的配置程序（驱动程序）异常，禁用后重新启用设备，或者重启机器，或者更新配置程序
+        /// Failed to turn the mic on. This occurs when, for example, there is a problem with the mic configuration program (driver) on Windows or macOS. Turn the mic off and on again, restart the device, or update the configuration program.
         /// </summary>
         ERR_MIC_START_FAIL = -1302,
         /// <summary>
-        /// 麦克风设备未授权，通常在移动设备出现，可能是权限被用户拒绝了
+        /// No access to the mic. This usually occurs on mobile devices and may be because the user denied the access.
         /// </summary>
         ERR_MIC_NOT_AUTHORIZED = -1317,
         /// <summary>
-        /// 麦克风设置参数失败
+        /// Failed to set mic parameters.
         /// </summary>
         ERR_MIC_SET_PARAM_FAIL = -1318,
         /// <summary>
-        /// 麦克风正在被占用中，例如移动设备正在通话时，打开麦克风会失败
+        /// The mic is being used. The mic cannot be turned on when, for example, the user is having a call on the mobile device.
         /// </summary>
         ERR_MIC_OCCUPY = -1319,
         /// <summary>
-        /// 停止麦克风失败
+        /// Failed to turn the mic off.
         /// </summary>
         ERR_MIC_STOP_FAIL = -1320,
         /// <summary>
-        /// 打开扬声器失败，例如在 Windows 或 Mac 设备，扬声器的配置程序（驱动程序）异常，禁用后重新启用设备，或者重启机器，或者更新配置程序
+        /// Failed to turn the speaker on. This occurs when, for example, there is a problem with the speaker configuration program (driver) on Windows or macOS. Turn the speaker off and on again, restart the device, or update the configuration program.
         /// </summary>
         ERR_SPEAKER_START_FAIL = -1321,
         /// <summary>
-        /// 扬声器设置参数失败
+        /// Failed to set speaker parameters.
         /// </summary>
         ERR_SPEAKER_SET_PARAM_FAIL = -1322,
         /// <summary>
-        /// 停止扬声器失败
+        /// Failed to turn the speaker off.
         /// </summary>
         ERR_SPEAKER_STOP_FAIL = -1323,
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //       编解码相关错误码
-        //       NOTE: 通过回调函数 TRTCCloudDelegate##OnError() 通知
+        //       Error codes for encoding and decoding
+        //       Note: The errors are notified through the `TRTCCloudDelegate##OnError()` callback.
         //
         /////////////////////////////////////////////////////////////////////////////////
         ///<summary>
-        ///视频帧编码失败，例如 iOS 设备切换到其他应用时，硬编码器可能被系统释放，再切换回来时，硬编码器重启前，可能会抛出
+        /// Failed to encode video frames. This occurs when, for example, a user on iOS switches to another app, which may cause the system to release the hardware encoder. When the user switches back, this error may be thrown before the hardware encoder is restarted.
         ///</summary>
         ERR_VIDEO_ENCODE_FAIL = -1303,
         ///<summary>
-        ///不支持的视频分辨率
+        ///Unsupported video resolution.
         ///</summary>
         ERR_UNSUPPORTED_RESOLUTION = -1305,
         ///<summary>
-        ///音频帧编码失败，例如传入自定义音频数据，SDK 无法处理
+        ///Failed to encode audio frames. This occurs when, for example, the SDK could not process the custom audio data passed in.
         ///</summary>
         ERR_AUDIO_ENCODE_FAIL = -1304,
         ///<summary>
-        ///不支持的音频采样率
+        ///Unsupported audio sample rate.
         ///</summary>
         ERR_UNSUPPORTED_SAMPLERATE = -1306,
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //       自定义采集相关错误码
-        //       NOTE: 通过回调函数 TRTCCloudDelegate##OnError() 通知
+        //       Error codes for custom capturing
+        //       Note: The errors are notified through the `TRTCCloudDelegate##OnError()` callback.
         //
         /////////////////////////////////////////////////////////////////////////////////
         ///<summary>
-        ///设置的 pixel format 不支持
+        ///Unsupported pixel format.
         ///</summary>
         ERR_PIXEL_FORMAT_UNSUPPORTED = -1327,
         ///<summary>
-        ///设置的 buffer type 不支持
+        ///Unsupported buffer type.
         ///</summary>
         ERR_BUFFER_TYPE_UNSUPPORTED = -1328,
 
@@ -170,106 +170,106 @@
 
     /////////////////////////////////////////////////////////////////////////////////
     //
-    //                     （二）错误码（警告）
+    //                     (2) Error Codes (Warning)
     //
     /////////////////////////////////////////////////////////////////////////////////
 
     /// <summary>
-    /// 错误码（警告）
+    /// Error codes (warning)
     /// </summary>
     public enum TXLiteAVWarning
     {
         /// <summary>
-        /// 硬编码启动失败，采用软编码
+        /// Failed to start the hardware encoder. The software encoder is used instead.
         /// </summary>
         WARNING_HW_ENCODER_START_FAIL = 1103,
         /// <summary>
-        /// 视频编码器从软编码自动切换到硬编码，一般是由于 CPU 使用率过高触发的
+        /// The video encoder is automatically switched from software encoder to hardware encoder. This is usually triggered by high CPU usage.
         /// </summary>
         WARNING_VIDEO_ENCODER_SW_TO_HW = 1107,
         /// <summary>
-        /// 摄像头采集帧率不足，部分自带美颜算法的 Android 手机上会出现
+        /// The capturing frame rate of the camera is insufficient. This error occurs on some Android phones with built-in beauty filters.
         /// </summary>
         WARNING_INSUFFICIENT_CAPTURE_FPS = 1108,
         /// <summary>
-        /// 软编码启动失败
+        /// Failed to start the software encoder.
         /// </summary>
         WARNING_SW_ENCODER_START_FAIL = 1109,
         /// <summary>
-        /// 摄像头采集分辨率被降低，以满足当前帧率和性能最优解。
+        /// The capturing frame rate of the camera was reduced for balance between frame rate and performance.
         /// </summary>
         WARNING_REDUCE_CAPTURE_RESOLUTION = 1110,
         /// <summary>
-        /// 没有检测到可用的摄像头设备
+        /// No available camera detected.
         /// </summary>
         WARNING_CAMERA_DEVICE_EMPTY = 1111,
         /// <summary>
-        /// 用户未授权当前应用使用摄像头
+        /// The user didn’t grant the application camera access.
         /// </summary>
         WARNING_CAMERA_NOT_AUTHORIZED = 1112,
         /// <summary>
-        /// 没有检测到可用的麦克风设备
+        /// No available mic detected.
         /// </summary>
         WARNING_MICROPHONE_DEVICE_EMPTY = 1201,
         /// <summary>
-        /// 没有检测到可用的扬声器设备
+        /// No available speaker detected.
         /// </summary>
         WARNING_SPEAKER_DEVICE_EMPTY = 1202,
         /// <summary>
-        /// 用户未授权当前应用使用麦克风
+        /// The user didn’t grant the application mic access.
         /// </summary>
         WARNING_MICROPHONE_NOT_AUTHORIZED = 1203,
         /// <summary>
-        /// 音频采集设备不可用（例如被占用）
+        /// The audio capturing device is unavailable. This error occurs if, for example, the device is occupied.
         /// </summary>
         WARNING_MICROPHONE_DEVICE_ABNORMAL = 1204,
         /// <summary>
-        /// 音频播放设备不可用（例如被占用）
+        /// The audio playback device is unavailable. This error occurs if, for example, the device is occupied.
         /// </summary>
         WARNING_SPEAKER_DEVICE_ABNORMAL = 1205,
 
         /// <summary>
-        /// 当前视频帧解码失败
+        /// Failed to decode the current video frame.
         /// </summary>
         WARNING_VIDEO_FRAME_DECODE_FAIL = 2101,
         /// <summary>
-        /// 当前音频帧解码失败
+        /// Failed to decode the current audio frame.
         /// </summary>
         WARNING_AUDIO_FRAME_DECODE_FAIL = 2102,
         /// <summary>
-        /// 当前视频播放出现卡顿（用户直观感受）
+        /// Video playback stutter (user experience).
         /// </summary>
         WARNING_VIDEO_PLAY_LAG = 2105,
         /// <summary>
-        /// 硬解启动失败，采用软解码
+        /// Failed to start the hardware decoder. The software decoder is used instead.
         /// </summary>
         WARNING_HW_DECODER_START_FAIL = 2106,
         /// <summary>
-        /// 当前流硬解第一个 I 帧失败，SDK 自动切软解
+        /// The hardware decoder failed to decode the first I-frame of the current stream. The SDK automatically switched to the software decoder.
         /// </summary>
         WARNING_VIDEO_DECODER_HW_TO_SW = 2108,
         /// <summary>
-        /// 软解码器启动失败
+        /// Failed to start the software decoder.
         /// </summary>
         WARNING_SW_DECODER_START_FAIL = 2109,
         /// <summary>
-        /// 视频渲染失败
+        /// Failed to render the video.
         /// </summary>
         WARNING_VIDEO_RENDER_FAIL = 2110,
         ///<summary>
-        ///视频采集已开始
+        /// Video capturing started.
         ///</summary>
         WARNING_START_CAPTURE_IGNORED = 4000,
         ///<summary>
-        ///音频录制写入文件失败
+        /// Failed to write recorded audio into the file.
         ///</summary>
         WARNING_AUDIO_RECORDING_WRITE_FAIL = 7001,
         ///<summary>
-        ///网络断开连接
+        /// The network was disconnected.
         ///</summary>
         WARNING_ROOM_DISCONNECT = 5101,
         ///<summary>
-        ///当前是观众角色，忽略上行音视频数据
+        /// The user is in the role of “audience”. Upstream audio and video are ignored.
         ///</summary>
         WARNING_IGNORE_UPSTREAM_FOR_AUDIENCE = 6001,
     };

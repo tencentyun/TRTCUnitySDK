@@ -33,7 +33,7 @@ namespace trtc
         #region Interface Call
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （一）房间相关接口函数
+        //                      （一）Room related interface function
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override void enterRoom(ref TRTCParams param, TRTCAppScene scene)
@@ -75,7 +75,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （二）CDN 相关接口函数
+        //                      （二）CDN related interface function
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override void startPublishing(string streamId, TRTCVideoStreamType type)
@@ -100,7 +100,6 @@ namespace trtc
 
         public override void setMixTranscodingConfig(TRTCTranscodingConfig? lconfig)
         {
-            //windows 暂时不支持
             #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             if(lconfig == null) {
                 ITRTCCloudNative.TRTCUnitySetMixTranscodingConfigNull(mNativeObj);
@@ -112,7 +111,7 @@ namespace trtc
         }
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （三）视频相关接口函数
+        //                      （三）Video related interface function
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override void startLocalPreview(bool frontCamera, System.Object rendObj)
@@ -194,7 +193,7 @@ namespace trtc
         // }
         public override void setVideoEncoderMirror(bool mirror)
         {
-            //windows 暂时不支持
+            //Windows doesn't support it at the moment
             #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             ITRTCCloudNative.TRTCUnitySetVideoEncoderMirror(mNativeObj,mirror);
             #endif
@@ -215,7 +214,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （四）音频相关接口函数
+        //                      （四）Audio related interface function
         //
         /////////////////////////////////////////////////////////////////////////////////
         //public override void setAudioQuality(TRTCAudioQuality quality);
@@ -297,7 +296,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （五）摄像头相关接口函数
+        //                      （五）Camera related interface functions
         //
         /////////////////////////////////////////////////////////////////////////////////
 
@@ -306,36 +305,15 @@ namespace trtc
         // public override ITRTCDeviceInfo getCurrentCameraDevice();
         /// @}
 
-        /////////////////////////////////////////////////////////////////////////////////
-        //
-        //                      （六）音频设备相关接口函数
-        //
-        /////////////////////////////////////////////////////////////////////////////////
-
-        // public override ITRTCDeviceCollection getMicDevicesList();
-        // public override ITRTCDeviceInfo getCurrentMicDevice();
-        // public override void setCurrentMicDevice(string micId);
-
-        //public override uint getCurrentMicDeviceVolume();
-
-        //public override void setCurrentMicDeviceVolume(uint volume);
-        // public override ITRTCDeviceCollection getSpeakerDevicesList();
-        // public override ITRTCDeviceInfo getCurrentSpeakerDevice();
-        // public override void setCurrentSpeakerDevice(string speakerId);
-
-        //public override uint getCurrentSpeakerVolume();
-
-        //public override void setCurrentSpeakerVolume(uint volume);
-        /// @}
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （七）美颜特效和图像水印
+        //                      （七）Beauty effects and image watermarking
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override void setBeautyStyle(TRTCBeautyStyle style, uint beauty, uint white, uint ruddiness)
         {
-            //windows 暂时不支持
+            //Windows doesn't support it at the moment
             #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             ITRTCCloudNative.TRTCUnitySetBeautyStyle(mNativeObj, (int)style,(int) beauty, (int)white, (int)ruddiness);
             #endif
@@ -348,34 +326,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （八）音乐特效和人声特效
-        //
-        /////////////////////////////////////////////////////////////////////////////////
-        // public override ITXAudioEffectManager getAudioEffectManager();
-
-        /// <summary>
-        /// 8.2 打开系统声音采集
-        /// </summary>
-        /// <para>开启后可以采集整个操作系统的播放声音（path 为空）或某一个播放器（path 不为空）的声音，</para>
-        /// <para>并将其混入到当前麦克风采集的声音中一起发送到云端。</para>
-        /// <param name="path"> path 为空，代表采集整个操作系统的声音。 path 填写 exe 程序（如 QQ音乐）所在的路径，将会启动此程序并只采集此程序的声音，64位 SDK 暂时不支持进程混音能力。</param>
-        // public override void startSystemAudioLoopback(string path);
-
-        /// <summary>
-        /// 8.3 关闭系统声音采集。
-        /// </summary>
-        // public override void stopSystemAudioLoopback();
-
-        /// <summary>
-        /// 8.4 设置系统声音采集的音量。
-        /// </summary>
-        /// <param name="volume">音量大小，取值范围为0 - 100。</param>
-        // public override void setSystemAudioLoopbackVolume(uint volume);
-        /// @}
-
-        /////////////////////////////////////////////////////////////////////////////////
-        //
-        //                      （九）屏幕分享相关接口函数
+        //                      （九）Screen sharing related interface functions
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override void startScreenCapture(TRTCVideoStreamType type, ref TRTCVideoEncParam param)
@@ -445,7 +396,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （十）自定义采集和渲染
+        //                      （十）Custom acquisition and rendering
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override void enableCustomVideoCapture(bool enable)
@@ -537,7 +488,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （十一）自定义消息发送
+        //                      （十一）Custom message sending
         //
         /////////////////////////////////////////////////////////////////////////////////
         //public override bool sendCustomCmdMsg(uint cmdId, byte[] data, uint dataSize, bool reliable, bool ordered);
@@ -553,7 +504,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （十二）设备和网络测试
+        //                      （十二）Equipment and network testing
         //
         /////////////////////////////////////////////////////////////////////////////////
 
@@ -569,7 +520,6 @@ namespace trtc
         // {
 
         // }
-        //弃用接口函数
         // public override void stopCameraDeviceTest()
         // {
 
@@ -593,7 +543,7 @@ namespace trtc
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （十三）LOG 相关接口函数
+        //                      （十三）Log related interface functions
         //
         /////////////////////////////////////////////////////////////////////////////////
         public override string getSDKVersion()
@@ -1033,7 +983,7 @@ namespace trtc
             TRTCVolumeArrayInfo userVolumeArray = JsonUtility.FromJson<TRTCVolumeArrayInfo>(strUserVolumes);
             TRTCVolumeInfo[] userVolumeInfo = userVolumeArray.userVolumesArray;
             List<ITRTCCloudCallback> callbacks = ITRTCCloudImplement.dumplicateCallbacks();
-            // C++接口安卓回调了本地用户id，这里做下兼容
+            // The C + + interface Android callback the local user ID, which is compatible here
 #if PLATFORM_ANDROID
                 for(int index = 0; index < userVolumeInfo.Length;index++) {
                     if(localUserId == userVolumeInfo[index].userId) {
@@ -1207,7 +1157,6 @@ namespace trtc
             }
         }
 
-        // 音频相关回调
         [MonoPInvokeCallback(typeof(ITRTCCloudNative.onCapturedRawAudioFrameHandler))]
         public static void onCapturedRawAudioFrameHandler(int audioFormat,IntPtr data,UInt32 length,UInt32 sampleRate,UInt32 channel,UInt64 timestamp)
         {

@@ -3,140 +3,138 @@
 namespace trtc
 {
     /// <summary>
-    /// 腾讯云实时音视频设备管理接口
+    /// TRTC device management APIs
     /// </summary>
     public abstract class ITXDeviceManager
     {
 
         /// <summary>
-        /// 判断当前是否为前置摄像头
+        /// Get whether the front camera is in use
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
         public abstract bool isFrontCamera();
 
         /// <summary>
-        /// 切换摄像头
+        /// Switch the camera
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="frontCamera">YES：切换到前置摄像头 NO：切换到后置摄像头</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="frontCamera">`YES`: switch to the front camera; `NO`: switch to the rear camera</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int switchCamera(bool frontCamera);
         /// <summary>
-        /// 查询当前摄像头支持的最大缩放比例
+        /// Get the maximum zoom level of the camera
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
         /// <returns></returns>
         public abstract double getCameraZoomMaxRatio();
 
         /// <summary>
-        /// 设置当前摄像头的缩放比例
-        /// @param zoomRatio 取值范围1 - 5，取值为1表示最远视角（正常镜头），取值为5表示最近视角（放大镜头）。
-        /// 最大值推荐为5，若超过5，视频数据会变得模糊不清。默认值为1。
+        /// Set the zoom level of the camera
+        /// @param zoomRatio Value range: 1-5. `1` indicates the widest angle of view (original), and `5` the narrowest angle of view (zoomed in).
+        /// Video will be blurry if the zoom level exceeds 5. The default value is 1.
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="zoomRatio">缩放倍数</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="zoomRatio">Zoom level</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int setCameraZoomRatio(double zoomRatio);
 
         /// <summary>
-        /// 查询是否支持自动识别人脸位置
+        /// Get whether automatic face detection is supported
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
         /// <returns></returns>
         public abstract bool isAutoFocusEnabled();
 
         /// <summary>
-        /// 设置人脸自动识别
+        /// Enable/Disable automatic face detection
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="enabled">YES: 开启；NO：关闭，默认值：YES</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="enabled">`YES` (default): enable; `NO`: disable</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int enableCameraAutoFocus(bool enabled);
 
         /// <summary>
-        /// 设置摄像头焦点
-        /// @param position 对焦位置
+        /// Set camera focus
+        /// @param position Focus position
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="x">焦点横坐标</param>
-        /// <param name="y">焦点纵坐标</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="x">Horizontal coordinate of the focus</param>
+        /// <param name="y">Vertical coordinate of the focus</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int setCameraFocusPosition(int x,int y);
 
         /// <summary>
-        /// 开关闪光灯
+        /// Enable/Disable flash
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="enabled">YES：开启；NO：关闭，默认值：NO</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="enabled">`YES`: enable; `NO` (default): disable</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int enableCameraTorch(bool enabled);
 
         /// <summary>
-        /// 设置通话时使用的系统音量类型
+        /// Set the type of system volume to use during a call
         /// @note
-        ///   1. 需要在调用 startLocalAudio() 之前调用该接口。
-        ///   2. 如无特殊需求，不推荐您自行设置，您只需通过 enterRoom 设置好适合您的场景，SDK 内部会自动选择相匹配的音量类型。
-        /// @param type 系统音量类型，参见 TXSystemVolumeType 说明。如无特殊需求，不推荐您自行设置。
+        ///   1. This API must be called before `startLocalAudio()` to take effect.
+        ///   2. You can ignore this API if you don’t have special requirements. Just call `enterRoom`, specifying the scenario, and the SDK will automatically select a system volume type for you.
+        /// @param type System volume type. For more information, please see `TXSystemVolumeType`. You are not advised to set this parameter by yourself unless you have special requirements.
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="type">系统音量类型，如无特殊需求，不推荐您自行设置。</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="type">System volume type. You are not advised to set this parameter by yourself unless you have special requirements.</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int setSystemVolumeType(TXSystemVolumeType type) ;
 
         /// <summary>
-        /// 设置音频路由
-        /// <para>微信和手机 QQ 视频通话功能的免提模式就是基于音频路由实现的。</para>
-        /// <para>一般手机都有两个扬声器，一个是位于顶部的听筒扬声器，声音偏小；一个是位于底部的立体声扬声器，声音偏大。</para>
-        /// <para>设置音频路由的作用就是决定声音使用哪个扬声器播放。</para>
+        /// Set the audio route
+        /// <para>The audio route concept is behind the hands-free mode of video calls in WeChat and Mobile QQ.</para>
+        /// <para>A mobile phone usually has two speakers: one at the top, whose volume is low, and the other at the bottom, whose volume is high.</para>
+        /// <para>The audio route determines the speaker via which audio is played.</para>
         /// </summary>
         /// <remarks>
-        /// 此接口只支持和Android和iOS平台
+        /// This API is supported only on Android and iOS.
         /// </remarks>
-        /// <param name="route">音频路由，即声音由哪里输出（扬声器、听筒），默认值：TXAudioRouteSpeakerphone</param>
-        /// <returns>0：操作成功 负数：失败</returns>
+        /// <param name="route">Audio route, i.e., whether to play audio via the speaker or receiver. Default value: `TXAudioRouteSpeakerphone`</param>
+        /// <returns>If `0` is returned, the operation is successful; if a negative value is returned, the operation failed.</returns>
         public abstract int setAudioRoute(TXAudioRoute route);
 
-
         /// <summary>
-        /// 2.1 获取设备列表（仅适用于桌面端）
+        /// Get device list (desktop only)
         /// </summary>
-        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
+        /// <param name="type">Device type, specifying which device list to obtain. See txmediadevicetype definition for details.</param>
         /// <returns></returns>
         public abstract ITXDeviceInfo[] GetDevicesList(TXMediaDeviceType type);
 
         /// <summary>
-        /// 2.2 设置当前要使用的设备（仅适用于桌面端）
+        /// Set the current device to use (desktop only)
         /// </summary>
-        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
-        /// <param name="deviceId">设备ID，您可以通过接口 {@link getDevicesList} 获得设备 ID。</param>
+        /// <param name="type">Device type, See the definition of TXMediaDeviceType for details.</param>
+        /// <param name="deviceId">Device ID, you can get the device ID through the interface {@ link GetDevicesList}</param>
         /// <returns></returns>
         public abstract int SetCurrentDevice(TXMediaDeviceType type, String deviceId);
 
         /// <summary>
-        /// 2.3 获取当前正在使用的设备（仅适用于桌面端）
+        /// Get the device currently in use (desktop only)
         /// </summary>
-        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
-        /// <returns></returns>
+        /// <param name="type">Device type，See the definition of TXMediaDeviceType for details.</param>
+        /// <returns></returns> 
         public abstract ITXDeviceInfo GetCurrentDevice(TXMediaDeviceType type);
-
     }
 }
 

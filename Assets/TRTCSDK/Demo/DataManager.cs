@@ -63,7 +63,7 @@ namespace TRTCCUnityDemo
         public delegate void ChangeRoleHandler();
         public event ChangeRoleHandler DoRoleChange;
         private TRTCRoleType _roleType;
-        // 该字段只作用于直播模式
+        // This field only applies to live broadcast mode
         public TRTCRoleType roleType
         {
             get

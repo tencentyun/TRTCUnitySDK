@@ -137,11 +137,6 @@ namespace TRTCCUnityDemo
             });
             this.apiList.Add("其他",new ApiFuncObj[]
             {
-                // new ApiFuncObj("setLogLevel","setLogLevelClick","设置log级别"),
-                // new ApiFuncObj("setConsoleEnabled","setConsoleEnabledClick","启用控制台日志打印"),
-                // new ApiFuncObj("setLogCompressEnabled-false","setLogCompressEnabledFalseClick","禁用 Log 的本地压缩"),
-                // new ApiFuncObj("setLogCompressEnabled-true","setLogCompressEnabledTrueClick","启用 Log 的本地压缩"),
-                // new ApiFuncObj("setLogDirPath","setLogDirPathClick","修改日志保存路径"),
                 new ApiFuncObj("sendSEIMsg","sendSEIMsg","将小数据量的自定义数据嵌入视频帧中"),
                 new ApiFuncObj("sendCustomCmdMsg","sendCustomCmdMsgClick","发送自定义消息给房间内所有用户"),
                 new ApiFuncObj("getSDKVersion","getSDKVersionClick","SDK版本号"),

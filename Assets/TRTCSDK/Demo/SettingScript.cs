@@ -209,7 +209,7 @@ namespace TRTCCUnityDemo
 
         private void SetUpDirection()
         {
-            List<string> directionNames = new List<string>(new string[] { "横屏模式", "竖屏模式" });
+            List<string> directionNames = new List<string>(new string[] { "Horizontal screen mode", "Vertical screen mode" });
             directionDropDown.AddOptions(directionNames);
             int curIndex = 0;
             if (DataManager.GetInstance().videoEncParam.resMode == TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape)

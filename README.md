@@ -1,11 +1,9 @@
-简体中文 | [English](./README.en.md)
-# 产品介绍
-本产品是在 Unity 中快速集成 TRTC SDK，实现在游戏中的音视频通话。
-# 相关文档链接
-- [跑通 TRTC Unity Demo](./跑通Demo(Unity).md)
-- [快速集成 TRTC Unity SDK](./快速集成(Unity).md)
-- [TRTC Unity SDK API](./API(Unity).md)
-- [TRTC Unity SDK 错误码](./错误码(Unity).md)
+# Product Description
+This product is to quickly integrate TRTC SDK in Unity to realize audio and video calls in games.
 
-# 其他
-更多项目接入问题，请加入 QQ 群（764231117）咨询。
+# Links to related documents
+
+- [Demo Quick Start](./DemoQuickStart(Unity)_intl_en.md)
+- [SDK Quick Integration](./SdkQuickIntegration(Unity)_intl_en.md)
+- [TRTC Unity SDK API](./API(Unity)_intl_en.md)
+- [TRTC Unity SDK Error Code](./ErrorCode(Unity)_intl_en.md)

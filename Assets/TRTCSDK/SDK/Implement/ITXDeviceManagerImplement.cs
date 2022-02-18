@@ -103,11 +103,7 @@ namespace trtc
             public ITXDeviceInfo[] deviceInfoArray;
         };
 
-        /// <summary>
-        /// 2.1 获取设备列表（仅适用于桌面端）
-        /// </summary>
-        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
-        /// <returns></returns>
+        // Get device list (desktop only)
         public override ITXDeviceInfo[] GetDevicesList(TXMediaDeviceType type)
         {
 #if UNITY_STANDALONE_WIN
@@ -123,12 +119,6 @@ namespace trtc
 #endif
         }
 
-        /// <summary>
-        /// 2.2 设置当前要使用的设备（仅适用于桌面端）
-        /// </summary>
-        /// <param name="type">设备类型，指定需要获取哪种设备的列表。详见 TXMediaDeviceType 定义。</param>
-        /// <param name="deviceId">设备ID，您可以通过接口 {@link getDevicesList} 获得设备 ID。</param>
-        /// <returns></returns>
         public override int SetCurrentDevice(TXMediaDeviceType type, String deviceId)
         {
 #if UNITY_STANDALONE_WIN

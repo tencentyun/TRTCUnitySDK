@@ -3,106 +3,106 @@
 namespace trtc
 {
     /// <summary>
-    /// 背景音乐的播放进度回调
+    /// Background music callbacks
     /// </summary>
     public interface ITXMusicPlayObserver
     {
         /// <summary>
-        /// 背景音乐开始播放
+        /// Background music started
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="errCode">错误码</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="errCode">Error code</param>
         void onStart(int id, int errCode);
 
         /// <summary>
-        /// 背景音乐的播放进度
+        /// Playback progress of background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="curPtsMS">当前播放音乐时长</param>
-        /// <param name="durationMS">音乐文件的总时长</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="curPtsMS">Current playback time</param>
+        /// <param name="durationMS">Total music length</param>
         void onPlayProgress(int id, long curPtsMS, long durationMS);
 
         /// <summary>
-        /// 背景音乐已播放完毕
+        /// Background music ended
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="errCode">错误码</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="errCode">Error code</param>
         void onComplete(int id, int errCode);
     }
 
     /// <summary>
-    /// 腾讯云视频通话功能音乐和人声设置接口
+    /// TRTC music and audio effect APIs
     /// </summary>
     public abstract class ITXAudioEffectManager
     {
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （一）人声相关特效函数
+        //                      (1) Audio Effect APIs
         //
         /////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// 1.1 开启耳返
-        /// 开启后会在耳机里听到自己的声音。
+        /// 1.1 Enable/Disable in-ear monitoring
+        /// After in-ear monitoring is enabled, the local user will hear his or her own voice in earphones.
         /// </summary>
-        /// <param name="enable">true：开启；false：关闭</param>
+        /// <param name="enable">`true:` enable; `false`: disable</param>
         /// <remarks>
-        /// 仅在戴耳机时有效，暂时仅支持部分采集延迟较低的机型
+        /// This API works only if the user wears earphones and the device has low capturing latency.
         /// </remarks>
         //public abstract void enableVoiceEarMonitor(bool enable);
 
         /// <summary>
-        /// 1.2 设置耳返音量
+        /// 1.2 Set in-ear monitoring volume
         /// </summary>
-        /// <param name="volume"volume 音量大小，100为原始音量，范围是：[0 ~ 150]，默认值为100></param>
-        /// <remarks>如果要将 volume 设置为大于100的数值，需要进行特殊配置，请联系技术支持。</remarks>
+        /// <param name="volume"Volume. Value range: 0-150. Default value: `100`></param>
+        /// <remarks>You need to contact technical support to use a value higher than `100`.</remarks>
         //public abstract void setVoiceEarMonitorVolume(int volume);
 
         /// <summary>
-        /// 1.3 设置人声的混响效果（KTV、小房间、大会堂、低沉、洪亮...）
+        /// 1.3 Set a reverb effect (karaoke, room, hall, deep, resonant, etc.)
         /// </summary>
-        /// <remarks>设置的效果在退房后会失效，如果下次进房还需要对应特效，需要调用此接口再次设置。</remarks>
+        /// <remarks>An effect becomes invalid after you leave the room. If you want to use the same effect the next time, you need to call this API again after room entry.</remarks>
         public abstract void setVoiceReverbType(TXVoiceReverbType reverbType);
 
         /// <summary>
-        /// 1.4 设置人声的变声特效（萝莉、大叔、重金属、外国人...）
+        /// 1.4 Set an audio effect (little girl, middle-aged man, metal, punk, etc.)
         /// </summary>
         /// <remarks>
-        /// 设置的效果在退房后会失效，如果下次进房还需要对应特效，需要调用此接口再次设置。
+        /// An effect becomes invalid after you leave the room. If you want to use the same effect the next time, you need to call this API again after room entry.
         /// </remarks>
         //public abstract void setVoiceChangerType(TXVoiceChangeType changerType);
 
         /// <summary>
-        /// 1.5 设置麦克风采集人声的音量
+        /// 1.5 Set the mic capturing volume
         /// </summary>
-        /// <param name="volume">音量大小，100为原始音量，范围是：[0 ~ 150]，默认值为100</param>
+        /// <param name="volume">Volume. Value range: 0-150. Default value: `100`</param>
         /// <remarks>
-        /// 如果要将 volume 设置为大于100的数值，需要进行特殊配置，请联系技术支持。
+        /// You need to contact technical support to use a value higher than `100`.
         /// </remarks>
         public abstract void setVoiceCaptureVolume(int volume);
 
         /////////////////////////////////////////////////////////////////////////////////
         //
-        //                      （二）背景音乐特效函数
+        //                      (2) Background Music APIs
         //
         /////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
-        /// 设置背景音乐的播放进度回调接口
+        /// Set the callback of the playback progress of background music
         /// </summary>
-        /// <param name="musicId">音乐 ID</param>
-        /// <param name="observer">具体参考 ITXMusicPlayObserver 中定义接口</param>
+        /// <param name="musicId">Music ID</param>
+        /// <param name="observer">For more information, please see the APIs defined in `ITXMusicPlayObserver`.</param>
         public abstract void setMusicObserver(int musicId,ITXMusicPlayObserver observer);
 
         /// <summary>
-        /// 2.1 开始播放背景音乐
-        /// <para>每个音乐都需要您指定具体的 ID，您可以通过该 ID 对音乐的开始、停止、音量等进行设置。</para>
+        /// 2.1 Start background music
+        /// <para>You must assign an ID to each music track so that you can start, stop, or set the volume of music tracks by ID.</para>
         /// </summary>
-        /// <param name="musicParam">音乐参数</param>
+        /// <param name="musicParam">Music parameters</param>
         /// <remarks>
-        ///     若您想同时播放多个音乐，请分配不同的 ID 进行播放。
-        ///     如果使用同一个 ID 播放不同音乐，SDK 会先停止播放旧的音乐，再播放新的音乐。
+        ///     To play multiple music tracks at the same time, assign different IDs to them.
+        ///     If you use the same ID to play a music track different from the current one, the SDK will stop the current one before playing the new one.
         /// </remarks>
         public abstract void startPlayMusic(AudioMusicParam musicParam);
         // public abstract void startPlayMusic:(TXAudioMusicParam *)musicParam
@@ -111,92 +111,92 @@ namespace trtc
         //             onComplete:(TXAudioMusicCompleteBlock _Nullable)completeBlock;
 
         /// <summary>
-        /// 2.2 停止播放背景音乐
+        /// 2.2 Stop background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
+        /// <param name="id">Music ID</param>
         public abstract void stopPlayMusic(int id);
 
         /// <summary>
-        /// 2.3 暂停播放背景音乐
+        /// 2.3 Pause background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
+        /// <param name="id">Music ID</param>
         public abstract void pausePlayMusic(int id);
 
         /// <summary>
-        /// 2.4 恢复播放背景音乐
+        /// 2.4 Resume background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
+        /// <param name="id">Music ID</param>
         public abstract void resumePlayMusic(int id);
 
         /// <summary>
-        /// 2.5 设置背景音乐的远端音量大小，即主播可以通过此接口设置远端观众能听到的背景音乐的音量大小。
+        /// 2.5 Set the volume of the anchor’s background music heard by remote users
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="volume">音量大小，100为原始音量，范围是：[0 ~ 150]，默认值为100</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="volume">Volume. Value range: 0-150. Default value: `100`</param>
         /// <remarks>
-        /// 如果要将 volume 设置为大于100的数值，需要进行特殊配置，请联系技术支持。
+        /// You need to contact technical support to use a value higher than `100`.
         /// </remarks>
         public abstract void setMusicPublishVolume(int id,int volume);
 
         /// <summary>
-        /// 2.6 设置背景音乐的本地音量大小，即主播可以通过此接口设置主播自己本地的背景音乐的音量大小。
+        /// 2.6 Set the volume of background music heard by the anchor
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="volume">音量大小，100为原始音量，范围是：[0 ~ 150]，默认值为100</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="volume">Volume. Value range: 0-150. Default value: `100`</param>
         /// <remarks>
-        /// 如果要将 volume 设置为大于100的数值，需要进行特殊配置，请联系技术支持。
+        /// You need to contact technical support to use a value higher than `100`.
         /// </remarks>
         public abstract void setMusicPlayoutVolume(int id,int volume);
 
         /// <summary>
-        /// 2.7 设置全局背景音乐的本地和远端音量的大小
+        /// 2.7 Set the global (local and remote) volume of background music
         /// </summary>
-        /// <param name="volume">音量大小，100为原始音量，范围是：[0 ~ 150]，默认值为100</param>
+        /// <param name="volume">Volume. Value range: 0-150. Default value: `100`</param>
         /// <remarks>
-        /// 如果要将 volume 设置为大于100的数值，需要进行特殊配置，请联系技术支持。
+        /// You need to contact technical support to use a value higher than `100`.
         /// </remarks>
         public abstract void setAllMusicVolume(int volume);
 
         /// <summary>
-        /// 2.8 调整背景音乐的音调高低
+        /// 2.8 Adjust the pitch of background music
         /// </summary>
-        /// <param name="id"> 音乐 ID</param>
-        /// <param name="pitch">音调，默认值是0.0f，范围是：[-1 ~ 1] 之间的浮点数；</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="pitch">Pitch. Value range: [-1, 1] (floating point number). Default value: 0.0f</param>
         public abstract void setMusicPitch(int id,double pitch);
 
         /// <summary>
-        /// 2.9 调整背景音乐的变速效果
+        /// 2.9 Change the speed of background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="speedRate">速度，默认值是1.0f，范围是：[0.5 ~ 2] 之间的浮点数；</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="pitch">Speed. Value range: [0.5, 2] (floating point number). Default value: 1.0f</param>
         public abstract void setMusicSpeedRate(int id ,double speedRate);
 
         /// <summary>
-        /// 2.10 获取背景音乐当前的播放进度（单位：毫秒）
+        /// 2.10 Get the playback progress (ms) of background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
+        /// <param name="id">Music ID</param>
         /// <returns>
-        /// 成功返回当前播放时间，单位：毫秒，失败返回-1
+        /// The current playback time (ms) is returned if this API is called successfully; otherwise, `-1` is returned.
         /// </returns>
         public abstract int getMusicCurrentPosInMS(int id);
 
         /// <summary>
-        /// 2.11 设置背景音乐的播放进度（单位：毫秒）
+        /// 2.11 Set the playback progress (ms) of background music
         /// </summary>
-        /// <param name="id">音乐 ID</param>
-        /// <param name="pts">单位: 毫秒</param>
+        /// <param name="id">Music ID</param>
+        /// <param name="pts">Playback progress (ms)</param>
         /// <remarks>
-        ///     请尽量避免频繁地调用该接口，因为该接口可能会再次读写音乐文件，耗时稍高。
-        ///     当配合进度条使用时，请在进度条拖动完毕的回调中调用，而避免在拖动过程中实时调用。
+        ///     Do not call this API frequently as the music file may be read and written each time the API is called, which can be time-consuming.
+        /// If you use this API to implement a draggable progress bar, do not call it during dragging, but after receiving the callback that indicates the completion of dragging.
         /// </remarks>
         public abstract void seekMusicToPosInMS(int id,int  pts);
 
         /// <summary>
-        /// 2.12 获取景音乐文件的总时长（单位：毫秒）
+        /// 2.12 Get the total music length (ms)
         /// </summary>
-        /// <param name="path">音乐文件路径，如果 path 为空，那么返回当前正在播放的 music 时长。</param>
+        /// <param name="path">Path of the music file. If it is not specified, the length of the music file being played is returned.</param>
         /// <returns>
-        /// 成功返回时长，失败返回-1
+        /// The total music length is returned if this API is called successfully; otherwise, `-1` is returned.
         /// </returns>
         public abstract int getMusicDurationInMS(string path);
     }

@@ -88,7 +88,7 @@ namespace TRTCCUnityDemo
             UnityEngine.Debug.Log("OnToggleCustomAudio");
             if (this.AudioToggle.isOn)
             {
-                // 开启自定义渲染音频
+                // Turn on custom render audio
                 if (AudioDropDown.value == 0)
                 {
                     StartCustomCaptureAudio(mTestPath + "48_1_audio.pcm", 48000, 1);
@@ -100,7 +100,7 @@ namespace TRTCCUnityDemo
             }
             else
             {
-                // 停止自定义渲染音频
+                // Stop custom rendered audio
                 StopCustomCaptureAudio();
             }
         }
@@ -110,12 +110,12 @@ namespace TRTCCUnityDemo
             UnityEngine.Debug.Log("OnToggleCustomVideo");
             if (this.VideoToggle.isOn)
             {
-                // 开启自定义渲染视频
+                // Turn on custom rendered video
                 StartCustomCaptureVideo(mTestPath + "320x240_video.yuv", 320, 240);
             }
             else
             {
-                // 关闭自定义渲染视频
+                // Turn off custom rendered video
                 StopCustomCaptureVideo();
             }
         }

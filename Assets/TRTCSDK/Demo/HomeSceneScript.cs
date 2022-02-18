@@ -54,11 +54,6 @@ namespace TRTCCUnityDemo
 
         void OnEnterRoomClick()
         {
-            //ITRTCCloud mTRTCCloud = ITRTCCloud.getTRTCShareInstance();
-            //ITXDeviceManager tXDeviceManager = mTRTCCloud.getDeviceManager();
-            //ITXDeviceInfo ls = tXDeviceManager.GetCurrentDevice(TXMediaDeviceType.TXMediaDeviceTypeCamera);
-            //transform.Find("lblTextVersion").GetComponent<Text>().text = "DevicePID:" + ls.DeviceName;
-            //return;
             string userID = transform.Find("editUserID").GetComponent<InputField>().text;
             string roomID = transform.Find("editRoomID").GetComponent<InputField>().text;
 

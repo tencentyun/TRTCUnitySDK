@@ -225,12 +225,6 @@ namespace trtc
                     trtcCloud.setLocalVideoRenderCallback(_streamType, _videoFormat,
                         TRTCVideoBufferType.TRTCVideoBufferType_Buffer, null);
                 }
-                else
-                {
-                    // 当用户退出的时候，会导致所有用户的回调都没了。先在c#层面修复，后续在各个平台的sdk去修复。
-                    // trtcCloud.setRemoteVideoRenderCallback(_userId, _streamType, _videoFormat,
-                    //     TRTCVideoBufferType.TRTCVideoBufferType_Buffer, null);
-                }
                 
                 _userId = null;
                 _streamType = TRTCVideoStreamType.TRTCVideoStreamTypeBig;
