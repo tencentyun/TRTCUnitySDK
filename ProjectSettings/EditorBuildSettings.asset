@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TRTCSDK/Demo/HomeScene.unity
     guid: 5a77fd2340f5b734d88012a7ffd4ca5b
-  - enabled: 1
-    path: Assets/TRTCSDK/Demo/AudioApiTest.unity
-    guid: 45b5ffd0fd1d644369eec513a06d91e4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/TRTCSDK/Demo/RoomSceme.unity
     guid: 02acaf4319c7082409a82a48e0e585a5

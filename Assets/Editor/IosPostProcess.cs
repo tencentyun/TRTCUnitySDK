@@ -27,9 +27,8 @@ public static class IosPostProcess
         UnityEditor.iOS.Xcode.PlistDocument plist = new UnityEditor.iOS.Xcode.PlistDocument();
         plist.ReadFromString(System.IO.File.ReadAllText(plistPath));
         UnityEditor.iOS.Xcode.PlistElementDict rootDict = plist.root;
-        rootDict.SetString("NSCameraUsageDescription", "授权摄像头权限才能正常视频通话");
-        rootDict.SetString("NSMicrophoneUsageDescription", "授权麦克风权限才能正常语音通话");
-        // rootDict.SetString("NSPhotoLibraryUsageDescription", "App需要您的同意,才能访问相册");
+        rootDict.SetString("NSCameraUsageDescription", "Authorize the camera permission to make normal video calls");
+        rootDict.SetString("NSMicrophoneUsageDescription", "Authorize microphone permission to make normal voice calls");
         rootDict.SetBoolean("UIFileSharingEnabled", true);
 
         UnityEditor.iOS.Xcode.PlistElementArray CFBundleDocumentTypes = rootDict.CreateArray("CFBundleDocumentTypes"); // just for test
@@ -69,31 +68,30 @@ public static class IosPostProcess
                 "@executable_path/../Frameworks/$(EXECUTABLE_PATH)");
             proj.AddBuildProperty(targetGuid, "DEFINES_MODULE", "YES");
     
-            //引入ios依赖包
-		    proj.AddFrameworkToProject(targetGuid, Utf8string("libc++.tbd"), true); 
-            proj.AddFrameworkToProject(targetGuid, Utf8string("libresolv.tbd"), true);
+		    proj.AddFrameworkToProject(targetGuid, Utf8string("libc++.tbd"), true);
+            proj.AddFrameworkToProject(targetGuid, Utf8string("libresolv.tbd"), true);
             proj.AddFrameworkToProject(targetGuid, Utf8string("Accelerate.framework"), true);
             proj.AddFrameworkToProject(targetGuid, Utf8string("AVFoundation.framework"), true);
 
 
             proj.WriteToFile(projPath);
             UpdatePermission(buildPath + "/Info.plist");
-            UnityEngine.Debug.Log("--ios-- 构建完成，请用xcode 打开 【"+buildPath + "/Unity-Iphone.xcodeproj】发布即可");
+            UnityEngine.Debug.Log("--ios-- build complete, please use xcode open 【"+buildPath + "/Unity-Iphone.xcodeproj】to run");
             #endif
         }else if(buildTarget == BuildTarget.StandaloneOSX || 
         buildTarget == BuildTarget.StandaloneOSXIntel || buildTarget == BuildTarget.StandaloneOSXIntel64){
              UnityEngine.Debug.Log("--macos--start:"+buildPath);
              string plistPath = buildPath+".app" + "/Contents/Info.plist"; // straight to a binary
             UpdatePermission(plistPath);
-            UnityEngine.Debug.Log("--macos-- 构建完成，请打开 【"+buildPath+".app】运行即可");
+            UnityEngine.Debug.Log("--macos-- build complete, please open 【"+buildPath+".app】to run");
         }
         else if (buildTarget == BuildTarget.Android)
         {
-            UnityEngine.Debug.Log("--Android-- 构建完成，请打开 【"+buildPath+"】运行即可");
+            UnityEngine.Debug.Log("--Android--  build complete, please open 【"+buildPath+"】to run");
         }
         else
         {
-            UnityEngine.Debug.Log("--windows-- 构建完成，请打开 【"+buildPath+"】运行即可");
+            UnityEngine.Debug.Log("--windows-- build complete, please open 【"+buildPath+"】to run");
         }
     }
 

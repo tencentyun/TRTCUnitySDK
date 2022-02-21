@@ -21,3 +21,4 @@ Builds/
 *.opendb
 *.VC.db
 *.log
+.history/
