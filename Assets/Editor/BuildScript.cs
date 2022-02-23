@@ -21,7 +21,7 @@ class BuildScript : Editor
         List<string> names = new List<String>();
         names.Add("Assets/TRTCSDK/Demo/HomeScene.unity");
         names.Add("Assets/TRTCSDK/Demo/RoomSceme.unity");
-        names.Add("Assets/TRTCSDK/Demo/AudioApiTest.unity");
+       // names.Add("Assets/TRTCSDK/Demo/AudioApiTest.unity");
         return names.ToArray();
     }
 
