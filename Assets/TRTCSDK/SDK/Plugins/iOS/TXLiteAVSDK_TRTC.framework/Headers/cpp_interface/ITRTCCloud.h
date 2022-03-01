@@ -1,7 +1,7 @@
 /**
  * Module:   TRTCCloud @ TXLiteAVSDK
  * Function: 腾讯云 TRTC 主功能接口
- * Version: 9.5.11004
+ * Version: 9.5.1933
  */
 #ifndef __ITRTCCLOUD_H__
 #define __ITRTCCLOUD_H__
@@ -892,30 +892,22 @@ class ITRTCCloud
  * 3. 同一个房间中同时只能有一个用户使用辅路做屏幕分享，也就是说，同一个房间中同时只允许一个用户开启辅路。
  * 4. 当房间中已经有其他用户在使用辅路分享屏幕时，此时调用该接口会收到来自 {@link TRTCCloudDelegate} 的 onError(ERR_SERVER_CENTER_ANOTHER_USER_PUSH_SUB_VIDEO) 回调。
  */
-#if TARGET_PLATFORM_DESKTOP
     virtual void startScreenCapture(TXView view, TRTCVideoStreamType streamType, TRTCVideoEncParam* encParam) = 0;
-#endif
 
 /**
  * 9.2 停止屏幕分享
  */
-#if TARGET_PLATFORM_DESKTOP
     virtual void stopScreenCapture() = 0;
-#endif
 
 /**
  * 9.3 暂停屏幕分享
  */
-#if TARGET_PLATFORM_DESKTOP
     virtual void pauseScreenCapture() = 0;
-#endif
 
 /**
  * 9.4 恢复屏幕分享
  */
-#if TARGET_PLATFORM_DESKTOP
     virtual void resumeScreenCapture() = 0;
-#endif
 
 /**
  * 9.5 枚举可分享的屏幕和窗口（该接口仅支持桌面系统）
@@ -963,9 +955,7 @@ class ITRTCCloud
  * @param param 辅流编码参数，详情请参考 {@link TRTCVideoEncParam}。
  * @note 即使您使用主路传输屏幕分享（在调用 startScreenCapture 时设置 type=TRTCVideoStreamTypeBig），依然要使用 {@link setSubStreamEncoderParam} 设定屏幕分享的编码参数，而不要使用 {@link setVideoEncoderParam} 。
  */
-#if TARGET_PLATFORM_DESKTOP
     virtual void setSubStreamEncoderParam(const TRTCVideoEncParam& param) = 0;
-#endif
 
 /**
  * 9.8 设置屏幕分享时的混音音量大小（该接口仅支持桌面系统）

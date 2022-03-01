@@ -415,33 +415,42 @@ namespace TRTCCUnityDemo
 
         void OnToggleScreenCapture(bool value)
         {
-#if UNITY_STANDALONE_WIN
             if (value)
             {
-                TRTCScreenCaptureSourceInfo[] sources = mTRTCCloud.getScreenCaptureSources();
-                if (sources.Length > 0)
+                TRTCVideoEncParam videoEncParam = new TRTCVideoEncParam()
                 {
-                    mTRTCCloud.selectScreenCaptureTarget(sources[0], new Rect(0, 0, 640, 360), new TRTCScreenCaptureProperty());
-                    TRTCVideoEncParam videoEncParam = new TRTCVideoEncParam()
+                    videoResolution = TRTCVideoResolution.TRTCVideoResolution_1280_720,
+                    resMode = TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape,
+                    videoFps = 10,
+                    videoBitrate = 1600,
+                    minVideoBitrate = 1000
+                };
+                #if UNITY_STANDALONE_WIN
+                    TRTCScreenCaptureSourceInfo[] sources = mTRTCCloud.getScreenCaptureSources();
+                    if (sources.Length > 0)
                     {
-                        videoResolution = TRTCVideoResolution.TRTCVideoResolution_640_360,
-                        resMode = TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape,
-                        videoFps = 15,
-                        videoBitrate = 550,
-                        minVideoBitrate = 550
-                    };
+                        mTRTCCloud.selectScreenCaptureTarget(sources[0], new Rect(0, 0, 640, 360), new TRTCScreenCaptureProperty());
+                        mTRTCCloud.startScreenCapture(TRTCVideoStreamType.TRTCVideoStreamTypeSub, ref videoEncParam);
+                        userTableView.AddUser("", TRTCVideoStreamType.TRTCVideoStreamTypeSub);
+                        userTableView.UpdateVideoAvailable("", TRTCVideoStreamType.TRTCVideoStreamTypeSub, true);
+                    }
+                #elif UNITY_ANDROID || UNITY_IOS
                     mTRTCCloud.startScreenCapture(TRTCVideoStreamType.TRTCVideoStreamTypeSub, ref videoEncParam);
-                    userTableView.AddUser("", TRTCVideoStreamType.TRTCVideoStreamTypeSub);
-                    userTableView.UpdateVideoAvailable("", TRTCVideoStreamType.TRTCVideoStreamTypeSub, true);
-                }
+                #endif
+                #if UNITY_IOS
+                    IosExtensionLauncher.TRTCUnityExtensionLauncher();
+                #endif
             }
             else
             {
+                #if UNITY_STANDALONE_WIN || UNITY_ANDROID || UNITY_IOS
                 mTRTCCloud.stopScreenCapture();
+                #endif
+                #if UNITY_STANDALONE_WIN
                 userTableView.UpdateVideoAvailable("", TRTCVideoStreamType.TRTCVideoStreamTypeSub, false);
                 userTableView.RemoveUser("", TRTCVideoStreamType.TRTCVideoStreamTypeSub);
+                #endif
             }
-#endif
         }
 
         void OnToggleCustomCapture(bool value)

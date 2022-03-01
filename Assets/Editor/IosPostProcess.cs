@@ -55,10 +55,21 @@ public static class IosPostProcess
             UnityEngine.Debug.Log("projPath:"+projPath);
             var proj = new PBXProject();
             proj.ReadFromFile(projPath);
+            string frameTarget = proj.GetUnityFrameworkTargetGuid();
+            proj.SetBuildProperty(frameTarget, "ENABLE_BITCODE", "NO");
+            proj.SetBuildProperty(proj.ProjectGuid(), "ENABLE_BITCODE", "NO");
+            
+            proj.AddFrameworkToProject(frameTarget, Utf8string("libc++.tbd"), true);
+            proj.AddFrameworkToProject(frameTarget, Utf8string("libresolv.tbd"), true);
+            proj.AddFrameworkToProject(frameTarget, Utf8string("Accelerate.framework"), true);
+            proj.AddFrameworkToProject(frameTarget, Utf8string("AVFoundation.framework"), true);
 
-            var targetGuid = proj.TargetGuidByName(PBXProject.GetUnityTestTargetName());
+
+            string targetGuid = proj.GetUnityMainTargetGuid();
             proj.SetBuildProperty(targetGuid, "ENABLE_BITCODE", "NO");
-
+            proj.AddBuildProperty(proj.ProjectGuid(), "OTHER_LDFLAGS", "-ObjC");
+            proj.AddBuildProperty(targetGuid, "OTHER_LDFLAGS", "-ObjC");
+           
             proj.AddBuildProperty(targetGuid, "LD_RUNPATH_SEARCH_PATHS", "@executable_path/Frameworks $(PROJECT_DIR)/lib/$(CONFIGURATION) $(inherited)");
             proj.AddBuildProperty(targetGuid, "FRAMERWORK_SEARCH_PATHS",
                 "$(inherited) $(PROJECT_DIR) $(PROJECT_DIR)/Frameworks");
@@ -68,20 +79,19 @@ public static class IosPostProcess
                 "@executable_path/../Frameworks/$(EXECUTABLE_PATH)");
             proj.AddBuildProperty(targetGuid, "DEFINES_MODULE", "YES");
     
-		    proj.AddFrameworkToProject(targetGuid, Utf8string("libc++.tbd"), true);
+            proj.AddFrameworkToProject(targetGuid, Utf8string("libc++.tbd"), true);
             proj.AddFrameworkToProject(targetGuid, Utf8string("libresolv.tbd"), true);
             proj.AddFrameworkToProject(targetGuid, Utf8string("Accelerate.framework"), true);
             proj.AddFrameworkToProject(targetGuid, Utf8string("AVFoundation.framework"), true);
-
 
             proj.WriteToFile(projPath);
             UpdatePermission(buildPath + "/Info.plist");
             UnityEngine.Debug.Log("--ios-- build complete, please use xcode open 【"+buildPath + "/Unity-Iphone.xcodeproj】to run");
             #endif
         }else if(buildTarget == BuildTarget.StandaloneOSX || 
-        buildTarget == BuildTarget.StandaloneOSXIntel || buildTarget == BuildTarget.StandaloneOSXIntel64){
-             UnityEngine.Debug.Log("--macos--start:"+buildPath);
-             string plistPath = buildPath+".app" + "/Contents/Info.plist"; // straight to a binary
+            buildTarget == BuildTarget.StandaloneOSXIntel || buildTarget == BuildTarget.StandaloneOSXIntel64){
+            UnityEngine.Debug.Log("--macos--start:"+buildPath);
+            string plistPath = buildPath+".app" + "/Contents/Info.plist"; // straight to a binary
             UpdatePermission(plistPath);
             UnityEngine.Debug.Log("--macos-- build complete, please open 【"+buildPath+".app】to run");
         }

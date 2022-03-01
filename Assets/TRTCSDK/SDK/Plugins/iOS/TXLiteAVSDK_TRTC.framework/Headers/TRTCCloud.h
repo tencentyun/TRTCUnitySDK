@@ -1,7 +1,7 @@
 /**
  * Module:   TRTCCloud @ TXLiteAVSDK
  * Function: 腾讯云 TRTC 主功能接口
- * Version: 9.5.11004
+ * Version: 9.5.1933
  */
 #import <Foundation/Foundation.h>
 #import <VideoToolbox/VideoToolbox.h>
@@ -2110,9 +2110,9 @@
 /**
  * 设置系统音量类型
  *
- * @deprecated v8.0 版本开始不推荐使用，建议使用 {@link TXDeviceManager} 中的 setSystemVolumeType  接口替代之。
+ * @deprecated v8.0 版本开始不推荐使用，建议使用 {@link startLocalAudio:}(quality) 替代之，通过 quality 参数来决策音质。
  */
-- (void)setSystemVolumeType:(TRTCSystemVolumeType)type __attribute__((deprecated("use getDeviceManager instead")));
+- (void)setSystemVolumeType:(TRTCSystemVolumeType)type __attribute__((deprecated("use startLocalAudio:quality instead")));
 
 /**
  * 视频截图

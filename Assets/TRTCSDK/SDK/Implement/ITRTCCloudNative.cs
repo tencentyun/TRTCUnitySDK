@@ -4,6 +4,14 @@ using System.Text;
 
 namespace trtc
 {
+    #if UNITY_IOS
+    public class IosExtensionLauncher
+    {
+        [DllImport ("__Internal")]
+        public static extern void TRTCUnityExtensionLauncher();
+    }
+    #endif
+
     public class ITRTCCloudNative
     {
        #region DllImport

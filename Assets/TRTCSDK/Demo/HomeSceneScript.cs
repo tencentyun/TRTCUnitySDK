@@ -39,7 +39,7 @@ namespace TRTCCUnityDemo
             Button showSettingBtn = transform.Find("btnShowSetting").gameObject.GetComponent<Button>();
             showSettingBtn.onClick.AddListener(this.OnShowSettingClick);
 
-            // Button showApiTestBtn = transform.Find("BtnApiTest").gameObject.GetComponent<Button>();
+            // Button c = transform.Find("BtnApiTest").gameObject.GetComponent<Button>();
             // showApiTestBtn.onClick.AddListener(this.OnShowApiTestClick);
 
             ITRTCCloud mTRTCCloud = ITRTCCloud.getTRTCShareInstance();

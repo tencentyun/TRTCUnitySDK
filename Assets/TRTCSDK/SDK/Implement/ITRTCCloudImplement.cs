@@ -331,7 +331,7 @@ namespace trtc
         /////////////////////////////////////////////////////////////////////////////////
         public override void startScreenCapture(TRTCVideoStreamType type, ref TRTCVideoEncParam param)
         {
-            #if UNITY_STANDALONE_WIN
+            #if UNITY_STANDALONE_WIN || UNITY_ANDROID || UNITY_IOS
             ITRTCCloudNative.TRTCUnityStartScreenCapture(mNativeObj, (int)type, (int)param.videoResolution, (int)param.resMode,
                 param.videoFps, param.videoBitrate, param.minVideoBitrate, param.enableAdjustRes);
             #endif
@@ -339,21 +339,21 @@ namespace trtc
 
         public override void stopScreenCapture()
         {
-            #if UNITY_STANDALONE_WIN
+            #if UNITY_STANDALONE_WIN || UNITY_ANDROID || UNITY_IOS
             ITRTCCloudNative.TRTCUnityStopScreenCapture(mNativeObj);
             #endif
         }
 
         public override void pauseScreenCapture()
         {
-            #if UNITY_STANDALONE_WIN
+            #if UNITY_STANDALONE_WIN || UNITY_ANDROID || UNITY_IOS
             ITRTCCloudNative.TRTCUnityPauseScreenCapture(mNativeObj);
             #endif
         }
 
         public override void resumeScreenCapture()
         {
-            #if UNITY_STANDALONE_WIN
+            #if UNITY_STANDALONE_WIN || UNITY_ANDROID || UNITY_IOS
             ITRTCCloudNative.TRTCUnityResumeScreenCapture(mNativeObj);
             #endif
         }
@@ -649,7 +649,7 @@ namespace trtc
                 onConnectionLostHandler, onTryToReconnectHandler, onConnectionRecoveryHandler, onCameraDidReadyHandler,
                 onMicDidReadyHandler, onUserVoiceVolumeHandler, onDeviceChangeHandler, onRecvSEIMsgHandler,
                 onStartPublishingHandler, onStopPublishingHandler);
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_ANDROID || UNITY_IOS
             ITRTCCloudNative.TRTCUnityAddScreenCaptureCallback(mNativeObj,
                 onScreenCaptureStartedHandler, onScreenCapturePausedHandler,
                 onScreenCaptureResumedHandler, onScreenCaptureStopedHandler);
