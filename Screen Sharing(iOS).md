@@ -17,7 +17,7 @@
 │       └── TXLiteAVSDK_ReplayKitExt
 ```
 
-您可以通过 [README](https://github.com/tencentyun/TRTCUnitySDK/tree/english/实时屏幕分享(iOS).md) 中的指引跑通该示例 Demo。
+您可以通过 [README](https://github.com/tencentyun/TRTCUnitySDK/blob/main/%E8%B7%91%E9%80%9ADemo(Unity).md) 中的指引跑通该示例 Demo。
 
 ### 对接步骤
 
