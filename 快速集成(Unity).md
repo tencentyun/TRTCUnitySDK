@@ -29,7 +29,8 @@
 ### macos 相关问题
 1. 提示` "macosliteav.bundle" 已损怀，无法打开。您应该将它移到废纸篓 `
 ![](https://imgcache.qq.com/operation/dianshi/other/macos.600034e6a5bd6750d6abe5eb63ff45099f7a51ac.png)
-解决办法[参考](http://www.pc6.com/edu/168719.html) 设置权限。
+
+解决办法[参考文档](https://zhuanlan.zhihu.com/p/163702779) 设置权限。
 
 ### Android 提示网络权限问题？
 请将项目中 `/Assets/Plugins/AndroidManifest.xml` 文件放到同级目录下。
