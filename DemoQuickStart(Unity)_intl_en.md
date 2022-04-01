@@ -5,7 +5,6 @@ The demo includes the following features:
 - Custom video rendering
 - Device management and music/voice effects
 
->?
 >
 >- For details about API features and parameters, please see [Client APIs > Unity > Overview](https://intl.cloud.tencent.com/document/product/647/40139).
 - Unity 2020.2.1f1c1 is recommended.
@@ -35,32 +34,29 @@ The demo includes the following features:
 
 [](id:step3)
 ### Step 3. Compile and run
-<dx-tabs>
-::: Android\s
+#### Android
 1. Open Unity Editor, go to **File** > **Build Settings**, and select **Android** for **Platform**.
 ![](https://main.qcloudimg.com/raw/4464eb891829e3505a59c8ec00cc2414.png)
 2. Connect to a real Android device and click **Build And Run** to run the demo.
 3. Call `enterRoom` first and go on to test other APIs. The data display window shows whether the call is successful, and the other window displays the callback information.
-:::
-::: iOS\s
+
+#### iOS
 1. Open Unity Editor, go to **File** > **Build Settings**, and select **iOS** for **Platform**.
 ![](https://main.qcloudimg.com/raw/3a0ef43000fe53e8e7ff58b6cc243785.png)
 2. Connect to a real iPhone, and click **Build And Run**. You need to select a new folder to save your iOS build. When the build is completed, the folder containing the Xcode project will open in a new window.
-:::
-::: Windows\s
+
+#### Windows
 1. Open Unity Editor, go to **File** > **Build Settings**, and select **PC, Mac & Linux Standalone** for **Platform** and **Windows** for **Target Platform**.
 ![](https://main.qcloudimg.com/raw/580764f661c06cf71c4952727c409c5e.png)
 2. Click **Build And Run** to run the demo.
-:::
-::: macOS\s
+
+#### macOS
 1. Open Unity Editor, go to **File** > **Build Settings**, and select **PC, Mac & Linux Standalone** for **Platform**, and **macOS** for **Target Platform**.
 ![](https://main.qcloudimg.com/raw/6f3f9c21aa9eeadd7a4e3be377b2a6b3.png)
 2. Click **Build And Run** to run the demo.
 3. To use the simulator feature of Unity Editor, you must install `Device Simulator Package`.
 4. Click **Windows** > **General** > **Device Simulator**.
 ![](https://main.qcloudimg.com/raw/79f707b89553528956a888f48b4d4d6d.png)
-:::
-</dx-tabs>
 
 
 [](id:demo)

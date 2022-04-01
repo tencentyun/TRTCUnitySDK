@@ -21,3 +21,5 @@ Builds/
 *.opendb
 *.VC.db
 *.log
+.DS_Store
+/TRTCUnityDemo

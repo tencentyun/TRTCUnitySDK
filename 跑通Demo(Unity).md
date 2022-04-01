@@ -47,9 +47,10 @@
 3. 接口测试，需要先点击调用 enterRoom ，然后自行测试其他相关，数据展示窗口显示点击调用成功，另外一个窗口显示回调信息。
 
 #### iOS平台
-1. 配置 Unity Editor，单击【File】>【Build Setting】，切换至 iOS。
-![](https://main.qcloudimg.com/raw/3a0ef43000fe53e8e7ff58b6cc243785.png)
-2. 连接 iPhone 真机，单击【Build And Run】，需要选择一个新的目录存放编译出来的 iOS 工程，等待编译完成，会有新窗口弹出 Xcode 工程。
+1. 打开'TRTC构建配置工具'（可在Unity编辑器顶部导航栏找到）
+2. 点击'构建&配置IOS'，等待项目生成完成
+![](https://imgcache.qq.com/operation/dianshi/other/ios.88273906e5ca84fa9199dff33dfae1d8e53a5388.png)
+3. 使用xcode打开生成好的Unity-iPhone.xcodeproj项目连接iOS真机进行调试
 
 #### Windows平台
 1. 配置 Unity Editor，单击【File】>【Build Setting】，切换至 `PC, Mac & Linux Standalone`，Target Platform 选择 Windows。
