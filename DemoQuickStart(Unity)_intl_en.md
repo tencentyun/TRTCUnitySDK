@@ -5,8 +5,8 @@ The demo includes the following features:
 - Custom video rendering
 - Device management and music/voice effects
 
->
->- For details about API features and parameters, please see [Client APIs > Unity > Overview](https://intl.cloud.tencent.com/document/product/647/40139).
+
+For details about API features and parameters, please see [Client APIs > Unity > Overview](https://intl.cloud.tencent.com/document/product/647/40139).
 - Unity 2020.2.1f1c1 is recommended.
 - Supported platforms: Android, iOS, Windows, macOS (alpha testing)
 - Modules required: `Android Build Support`, `iOS Build Support`, `Windows Build Support`, `MacOS Build Support`
@@ -23,7 +23,7 @@ The demo includes the following features:
 
 [](id:step2)
 ### Step 2. Download the SDK and source code
-1. Download the SDK and [demo source code](https://github.com/tencentyun/TRTCUnitySDK).
+1. Download the SDK and [demo source code](https://github.com/tencentyun/TRTCUnitySDK/tree/english).
 2. Click **Next**. You can open the project with Unity, or copy `TRTCUnitySDK/Assets/TRTCSDK/SDK` in the SDK ZIP file to the `Assets` directory of your project.
 
 3. Find and open `Assets/TRTCSDK/Demo/Tools/GenerateTestUserSig.cs`.
@@ -41,9 +41,10 @@ The demo includes the following features:
 3. Call `enterRoom` first and go on to test other APIs. The data display window shows whether the call is successful, and the other window displays the callback information.
 
 #### iOS
-1. Open Unity Editor, go to **File** > **Build Settings**, and select **iOS** for **Platform**.
-![](https://main.qcloudimg.com/raw/3a0ef43000fe53e8e7ff58b6cc243785.png)
-2. Connect to a real iPhone, and click **Build And Run**. You need to select a new folder to save your iOS build. When the build is completed, the folder containing the Xcode project will open in a new window.
+1. open 'TRTC Build Configuration'（You can find it in the navigation bar at the top of the unity editor）
+2. click 'IOS'，Wait for project generation to complete
+![](https://imgcache.qq.com/operation/dianshi/other/ios-en.a177d686f175b086b565565c66e35b9a07accaed.png)
+3. Use Xcode to open the generated 'Unity-iPhone.xcodeproj' project connects IOS device for debugging
 
 #### Windows
 1. Open Unity Editor, go to **File** > **Build Settings**, and select **PC, Mac & Linux Standalone** for **Platform** and **Windows** for **Target Platform**.
