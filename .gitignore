@@ -22,3 +22,5 @@ Builds/
 *.VC.db
 *.log
 .history/
+.DS_Store
+TRTCUnityDemo/
