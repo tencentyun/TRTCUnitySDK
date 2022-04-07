@@ -36,7 +36,7 @@ To enable cross-app screen sharing on iOS, you need to add the screen recording 
 
 [](id:createGroup)
 #### Step 2. Create an App Group
-Log in to [**https://developer.apple.com/**](https://develop.apple.com) and do the following. **You need to download the provisioning profile again afterwards**.
+Log in to [**https://developer.apple.com/**](https://developer.apple.com/) and do the following. **You need to download the provisioning profile again afterwards**.
 
 1. Click **Certificates, IDs & Profiles**.
 2. Click **+** next to **Identifiers**.
