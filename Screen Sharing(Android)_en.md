@@ -27,9 +27,45 @@ By setting the first parameter encParams in startScreenCapture(), you can specif
 - The highest bitrate (videoBitrate) refers to the highest output bitrate when a shared screen changes dramatically. If the shared content does not change a lot, the actual encoding bitrate will be lower.
 
 #### Android targetSdkVersion 30 Crash
-1.Reduce targetsdkversion to 28. The specific steps are [Build Settings]->[Switch Platform(Android)]->[Player Settings]->[Playr]->[Other Settings]->[Target API Level]->[API Level 28]
+##### 1.Reduce targetsdkversion to 28.
+The specific steps are [Build Settings]->[Switch Platform(Android)]->[Player Settings]->[Playr]->[Other Settings]->[Target API Level]->[API Level 28]
 
-2.Export the project as an Android project，reference[docs](https://cloud.tencent.com/developer/article/1914827) to add a mediaService
+##### 2.Export the project as an Android project to add a mediaService
+2.1 Export the project
+![](https://imgcache.qq.com/operation/dianshi/other/export.58ce964b062e6deae7d0311465632dec2238c3b5.png)
+
+2.2 Open the exported project using Android Studio
+![](https://imgcache.qq.com/operation/dianshi/other/export2.ac1209897c49630e22fd1e679463ae339266bf0d.png)
+
+2.3 Add configuration
+
+2.3.1 open 'unityLibrary/build.gradle', add `implementation 'androidx.core:core:1.6.0'`  to dependencies
+![](https://imgcache.qq.com/operation/dianshi/other/export4.595fbaa2057f807b1d1dc086e16b837380f40c04.png)
+
+2.3.2 open 'gradle.properties', add `android.useAndroidX=true`
+
+2.3.3 open 'unityLibrary/src/main/AndroidManifest.xml' 
+
+add `<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />`
+
+add `<service
+        android:name=".MediaService"
+        android:enabled="true"
+        android:foregroundServiceType="mediaProjection"
+        android:exported="true"/>`
+  
+![](https://imgcache.qq.com/operation/dianshi/other/export6.7dcf13416b75dea5dac312025ece3e59cd132b09.png)
+
+2.4 Add MediaService
+![](https://imgcache.qq.com/operation/dianshi/other/export5.4a0d024b07f95672b9f0b4dfae7ca47d04df61f8.png)
+
+2.5 Start MediaService
+open ‘UnityPlayerActivity.java’ to add `startService(new Intent(this, MediaService.class));` in onCreate function
+![](https://imgcache.qq.com/operation/dianshi/other/export7.f50b35b716dfb013fe81576016ac09df505ec745.png)
+
+2.6 Use Android Studio to build and run.
+
+[Reference export project](https://github.com/c1avie/UnityAndroidExport)
 
 ## FAQs
  **Can there be multiple channels of screen sharing streams in a room at the same time?**
