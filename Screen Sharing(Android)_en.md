@@ -26,7 +26,7 @@ By setting the first parameter encParams in startScreenCapture(), you can specif
 - If the screen you share contains a large amount of text, you can increase the resolution and bitrate accordingly.
 - The highest bitrate (videoBitrate) refers to the highest output bitrate when a shared screen changes dramatically. If the shared content does not change a lot, the actual encoding bitrate will be lower.
 
-#### Android targetSdkVersion 30 Crash
+#### Android targetSdkVersion >28 Crash
 ##### 1.Reduce targetsdkversion to 28.
 The specific steps are [Build Settings]->[Switch Platform(Android)]->[Player Settings]->[Playr]->[Other Settings]->[Target API Level]->[API Level 28]
 
