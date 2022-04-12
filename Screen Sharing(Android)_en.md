@@ -46,6 +46,8 @@ The specific steps are [Build Settings]->[Switch Platform(Android)]->[Player Set
 
 2.3.3 open 'unityLibrary/src/main/AndroidManifest.xml' 
 
+![](https://imgcache.qq.com/operation/dianshi/other/export6.7dcf13416b75dea5dac312025ece3e59cd132b09.png)
+
 add `<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />`
 
 add `<service
@@ -53,8 +55,6 @@ add `<service
         android:enabled="true"
         android:foregroundServiceType="mediaProjection"
         android:exported="true"/>`
-  
-![](https://imgcache.qq.com/operation/dianshi/other/export6.7dcf13416b75dea5dac312025ece3e59cd132b09.png)
 
 2.4 Add MediaService
 ![](https://imgcache.qq.com/operation/dianshi/other/export5.4a0d024b07f95672b9f0b4dfae7ca47d04df61f8.png)
