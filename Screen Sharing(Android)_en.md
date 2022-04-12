@@ -56,7 +56,7 @@ add `<service
         android:foregroundServiceType="mediaProjection"
         android:exported="true"/>`
 
-2.4 Add MediaService
+2.4 Add MediaService [code](https://github.com/c1avie/UnityAndroidExport/blob/main/unityLibrary/src/main/java/com/unity3d/player/MediaService.java)
 ![](https://imgcache.qq.com/operation/dianshi/other/export5.4a0d024b07f95672b9f0b4dfae7ca47d04df61f8.png)
 
 2.5 Start MediaService
