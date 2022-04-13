@@ -39,10 +39,11 @@ The specific steps are [Build Settings]->[Switch Platform(Android)]->[Player Set
 
 2.3 Add configuration
 
-2.3.1 open 'unityLibrary/build.gradle', add `implementation 'androidx.core:core:1.6.0'`  to dependencies
+2.3.1 open 'unityLibrary/build.gradle', add `implementation 'androidx.core:core:1.6.0'`  to dependencies, then click `sync`
 ![](https://imgcache.qq.com/operation/dianshi/other/export4.595fbaa2057f807b1d1dc086e16b837380f40c04.png)
 
-2.3.2 open 'gradle.properties', add `android.useAndroidX=true`
+2.3.2 open 'gradle.properties', add `android.useAndroidX=true`, then click `sync`
+![](https://imgcache.qq.com/operation/dianshi/other/sync.81bcd3dfa1d70c506d962fd3ec7c7fd8da0496a1.png)
 
 2.3.3 open 'unityLibrary/src/main/AndroidManifest.xml' 
 
