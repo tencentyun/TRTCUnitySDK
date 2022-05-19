@@ -17,7 +17,7 @@ This document describes how to quickly integrate TRTC SDK for Unity into your pr
 1. Open Unity Editor，click【File】>【Build Setting】，switch platform to iOS。
 ![](https://tccweb-1258344699.cos.ap-nanjing.myqcloud.com/sdk/trtc/unity/ios.png)
 2. Connect iPhone real machine，click【Build And Run】，Wait until the compilation is completed, and a new window will pop up Xcode project.
-3. Click the 'Link Binary with Libraries' item to expand，and click the "+" icon at the bottom to add the dependent `libc++.tbd` 、`Accelerate.framework`、`libresolv.tbd`、`AVFoundation.framework`。
+3. Click the 'Link Binary with Libraries' item to expand，and click the "+" icon at the bottom to add the dependent `libc++.tbd` 、`Accelerate.framework`、`libresolv.tbd`、`AVFoundation.framework`(Unity-iPhone/UnityFramework both need to add).
 ![](https://imgcache.qq.com/operation/dianshi/other/link.743c57b230fa1be24a2226b6cd1c99378eca81ca.png)
 4. Click 'Other Linker Flags item' to expand，add `-ObjC`
 ![](https://imgcache.qq.com/operation/dianshi/other/8.6-objc.e0df060a638c1056fc07d1cb51c303a9de5b542f.png)
