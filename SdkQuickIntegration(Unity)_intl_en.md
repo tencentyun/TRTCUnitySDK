@@ -28,7 +28,7 @@ open File —> Project Setting，change Build type。
 ![](https://imgcache.qq.com/operation/dianshi/other/newBuild.af51c956404867ac237269e78da8ee8e2c556bd1.png)
 
 ### What should I do if a network access error occurs on Android?
-Copy `/Assets/Plugins/AndroidManifest.xml` to the same directory of your project.
+Copy `/Assets/Plugins/Android/AndroidManifest.xml` to the same directory of your project.
 
 ### What should I do if the SDK does not have mic or camera access on Android?
 You need to add mic and camera permission requests manually when building for Android. For details, see the code below:
